@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useNabta } from '@/context/NabtaContext';
 import { ProductCard } from '@/components/marketplace/ProductCard';
@@ -8,7 +8,7 @@ import { MarketplaceFilters, CATEGORIES } from '@/components/marketplace/Marketp
 import { Badge } from '@/ui/Badge';
 import { Search, Globe2, ShieldCheck, SlidersHorizontal } from 'lucide-react';
 
-export default function MarketplacePage() {
+function MarketplaceContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'all';
 
@@ -172,3 +172,18 @@ export default function MarketplacePage() {
     </div>
   );
 }
+
+export default function MarketplacePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="max-w-7xl mx-auto px-4 py-16 text-center text-xs font-mono text-secondary">
+          Initializing Global Catalog...
+        </div>
+      }
+    >
+      <MarketplaceContent />
+    </Suspense>
+  );
+}
+
