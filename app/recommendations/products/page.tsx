@@ -12,7 +12,6 @@ import {
   ArrowLeft,
   ShoppingCart,
   Check,
-  Sparkles,
   Layers,
   Store,
 } from 'lucide-react';

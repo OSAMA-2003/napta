@@ -8,7 +8,6 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/ui/Card'
 import { Badge } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
 import {
-  Sparkles,
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
