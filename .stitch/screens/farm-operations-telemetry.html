@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#004f34",
+          "on-tertiary-container": "#31c98f",
+          "surface-bright": "#f8f9ff",
+          "on-tertiary": "#ffffff",
+          "on-tertiary-fixed-variant": "#005236",
+          "on-secondary": "#ffffff",
+          "inverse-primary": "#93d5ad",
+          "surface-container-highest": "#d3e4fe",
+          "surface-container": "#e5eeff",
+          "on-primary-fixed-variant": "#095133",
+          "on-secondary-container": "#5c647a",
+          "surface-variant": "#d3e4fe",
+          "on-error": "#ffffff",
+          "error-container": "#ffdad6",
+          "on-background": "#0b1c30",
+          "secondary": "#565e74",
+          "inverse-on-surface": "#eaf1ff",
+          "on-error-container": "#93000a",
+          "on-surface-variant": "#404942",
+          "on-secondary-fixed-variant": "#3f465c",
+          "inverse-surface": "#213145",
+          "primary": "#003620",
+          "tertiary": "#003623",
+          "surface-container-lowest": "#ffffff",
+          "on-primary-fixed": "#002111",
+          "tertiary-fixed-dim": "#4edea3",
+          "surface": "#f8f9ff",
+          "surface-dim": "#cbdbf5",
+          "secondary-fixed-dim": "#bec6e0",
+          "error": "#ba1a1a",
+          "primary-fixed-dim": "#93d5ad",
+          "secondary-fixed": "#dae2fd",
+          "background": "#f8f9ff",
+          "tertiary-fixed": "#6ffbbe",
+          "outline-variant": "#bfc9c0",
+          "on-primary-container": "#7fc099",
+          "surface-container-low": "#eff4ff",
+          "primary-fixed": "#aef1c8",
+          "on-surface": "#0b1c30",
+          "surface-tint": "#2a6a49",
+          "on-secondary-fixed": "#131b2e",
+          "primary-container": "#054f31",
+          "surface-container-high": "#dce9ff",
+          "outline": "#707972",
+          "secondary-container": "#dae2fd",
+          "on-primary": "#ffffff",
+          "on-tertiary-fixed": "#002113"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-3xl": "4rem",
+          "space-base": "1rem",
+          "space-xs": "0.25rem",
+          "space-2xl": "3rem",
+          "space-sm": "0.5rem",
+          "space-md": "0.75rem",
+          "space-xl": "2rem",
+          "space-lg": "1.5rem",
+          "margin-tablet": "2rem",
+          "gutter-desktop": "1.5rem",
+          "gutter-mobile": "1rem",
+          "space-2xs": "0.125rem",
+          "margin-mobile": "1rem",
+          "margin-desktop": "3rem"
+        },
+        "fontFamily": {
+          "display-hero-mobile": ["Plus Jakarta Sans"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "body-lg": ["Inter"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "label-code": ["JetBrains Mono"],
+          "metric-headline": ["JetBrains Mono"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "body-sm": ["Inter"],
+          "label-badge": ["Inter"],
+          "body-md": ["Inter"],
+          "display-hero": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+          "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700"}],
+          "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+          "label-code": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+          "metric-headline": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+          "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.005em", "fontWeight": "400"}],
+          "label-badge": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+          "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+          "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 w-full px-space-lg flex flex-col justify-between"><div class="h-16 w-full flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm"><img alt="NABTA Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VDFGhgBP4C5Vdjsmgmxrw9fieUZukMKD3b4P6wvgHPO80WyHU_ve6P1wbiJcSS4RNcooYDRMfpuuT3S3Re542ywJXpzzrnabZ5f9aFOWc86B82L1Gi9pbpSc48L_5JxNavEKdyNxUIK1XucOJy1gBZv3r4hfR2V7-N1WOD8skv82Hv31sRsgt7ymUd4X5JrX1_9mnbU-7NhOnG4XgK1sUbAanXqBXcuzdQU8mSYEcbKr8l1PPYdO07OQ"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">NABTA</span></div><div class="inline-flex items-center p-space-2xs bg-surface-container-low rounded-lg"><button class="px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest text-primary font-label-badge text-label-badge shadow-[0_1px_4px_rgba(0,0,0,0.04)]" type="button">Farmer Mode</button><button class="px-space-sm py-space-2xs rounded-lg text-secondary font-label-badge text-label-badge hover:text-on-surface transition-colors" type="button">Supplier Mode</button></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a class="relative px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors inline-flex items-center gap-space-xs" data-path="farm-intelligence-scenarios" href="#">Farm Intelligence &amp; Scenarios<span class="px-space-xs py-space-2xs rounded-full bg-tertiary-container text-on-tertiary-container font-label-code text-label-code uppercase tracking-wider">AI Live</span></a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="global-marketplace" href="#">Global Marketplace</a><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-primary-container text-on-primary font-semibold rounded-lg" data-path="farm-management" href="#">Farm Management</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="my-orders" href="#">My Orders</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="supplier-hub" href="#">Supplier Hub</a></nav><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center bg-surface-container-low rounded-lg px-space-md py-space-xs gap-space-sm w-64"><span class="material-symbols-outlined text-secondary text-sm">search</span><input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-secondary w-full" placeholder="Search intelligence..." type="text"/><span class="font-label-code text-label-code px-space-xs py-space-2xs rounded bg-surface-container-lowest text-secondary shadow-[0_1px_3px_rgba(0,0,0,0.04)]">⌘K</span></div><button class="hidden lg:inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low hover:bg-surface-container font-label-code text-label-code text-secondary hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-sm">public</span><span>USD ($)</span></button><button class="relative p-space-xs rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTXLB9okBlLfx8xi1Utj6Z0AZoRRgM7I_Btvuo8mmgd4sOjGADzy8dam9BA-S8Ex_aTJlWlvGxhlpHtax-rl6XYZ0QMjA0miFL7EZOcF63FtnFdB3KfCWYfcQH_0ddO1_HRdMpU9Wsi1n-W0tZxQaDoslDwnjVZgX_Pa35uwQ-ajqZlH73RCrmwPESkX6fDqL2aCSRUcUkZ_AU5XvPmDwes7TWISbqaLV0wbQFIFogJqvKkcTohmeh"/><div class="hidden 2xl:flex flex-col text-left"><span class="font-headline-sm text-label-badge font-semibold text-on-surface leading-tight">Dr. Elena Rostova</span><span class="font-label-code text-label-code text-secondary leading-tight">Farm Lead</span></div></div></div></div><div class="h-12 w-full flex items-center justify-between gap-space-md bg-surface-container-low/60 rounded-lg px-space-md mb-space-xs"><div class="flex items-center gap-space-md overflow-x-auto py-space-2xs"><div class="flex items-center gap-space-xs text-on-surface whitespace-nowrap"><span class="material-symbols-outlined text-primary text-sm">location_on</span><span class="font-body-md text-body-md font-semibold text-on-surface">Al-Waha Precision Agrifarm</span><span class="font-body-sm text-body-sm text-secondary">— Sector 4B (140 Ha)</span></div><div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-primary-fixed/30 text-on-primary-fixed-variant whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-on-primary-fixed-variant animate-pulse"></span><span class="font-label-code text-label-code font-semibold">94% Optimal Health</span></div><div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-secondary-container/60 text-on-secondary-fixed-variant whitespace-nowrap"><span class="material-symbols-outlined text-xs">potted_plant</span><span class="font-label-code text-label-code font-semibold">Scenario: Premium Roma Tomato 2026</span><span class="font-label-code text-label-code px-space-xs rounded bg-surface-container-lowest text-primary uppercase">Active</span></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-label-badge font-semibold transition-colors shadow-[0_1px_4px_rgba(0,0,0,0.06)]" type="button"><span class="material-symbols-outlined text-sm">add</span><span>New Farm Analysis</span></button></div></div></div></header><main class="w-full pt-28 bg-background flex-1"><div class="flex flex-col w-full">
+<!-- Farm Executive Overview / Identity Strip -->
+<section class="w-full px-space-lg md:px-margin-desktop py-space-xl">
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg pb-space-lg">
+<div class="space-y-space-xs max-w-4xl">
+<div class="inline-flex items-center gap-space-sm">
+<span class="px-space-xs py-space-2xs rounded-full bg-primary text-on-primary font-label-code text-label-code uppercase tracking-wider">Sector 4B Active</span>
+<span class="font-label-code text-label-code text-secondary">ID: AWH-SEC4B-9020</span>
+<span class="text-secondary">•</span>
+<span class="font-label-code text-label-code text-secondary">Sensor Mesh: 38/38 Nodes Synced</span>
+</div>
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight">Al-Waha Precision Agrifarm</h1>
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-space-2xs text-secondary font-body-md text-body-md">
+<span class="inline-flex items-center gap-space-2xs text-on-surface font-medium">
+<span class="material-symbols-outlined text-sm text-primary">pin_drop</span>
+            Beqaa Valley, Lebanon (33.8463° N, 35.9020° E)
+          </span>
+<span>•</span>
+<span>140 Hectares Under Automated Drip Fertigation</span>
+<span>•</span>
+<span class="text-primary font-semibold">Sub-surface Aquifer Line #2 Connected</span>
+</div>
+</div>
+<!-- Quick Operational Action Cluster -->
+<div class="flex items-center flex-wrap gap-space-sm flex-shrink-0">
+<button class="group relative px-space-md py-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-sm text-label-badge font-semibold shadow-sm transition-all duration-200 flex items-center gap-space-xs" id="btn-satellite-scan" type="button">
+<span class="material-symbols-outlined text-primary text-base group-hover:rotate-45 transition-transform">satellite_alt</span>
+<span>Trigger Satellite Scan</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-sm text-label-badge font-semibold shadow-sm transition-all duration-200 flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-secondary text-base">science</span>
+<span>New Soil Sample</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-label-badge font-semibold shadow-md transition-all duration-200 flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-base">shopping_cart_checkout</span>
+<span>Manage Input Orders</span>
+</button>
+</div>
+</div>
+<!-- Live Telemetry Ticker Strip -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-md shadow-sm flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-lg flex-wrap">
+<div class="flex items-center gap-space-sm">
+<div class="relative flex items-center justify-center w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed">
+<span class="material-symbols-outlined text-sm">vital_signs</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-secondary uppercase">Overall Crop Health</div>
+<div class="font-metric-headline text-metric-headline text-primary font-bold leading-none">94.2% <span class="font-body-sm text-body-sm text-secondary font-normal">Optimal Index</span></div>
+</div>
+</div>
+<div class="h-8 w-px bg-surface-container-highest hidden md:block"></div>
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">radar</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-secondary uppercase">Satellite NDVI Level</div>
+<div class="font-metric-headline text-metric-headline text-on-surface font-bold leading-none">0.78 <span class="font-body-sm text-body-sm text-on-tertiary-container font-semibold">High Canopy Vigor</span></div>
+</div>
+</div>
+<div class="h-8 w-px bg-surface-container-highest hidden md:block"></div>
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">water_drop</span>
+</div>
+<div>
+<div class="font-label-code text-label-code text-secondary uppercase">Root Zone Moisture</div>
+<div class="font-metric-headline text-metric-headline text-on-surface font-bold leading-none">28.4% <span class="font-body-sm text-body-sm text-secondary font-normal">Volumetric Water</span></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-label-code text-label-code bg-surface-container-lowest px-space-md py-space-xs rounded-lg text-secondary shadow-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span>Sentinel-2 Flyover: <strong>23m ago</strong></span>
+<span class="mx-space-xs">•</span>
+<span class="text-primary font-semibold">Next Pass in 4h 12m</span>
+</div>
+</div>
+</section>
+<!-- 4-Pillar Telemetry Grid (Answers Question 1: What is happening?) -->
+<section class="w-full px-space-lg md:px-margin-desktop pb-space-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Metric 1: Soil Health Chemistry -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-headline-sm text-label-badge text-secondary font-semibold uppercase tracking-wider">Soil Chemistry Index</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-low font-label-code text-label-code text-on-primary-fixed-variant font-medium">Optimal Band</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">pH 6.4</span>
+<span class="font-label-code text-label-code text-secondary">Target: 6.2 - 6.8</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Slightly acidic silt loam with high microbial enzyme activity.</p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-md -mb-space-md p-space-md rounded-b-xl space-y-space-xs">
+<div class="flex items-center justify-between font-label-code text-label-code">
+<span class="text-secondary">Nitrogen (N)</span>
+<span class="font-semibold text-on-surface">48 ppm <span class="text-error font-normal">(Needs Boost)</span></span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 55%"></div>
+</div>
+<div class="flex items-center justify-between font-label-code text-label-code pt-space-2xs">
+<span class="text-secondary">Phosphorus (P)</span>
+<span class="font-semibold text-on-surface">28 ppm <span class="text-primary font-normal">(Target: 25-35)</span></span>
+</div>
+<div class="flex items-center justify-between font-label-code text-label-code pt-space-2xs">
+<span class="text-secondary">Potassium (K)</span>
+<span class="font-semibold text-on-surface">240 ppm <span class="text-primary font-normal">(Surplus Buffer)</span></span>
+</div>
+</div>
+</div>
+<!-- Metric 2: Weather & Evapotranspiration -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-headline-sm text-label-badge text-secondary font-semibold uppercase tracking-wider">Atmospheric &amp; ET₀</span>
+<span class="inline-flex items-center gap-space-2xs font-label-code text-label-code text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">air</span> 14 km/h WNW
+            </span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">28.5°C</span>
+<span class="font-label-code text-label-code text-secondary">RH 41%</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface font-label-code text-label-code">0% Rain Prob</span>
+<span class="font-body-sm text-body-sm text-secondary">Solar rad: 884 W/m²</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-md -mb-space-md p-space-md rounded-b-xl">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-code text-label-code text-secondary">Reference ET₀ Today</span>
+<span class="font-metric-headline text-label-badge text-primary font-bold">5.8 mm/day</span>
+</div>
+<!-- Sparkline representation of 24h ET curve -->
+<div class="w-full h-8 flex items-end gap-1 pt-1">
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-2"></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-2"></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-3"></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-5"></div>
+<div class="w-1/12 bg-primary-container rounded-t h-7"></div>
+<div class="w-1/12 bg-primary-container rounded-t h-8"></div>
+<div class="w-1/12 bg-primary-container rounded-t h-8"></div>
+<div class="w-1/12 bg-primary rounded-t h-7"></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-5"></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-3"></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-2"></div>
+<div class="w-1/12 bg-primary-fixed-dim rounded-t h-1"></div>
+</div>
+<div class="flex justify-between font-label-code text-label-code text-secondary mt-space-2xs">
+<span>06:00</span>
+<span>Peak Demand (13:00)</span>
+<span>20:00</span>
+</div>
+</div>
+</div>
+<!-- Metric 3: Water Reservoir & Drip Flow -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-headline-sm text-label-badge text-secondary font-semibold uppercase tracking-wider">Hydraulic Reserves</span>
+<span class="px-space-xs py-space-2xs rounded-full bg-secondary-container font-label-code text-label-code text-on-secondary-fixed-variant font-semibold">74% Tank Cap</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">82,400 <span class="text-headline-lg font-normal text-secondary">m³</span></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Estimated reserve endurance: <strong>16 Days</strong> at current diurnal transpiration rate.</p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-md -mb-space-md p-space-md rounded-b-xl space-y-space-xs">
+<div class="flex items-center justify-between font-label-code text-label-code">
+<span class="text-secondary">Mainline Flow Rate</span>
+<span class="font-semibold text-primary">18.2 Liters/sec</span>
+</div>
+<div class="flex items-center justify-between font-label-code text-label-code">
+<span class="text-secondary">Line Line Head Pressure</span>
+<span class="font-semibold text-on-surface">3.8 Bar (Nominal)</span>
+</div>
+<div class="flex items-center justify-between font-label-code text-label-code">
+<span class="text-secondary">EC Value (Salinity)</span>
+<span class="font-semibold text-on-surface">1.2 dS/m (Drip Grade)</span>
+</div>
+</div>
+</div>
+<!-- Metric 4: Scenario Yield & Financial Runway (Answers Question 2: What should I grow?) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-headline-sm text-label-badge text-secondary font-semibold uppercase tracking-wider">Projected Scenario Value</span>
+<span class="px-space-xs py-space-2xs rounded bg-primary text-on-primary font-label-code text-label-code font-bold uppercase">Roma '26</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">$1.60M</span>
+<span class="font-label-code text-label-code text-secondary">Net Margin</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Equates to <strong>$11,428 / Hectare</strong> across 140 Ha at anticipated off-take gate price.</p>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-low/40 -mx-space-md -mb-space-md p-space-md rounded-b-xl">
+<div class="flex items-center justify-between font-label-code text-label-code mb-space-2xs">
+<span class="text-secondary">Target Yield Trajectory</span>
+<span class="font-bold text-on-surface">92.4 MT / Ha (96% CI)</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 88%"></div>
+</div>
+<div class="flex justify-between font-label-code text-label-code text-secondary mt-space-2xs">
+<span>Seedling Base</span>
+<span class="text-primary font-semibold">Current: Veg Growth</span>
+<span>Harvest (Oct)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Two-Column Precision Hub (Left: Geospatial & Action Feed | Right: Scenario Lifecycle & Replenishment) -->
+<section class="w-full px-space-lg md:px-margin-desktop pb-space-3xl">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- LEFT COLUMN: 7 Columns (Answers Question 1 & 4: What is happening & What do I do next?) -->
+<div class="xl:col-span-7 space-y-space-lg">
+<!-- Live Precision Drone Orthomosaic & NDVI Map Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md md:p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">map</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Sector 4B Orthomosaic &amp; Health Zones</h2>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Spatial multispectral NDVI layers rendered via fixed-wing drone sweep.</p>
+</div>
+<!-- Map Layers Filter -->
+<div class="inline-flex p-space-2xs bg-surface-container-low rounded-lg self-start">
+<button class="px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest text-primary font-label-code text-label-code font-bold shadow-xs" type="button">NDVI Index</button>
+<button class="px-space-sm py-space-2xs rounded-lg text-secondary hover:text-on-surface font-label-code text-label-code" type="button">Thermal Stress</button>
+<button class="px-space-sm py-space-2xs rounded-lg text-secondary hover:text-on-surface font-label-code text-label-code" type="button">Moisture Mesh</button>
+</div>
+</div>
+<!-- Map View Container with Visual Overlays -->
+<div class="relative w-full h-80 rounded-xl overflow-hidden bg-surface-container shadow-inner">
+<img class="w-full h-full object-cover" data-alt="High-resolution aerial satellite orthomosaic of geometric precision agriculture fields in Beqaa Valley, showing distinct emerald green, pale lime, and golden brown soil plots partitioned by automated drip irrigation lines in bright midday sun." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdW6u8CRnpMtd9V3-gFyKHe3oVwlne6BFouD0fpqzdYdczwn8yCYEKm8RKc-7aQiNbatLMSf6471hMcOBM3A0H9GyBtkNMxe__Kf9WhLSicMYDxwUak2kDHaJV0BmyBRwnkj7253OcBzysccWkVhiFtZkbX8GyNsjT-hBzsfRPRpYCc-l25escKlG8RVUweCqmAvlqs7HgwB5DrbuWJBtyJTNoI_QbhXBAZeK-GXHRQJiq06V2img_"/>
+<!-- Gradient Scrim for Analytical UI Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-black/20"></div>
+<!-- Top Left Geospatial Meta Pill -->
+<div class="absolute top-space-md left-space-md flex flex-wrap items-center gap-space-xs">
+<span class="px-space-sm py-space-2xs rounded bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-code text-label-code font-semibold shadow-xs">
+                Res: 2.5 cm/px
+              </span>
+<span class="px-space-sm py-space-2xs rounded bg-surface-container-lowest/90 backdrop-blur-md text-secondary font-label-code text-label-code">
+                Flight: DJI Agras T40
+              </span>
+</div>
+<!-- Interactive Pin 1: Zone 1 -->
+<div class="absolute top-16 left-28 group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<span class="animate-ping absolute inline-flex h-6 w-6 rounded-full bg-tertiary-fixed-dim opacity-75"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-tertiary-container text-on-tertiary-container items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+</span>
+</div>
+<div class="hidden group-hover:block absolute left-6 -top-2 w-48 bg-surface-container-lowest p-space-xs rounded-lg shadow-xl text-on-surface z-20">
+<div class="font-label-badge text-label-badge font-bold text-primary">Zone 1 • North Bench</div>
+<div class="font-label-code text-label-code text-secondary">NDVI: 0.82 (High Vigor)</div>
+<div class="font-body-sm text-body-sm text-secondary">Zero moisture deficiency</div>
+</div>
+</div>
+<!-- Interactive Pin 2: Zone 2 Warning -->
+<div class="absolute top-36 right-36 group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<span class="animate-ping absolute inline-flex h-7 w-7 rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-4 w-4 bg-error text-on-error items-center justify-center font-label-code text-[10px] font-bold">!</span>
+</div>
+<div class="block absolute right-6 -top-2 w-52 bg-surface-container-lowest p-space-xs rounded-lg shadow-xl text-on-surface z-20">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge font-bold text-error">Zone 2 • Needs Action</span>
+<span class="font-label-code text-label-code text-error font-bold">0.65 NDVI</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Nitrogen absorption dip detected in 22 Ha sub-polygon.</div>
+</div>
+</div>
+<!-- Bottom Floating Zone Health Summary -->
+<div class="absolute bottom-space-md left-space-md right-space-md flex flex-wrap items-center justify-between gap-space-xs bg-surface-container-lowest/90 backdrop-blur-md px-space-md py-space-sm rounded-lg shadow-md">
+<div class="flex items-center gap-space-md font-label-code text-label-code">
+<div class="flex items-center gap-space-2xs">
+<span class="w-3 h-3 rounded-full bg-on-tertiary-container"></span>
+<span class="font-semibold text-on-surface">Zone 1: 0.82 NDVI</span>
+<span class="text-secondary">(70 Ha)</span>
+</div>
+<div class="flex items-center gap-space-2xs">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="font-semibold text-error">Zone 2: 0.65 NDVI</span>
+<span class="text-secondary">(35 Ha Boost Needed)</span>
+</div>
+<div class="flex items-center gap-space-2xs hidden md:flex">
+<span class="w-3 h-3 rounded-full bg-primary-fixed-dim"></span>
+<span class="font-semibold text-on-surface">Zone 3: 0.79 NDVI</span>
+<span class="text-secondary">(35 Ha)</span>
+</div>
+</div>
+<div class="font-label-code text-label-code text-primary font-bold">
+                Map Updated 09:30 AM
+              </div>
+</div>
+</div>
+<!-- Bottom Telemetry Legend / Quick Status -->
+<div class="mt-space-md grid grid-cols-3 gap-space-sm text-center">
+<div class="bg-surface-container-low p-space-xs rounded-lg">
+<div class="font-label-code text-label-code text-secondary uppercase">Canopy Temperature</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">24.1°C <span class="font-body-sm text-body-sm text-primary font-normal">(-4°C below air)</span></div>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded-lg">
+<div class="font-label-code text-label-code text-secondary uppercase">Chlorophyll Absorption</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">68.4 SPAD</div>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded-lg">
+<div class="font-label-code text-label-code text-secondary uppercase">Irrigation Uniformity</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">93.8% CU</div>
+</div>
+</div>
+</div>
+<!-- AI Agronomic Priority Task Feed (Answers Question 4: What should I do next?) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container animate-ping"></span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Autonomous Agronomic Tasks</h2>
+</div>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-low font-label-code text-label-code text-secondary">3 Tasks Pending Verification</span>
+</div>
+<div class="space-y-space-md">
+<!-- Task 1: High Priority Fertigation Dose B -->
+<div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md transition-all hover:bg-surface-container-low">
+<div class="space-y-space-2xs max-w-xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-space-2xs rounded bg-error text-on-error font-label-code text-label-code uppercase font-bold tracking-wider">Critical Priority</span>
+<span class="font-label-code text-label-code text-secondary">Zone 2 • Block C</span>
+<span class="text-secondary">•</span>
+<span class="font-label-code text-label-code text-error font-semibold">Window: &lt; 48 Hours</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Schedule Fertigation Dose B (Nitrogen &amp; Potassium Booster)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Zone 2 exhibits a 0.17 NDVI deficit compared to baseline. Injection of 45 kg/Ha Potassium Nitrate is required before next vegetative growth flush to prevent blossom drop.</p>
+<div class="flex items-center gap-space-md font-label-code text-label-code text-secondary pt-space-xs">
+<span>Prescription: <strong>KNO₃ Tank #3 (380 L)</strong></span>
+<span>Injector: <strong>Venturi Line 2B</strong></span>
+</div>
+</div>
+<div class="flex-shrink-0 flex md:flex-col gap-space-xs">
+<button class="w-full px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-headline-sm text-label-badge font-semibold hover:bg-primary-container shadow-sm transition-colors text-center" type="button">
+                  Execute Task
+                </button>
+<button class="w-full px-space-md py-space-xs rounded-lg bg-surface-container-lowest text-secondary font-label-code text-label-code hover:text-on-surface transition-colors text-center" type="button">
+                  Modify Formula
+                </button>
+</div>
+</div>
+<!-- Task 2: Moderate Sensor Calibration -->
+<div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md transition-all hover:bg-surface-container-low">
+<div class="space-y-space-2xs max-w-xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-highest text-on-surface font-label-code text-label-code uppercase font-bold tracking-wider">Moderate</span>
+<span class="font-label-code text-label-code text-secondary">Sub-sector West • Sensor #04</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Recalibrate FDR Soil Moisture Probe #04</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Telemetry flagged dielectric permittivity drift (+4.2%) following yesterday's salinity flush. Technician diagnostic prompt dispatched to field terminal.</p>
+<div class="flex items-center gap-space-md font-label-code text-label-code text-secondary pt-space-xs">
+<span>Assigned: <strong>Field Tech Rami K.</strong></span>
+<span>Battery: <strong>88%</strong></span>
+</div>
+</div>
+<div class="flex-shrink-0 flex md:flex-col gap-space-xs">
+<button class="w-full px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-headline-sm text-label-badge font-semibold shadow-xs transition-colors text-center" type="button">
+                  Mark Done
+                </button>
+<button class="w-full px-space-md py-space-xs rounded-lg text-secondary font-label-code text-label-code hover:text-on-surface transition-colors text-center" type="button">
+                  View Raw Logs
+                </button>
+</div>
+</div>
+<!-- Task 3: Replenishment Actionable -->
+<div class="bg-surface-container-low/70 rounded-xl p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md transition-all hover:bg-surface-container-low">
+<div class="space-y-space-2xs max-w-xl">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-space-2xs rounded bg-tertiary-container text-on-tertiary-container font-label-code text-label-code uppercase font-bold tracking-wider">Actionable Inventory</span>
+<span class="font-label-code text-label-code text-secondary">Depot Supply Level</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Re-order BioNutrient Ultra-K Formulation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">On-site inventory is 120 Liters (threshold: 400 Liters). Supplier dispatch lead-time from Beirut terminal is 5 business days.</p>
+<div class="flex items-center gap-space-md font-label-code text-label-code text-secondary pt-space-xs">
+<span>Consumption Rate: <strong>35 L/day</strong></span>
+<span class="text-error font-semibold">5 Days Stock Left</span>
+</div>
+</div>
+<div class="flex-shrink-0 flex md:flex-col gap-space-xs">
+<button class="w-full px-space-md py-space-sm rounded-lg bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-label-badge font-semibold shadow-sm transition-colors text-center" type="button">
+                  Reorder via Marketplace
+                </button>
+<button class="w-full px-space-md py-space-xs rounded-lg text-secondary font-label-code text-label-code hover:text-on-surface transition-colors text-center" type="button">
+                  Compare Suppliers
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: 5 Columns (Answers Question 2 & 3: What should I grow & What should I buy?) -->
+<div class="xl:col-span-5 space-y-space-lg">
+<!-- Active Scenario Card (Question 2: What should I grow?) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-md">
+<div>
+<span class="font-label-code text-label-code text-secondary uppercase tracking-wider">Active Growth Scenario</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Indeterminate Roma Tomato</h2>
+</div>
+<span class="px-space-sm py-space-xs rounded-lg bg-primary text-on-primary font-label-code text-label-code font-bold uppercase">
+              Phase 2 Active
+            </span>
+</div>
+<!-- Scenario Hero Thumbnail & Stage Visualizer -->
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-space-md">
+<img class="w-full h-full object-cover" data-alt="Close up agronomy photo of indeterminate Roma tomato plant vines with vibrant yellow flowering blossoms and small green embryonic tomato clusters in a state-of-the-art precision commercial drip farm, bathed in warm natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8GtjXyg2vsXYctYkWfqXqtaXobYaavJSwj17xo625m48MHf4W4zh_KImVkVMHf0LAgc0CT8aUTzF7ayGIpbcz3azuts5zJaVugkUkKblKqeGOtiy_smmzTP6982sSLJqiFT-3ZRqE5Xf4b1xVae6R_Tbv81iHL6KwLnv0veVoJrHlAHyjTvAW6sCoLng6MaoCMQKWx-BReZsC351QMG4ytaXNmNMCPTD5DV6aW8VdTk25vuU9z3Ls"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-space-md left-space-md right-space-md flex items-end justify-between text-white">
+<div>
+<div class="font-headline-sm text-headline-sm font-bold">Vegetative to Flowering</div>
+<div class="font-label-code text-label-code text-gray-200">Transitioning to Fruit Cluster Development</div>
+</div>
+<div class="text-right">
+<div class="font-metric-headline text-metric-headline font-bold text-primary-fixed">Day 42</div>
+<div class="font-label-code text-label-code text-gray-300">of 110 Day Cycle</div>
+</div>
+</div>
+</div>
+<!-- Timeline Progress Tracker -->
+<div class="space-y-space-xs mb-space-md">
+<div class="flex justify-between font-label-code text-label-code">
+<span class="text-secondary">Scenario Progress</span>
+<span class="font-bold text-primary">38% Completed</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 38%"></div>
+</div>
+<div class="flex justify-between font-label-code text-label-code text-secondary pt-space-2xs">
+<span>Sowing (May 1)</span>
+<span class="text-on-surface font-semibold">Milestone: First Cluster Fruit Set</span>
+<span>Harvest (Aug 20)</span>
+</div>
+</div>
+<!-- Next Milestone Detail Box -->
+<div class="bg-surface-container-low rounded-lg p-space-md mb-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-xl">event_upcoming</span>
+<div>
+<div class="font-headline-sm text-label-badge text-on-surface font-bold">First Cluster Fruit Set</div>
+<div class="font-label-code text-label-code text-secondary mb-space-xs">Estimated: July 14, 2026 (± 2 days)</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Requires sustained potassium-to-nitrogen ratio of 2.2:1 and micro-irrigation pulse shifts during flowering bloom.</p>
+</div>
+</div>
+</div>
+<!-- Scenario Parameter Summary Grid -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low/50 p-space-sm rounded-lg">
+<div class="font-label-code text-label-code text-secondary">Target Yield</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">13,000 MT Total</div>
+<div class="font-label-code text-label-code text-secondary">92.8 MT / Ha</div>
+</div>
+<div class="bg-surface-container-low/50 p-space-sm rounded-lg">
+<div class="font-label-code text-label-code text-secondary">Water Budget</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">4,600 m³ / Ha</div>
+<div class="font-label-code text-label-code text-primary font-medium">9.2% Under Baseline</div>
+</div>
+</div>
+</div>
+<!-- Input Replenishment & Marketplace Hub (Answers Question 3: What should I buy?) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-md">
+<div>
+<span class="font-label-code text-label-code text-secondary uppercase tracking-wider">Contextual Input Procurement</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Fruiting Stage Replenishment</h2>
+</div>
+<a class="font-label-code text-label-code text-primary hover:underline font-bold flex items-center gap-space-2xs" href="#">
+              Marketplace Hub <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-space-md">Products algorithmically matched to support the upcoming flowering and fruit set milestone in Sector 4B.</p>
+<!-- Replenishment Product Cards -->
+<div class="space-y-space-sm">
+<!-- Product 1 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-2xl">science</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-label-badge text-on-surface font-bold">BioNutrient Ultra-K (0-0-50 + TE)</h4>
+<div class="font-label-code text-label-code text-secondary">AgriPharm Levant • 200L Drum</div>
+<div class="font-label-code text-label-code text-on-primary-fixed-variant font-semibold mt-space-2xs">Stock status: 3 days remaining</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<div class="font-metric-headline text-label-badge text-on-surface font-bold">$420.00</div>
+<button class="mt-space-2xs px-space-sm py-space-2xs rounded bg-primary text-on-primary font-label-code text-label-code hover:bg-primary-container transition-colors" type="button">
+                  1-Click Reorder
+                </button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-2xl">eco</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-label-badge text-on-surface font-bold">CalciMax Boron Chelate</h4>
+<div class="font-label-code text-label-code text-secondary">EuroChem Ag • 50 kg Bag</div>
+<div class="font-label-code text-label-code text-secondary mt-space-2xs">Mandatory for blossom blossom-end rot prevention</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<div class="font-metric-headline text-label-badge text-on-surface font-bold">$185.50</div>
+<button class="mt-space-2xs px-space-sm py-space-2xs rounded bg-primary text-on-primary font-label-code text-label-code hover:bg-primary-container transition-colors" type="button">
+                  1-Click Reorder
+                </button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center flex-shrink-0 text-secondary">
+<span class="material-symbols-outlined text-2xl">pest_control</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-label-badge text-on-surface font-bold">Trichoderma Bioprotect Blend</h4>
+<div class="font-label-code text-label-code text-secondary">BioControl ME • 25L Container</div>
+<div class="font-label-code text-label-code text-secondary mt-space-2xs">Root defense prophylactic injection</div>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<div class="font-metric-headline text-label-badge text-on-surface font-bold">$290.00</div>
+<button class="mt-space-2xs px-space-sm py-space-2xs rounded bg-primary text-on-primary font-label-code text-label-code hover:bg-primary-container transition-colors" type="button">
+                  1-Click Reorder
+                </button>
+</div>
+</div>
+</div>
+<!-- Pending Deliveries Accordion/Note -->
+<div class="mt-space-md pt-space-md bg-surface-container-low/40 -mx-space-md -mb-space-md p-space-md rounded-b-xl flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-lg">local_shipping</span>
+<div class="font-label-code text-label-code">
+                Order <strong>#NAB-88219</strong> (Soluble Phosphorus) in transit
+              </div>
+</div>
+<span class="font-label-code text-label-code text-secondary font-semibold">ETA: Tomorrow 11:00 AM</span>
+</div>
+</div>
+<!-- Recent Precision Soil Analyses History -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md md:p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl">biotech</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold">Certified Soil Audits</h2>
+</div>
+<button class="font-label-code text-label-code text-primary hover:underline" type="button">All Records</button>
+</div>
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between p-space-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-base">picture_as_pdf</span>
+<div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Full Core Spectrometry — Sector 4B</div>
+<div class="font-label-code text-label-code text-secondary">Lab: Agrigenomica Basel • June 28, 2026</div>
+</div>
+</div>
+<button class="p-space-2xs text-secondary hover:text-primary transition-colors" title="Download PDF Report" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-base">picture_as_pdf</span>
+<div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Sub-surface Salinity &amp; CEC Profile</div>
+<div class="font-label-code text-label-code text-secondary">Lab: Beqaa Agri University • June 12, 2026</div>
+</div>
+</div>
+<button class="p-space-2xs text-secondary hover:text-primary transition-colors" title="Download PDF Report" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-base">picture_as_pdf</span>
+<div>
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">Heavy Metal &amp; Organic Carbon Benchmark</div>
+<div class="font-label-code text-label-code text-secondary">Lab: Agrigenomica Basel • May 04, 2026</div>
+</div>
+</div>
+<button class="p-space-2xs text-secondary hover:text-primary transition-colors" title="Download PDF Report" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Micro-interaction: Satellite Scan trigger feedback
+  document.getElementById('btn-satellite-scan')?.addEventListener('click', function() {
+    const btn = this;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-primary text-base animate-spin">refresh</span><span>Queuing Sentinel-2 Task...</span>';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<span class="material-symbols-outlined text-on-tertiary-container text-base">check_circle</span><span>Scan Queued (#ST-4091)</span>';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 3000);
+    }, 1200);
+  });
+</script></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.03)] py-space-sm"><div class="w-full px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md font-label-code text-label-code text-secondary flex-wrap"><div class="inline-flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span><span class="text-primary font-semibold">NABTA Engine v4.2 Online</span></div><span>•</span><span>Real-time Satellite Sync</span><span>•</span><span>Global ISO 14064 Compliant</span></div><div class="flex items-center gap-space-md font-label-code text-label-code text-secondary"><span class="text-secondary">Latency: <strong class="text-on-surface">18ms</strong></span><span class="text-secondary">Coordinates: <strong class="text-on-surface">24.8607° N, 55.0272° E</strong></span></div></div></footer></body></html>

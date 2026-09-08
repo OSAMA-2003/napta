@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#004f34",
+          "on-tertiary-container": "#31c98f",
+          "surface-bright": "#f8f9ff",
+          "on-tertiary": "#ffffff",
+          "on-tertiary-fixed-variant": "#005236",
+          "on-secondary": "#ffffff",
+          "inverse-primary": "#93d5ad",
+          "surface-container-highest": "#d3e4fe",
+          "surface-container": "#e5eeff",
+          "on-primary-fixed-variant": "#095133",
+          "on-secondary-container": "#5c647a",
+          "surface-variant": "#d3e4fe",
+          "on-error": "#ffffff",
+          "error-container": "#ffdad6",
+          "on-background": "#0b1c30",
+          "secondary": "#565e74",
+          "inverse-on-surface": "#eaf1ff",
+          "on-error-container": "#93000a",
+          "on-surface-variant": "#404942",
+          "on-secondary-fixed-variant": "#3f465c",
+          "inverse-surface": "#213145",
+          "primary": "#003620",
+          "tertiary": "#003623",
+          "surface-container-lowest": "#ffffff",
+          "on-primary-fixed": "#002111",
+          "tertiary-fixed-dim": "#4edea3",
+          "surface": "#f8f9ff",
+          "surface-dim": "#cbdbf5",
+          "secondary-fixed-dim": "#bec6e0",
+          "error": "#ba1a1a",
+          "primary-fixed-dim": "#93d5ad",
+          "secondary-fixed": "#dae2fd",
+          "background": "#f8f9ff",
+          "tertiary-fixed": "#6ffbbe",
+          "outline-variant": "#bfc9c0",
+          "on-primary-container": "#7fc099",
+          "surface-container-low": "#eff4ff",
+          "primary-fixed": "#aef1c8",
+          "on-surface": "#0b1c30",
+          "surface-tint": "#2a6a49",
+          "on-secondary-fixed": "#131b2e",
+          "primary-container": "#054f31",
+          "surface-container-high": "#dce9ff",
+          "outline": "#707972",
+          "secondary-container": "#dae2fd",
+          "on-primary": "#ffffff",
+          "on-tertiary-fixed": "#002113"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-3xl": "4rem",
+          "space-base": "1rem",
+          "space-xs": "0.25rem",
+          "space-2xl": "3rem",
+          "space-sm": "0.5rem",
+          "space-md": "0.75rem",
+          "space-xl": "2rem",
+          "space-lg": "1.5rem",
+          "margin-tablet": "2rem",
+          "gutter-desktop": "1.5rem",
+          "gutter-mobile": "1rem",
+          "space-2xs": "0.125rem",
+          "margin-mobile": "1rem",
+          "margin-desktop": "3rem"
+        },
+        "fontFamily": {
+          "display-hero-mobile": ["Plus Jakarta Sans"],
+          "headline-xl-mobile": ["Plus Jakarta Sans"],
+          "body-lg": ["Inter"],
+          "headline-xl": ["Plus Jakarta Sans"],
+          "headline-lg": ["Plus Jakarta Sans"],
+          "label-code": ["JetBrains Mono"],
+          "metric-headline": ["JetBrains Mono"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "body-sm": ["Inter"],
+          "label-badge": ["Inter"],
+          "body-md": ["Inter"],
+          "display-hero": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+          "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700"}],
+          "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+          "label-code": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+          "metric-headline": ["28px", {"lineHeight": "32px", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+          "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.005em", "fontWeight": "400"}],
+          "label-badge": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+          "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+          "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 w-full px-space-lg flex flex-col justify-between"><div class="h-16 w-full flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm"><img alt="NABTA Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VDFGhgBP4C5Vdjsmgmxrw9fieUZukMKD3b4P6wvgHPO80WyHU_ve6P1wbiJcSS4RNcooYDRMfpuuT3S3Re542ywJXpzzrnabZ5f9aFOWc86B82L1Gi9pbpSc48L_5JxNavEKdyNxUIK1XucOJy1gBZv3r4hfR2V7-N1WOD8skv82Hv31sRsgt7ymUd4X5JrX1_9mnbU-7NhOnG4XgK1sUbAanXqBXcuzdQU8mSYEcbKr8l1PPYdO07OQ"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">NABTA</span></div><div class="inline-flex items-center p-space-2xs bg-surface-container-low rounded-lg"><button class="px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest text-primary font-label-badge text-label-badge shadow-[0_1px_4px_rgba(0,0,0,0.04)]" type="button">Farmer Mode</button><button class="px-space-sm py-space-2xs rounded-lg text-secondary font-label-badge text-label-badge hover:text-on-surface transition-colors" type="button">Supplier Mode</button></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a class="relative px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors inline-flex items-center gap-space-xs" data-path="farm-intelligence-scenarios" href="#">Farm Intelligence &amp; Scenarios<span class="px-space-xs py-space-2xs rounded-full bg-tertiary-container text-on-tertiary-container font-label-code text-label-code uppercase tracking-wider">AI Live</span></a><a aria-current="page" class="px-space-md py-space-sm transition-colors bg-primary-container text-on-primary font-semibold rounded-lg" data-path="global-marketplace" href="#">Global Marketplace</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="farm-management" href="#">Farm Management</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="my-orders" href="#">My Orders</a><a class="px-space-md py-space-sm rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="supplier-hub" href="#">Supplier Hub</a></nav><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center bg-surface-container-low rounded-lg px-space-md py-space-xs gap-space-sm w-64"><span class="material-symbols-outlined text-secondary text-sm">search</span><input class="bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-secondary w-full" placeholder="Search intelligence..." type="text"/><span class="font-label-code text-label-code px-space-xs py-space-2xs rounded bg-surface-container-lowest text-secondary shadow-[0_1px_3px_rgba(0,0,0,0.04)]">⌘K</span></div><button class="hidden lg:inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low hover:bg-surface-container font-label-code text-label-code text-secondary hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-sm">public</span><span>USD ($)</span></button><button class="relative p-space-xs rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTXLB9okBlLfx8xi1Utj6Z0AZoRRgM7I_Btvuo8mmgd4sOjGADzy8dam9BA-S8Ex_aTJlWlvGxhlpHtax-rl6XYZ0QMjA0miFL7EZOcF63FtnFdB3KfCWYfcQH_0ddO1_HRdMpU9Wsi1n-W0tZxQaDoslDwnjVZgX_Pa35uwQ-ajqZlH73RCrmwPESkX6fDqL2aCSRUcUkZ_AU5XvPmDwes7TWISbqaLV0wbQFIFogJqvKkcTohmeh"/><div class="hidden 2xl:flex flex-col text-left"><span class="font-headline-sm text-label-badge font-semibold text-on-surface leading-tight">Dr. Elena Rostova</span><span class="font-label-code text-label-code text-secondary leading-tight">Farm Lead</span></div></div></div></div><div class="h-12 w-full flex items-center justify-between gap-space-md bg-surface-container-low/60 rounded-lg px-space-md mb-space-xs"><div class="flex items-center gap-space-md overflow-x-auto py-space-2xs"><div class="flex items-center gap-space-xs text-on-surface whitespace-nowrap"><span class="material-symbols-outlined text-primary text-sm">location_on</span><span class="font-body-md text-body-md font-semibold text-on-surface">Al-Waha Precision Agrifarm</span><span class="font-body-sm text-body-sm text-secondary">— Sector 4B (140 Ha)</span></div><div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-primary-fixed/30 text-on-primary-fixed-variant whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-on-primary-fixed-variant animate-pulse"></span><span class="font-label-code text-label-code font-semibold">94% Optimal Health</span></div><div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-secondary-container/60 text-on-secondary-fixed-variant whitespace-nowrap"><span class="material-symbols-outlined text-xs">potted_plant</span><span class="font-label-code text-label-code font-semibold">Scenario: Premium Roma Tomato 2026</span><span class="font-label-code text-label-code px-space-xs rounded bg-surface-container-lowest text-primary uppercase">Active</span></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><button class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-headline-sm text-label-badge font-semibold transition-colors shadow-[0_1px_4px_rgba(0,0,0,0.06)]" type="button"><span class="material-symbols-outlined text-sm">add</span><span>New Farm Analysis</span></button></div></div></div></header><main class="w-full pt-28 bg-background flex-1"><div class="flex flex-col w-full">
+<!-- Contextual Intelligence Sync Banner -->
+<section class="w-full px-space-lg py-space-sm bg-surface-container-low">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-sm md:px-space-md rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center flex-shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-base">bolt</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-body-sm font-bold text-primary">Active Agronomic Scenario:</span>
+<span class="px-space-xs py-space-2xs rounded bg-primary-fixed/40 text-on-primary-fixed-variant font-label-code text-label-code font-semibold uppercase">Roma Tomato 2026 (Sector 4B)</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">Inputs rigorously cross-referenced for pH 6.4 Sandy Loam, target EC 1.8 dS/m, &amp; low-flow drip fertigation profiles.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end md:self-auto flex-shrink-0">
+<div class="inline-flex items-center p-space-2xs bg-surface-container rounded-lg">
+<button class="px-space-sm py-space-2xs rounded-lg bg-primary-container text-on-primary font-label-badge text-label-badge shadow-sm transition-all flex items-center gap-space-2xs" id="filterScenarioBtn" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span>Matched to Scenario (8)</span>
+</button>
+<button class="px-space-sm py-space-2xs rounded-lg text-secondary hover:text-on-surface font-label-badge text-label-badge transition-colors" id="filterAllBtn" type="button">
+            All Global Catalog
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Marketplace Operations Control Bar -->
+<section class="w-full px-space-lg py-space-md bg-surface-container-lowest shadow-sm">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Search Field -->
+<div class="relative flex-1 max-w-2xl">
+<div class="flex items-center bg-surface-container-low rounded-xl px-space-md py-space-sm gap-space-sm shadow-inner">
+<span class="material-symbols-outlined text-secondary text-lg">search</span>
+<input class="bg-transparent border-none outline-none font-body-md text-body-md text-on-surface placeholder:text-secondary w-full" id="marketplaceSearch" placeholder="Search inputs, certified hybrid seeds, drip IoT, bio-stimulants, EPA/OMRI numbers..." type="text"/>
+<div class="hidden sm:flex items-center gap-space-2xs">
+<span class="font-label-code text-label-code px-space-xs py-space-2xs rounded bg-surface-container-lowest text-secondary shadow-sm">SKU / CAS</span>
+</div>
+</div>
+</div>
+<!-- Metric Telemetry Capsule & Settlement Currency -->
+<div class="flex items-center gap-space-md flex-wrap">
+<div class="flex items-center gap-space-xs px-space-sm py-space-2xs rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-base">verified</span>
+<span class="font-label-code text-label-code text-secondary">Verified Suppliers: <strong class="text-on-surface">148 Global Hubs</strong></span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-space-2xs rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-base">local_shipping</span>
+<span class="font-label-code text-label-code text-secondary">Customs Clearing: <strong class="text-on-surface">Active JAFZA Port</strong></span>
+</div>
+<button class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-label-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span>Saved Batch Orders (2)</span>
+</button>
+</div>
+</div>
+<!-- Category Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-2xs">
+<button class="px-space-sm py-space-xs rounded-full bg-primary-container text-on-primary font-label-badge text-label-badge whitespace-nowrap shadow-sm" type="button">All Recommended (34)</button>
+<button class="px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-badge text-label-badge whitespace-nowrap transition-colors flex items-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-xs">grass</span>
+<span>Seeds &amp; Genetics</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-badge text-label-badge whitespace-nowrap transition-colors flex items-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-xs">science</span>
+<span>Fertilizers &amp; Bio-stimulants</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-badge text-label-badge whitespace-nowrap transition-colors flex items-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-xs">shield</span>
+<span>Crop Protection</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-badge text-label-badge whitespace-nowrap transition-colors flex items-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-xs">water_drop</span>
+<span>Precision Irrigation</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-badge text-label-badge whitespace-nowrap transition-colors flex items-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-xs">sensors</span>
+<span>Sensors &amp; Farm IoT</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface font-label-badge text-label-badge whitespace-nowrap transition-colors flex items-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-xs">precision_manufacturing</span>
+<span>Machinery &amp; Automations</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Marketplace Core: Sidebar + Product Grid -->
+<main class="w-full px-space-lg py-space-xl max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Filter Sidebar Column -->
+<aside class="lg:col-span-3 flex flex-col gap-space-md">
+<!-- Agronomic Scenario Alignment Card -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Scenario Match Matrix</span>
+<span class="material-symbols-outlined text-primary text-base">psychology</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+            AI-modeled against 140 Ha Sector 4B parameters: soil salinity 2.1 mS/cm, daytime peak 41°C.
+          </p>
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<label class="flex items-center justify-between p-space-xs rounded-lg bg-primary-fixed/20 cursor-pointer">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm font-semibold text-primary">&gt;95% Ultra Fit</span>
+</div>
+<span class="font-label-code text-label-code px-space-xs py-space-2xs rounded bg-surface-container-lowest text-primary font-bold">4 SKUs</span>
+</label>
+<label class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">90% - 95% Compatible</span>
+</div>
+<span class="font-label-code text-label-code text-secondary font-semibold">12 SKUs</span>
+</label>
+<label class="flex items-center justify-between p-space-xs rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-secondary">80% - 89% Broad Fit</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">18 SKUs</span>
+</label>
+</div>
+</div>
+<!-- Origin Nation Filter -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Origin Country</span>
+<span class="font-label-code text-label-code text-secondary">Ports Active</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="flex items-center justify-between hover:bg-surface-container-low p-space-xs rounded-lg cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Israel</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">Rivulis, Haifa</span>
+</label>
+<label class="flex items-center justify-between hover:bg-surface-container-low p-space-xs rounded-lg cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Switzerland</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">Syngenta</span>
+</label>
+<label class="flex items-center justify-between hover:bg-surface-container-low p-space-xs rounded-lg cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">United States</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">BioWorks, Jain</span>
+</label>
+<label class="flex items-center justify-between hover:bg-surface-container-low p-space-xs rounded-lg cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Australia</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">Sentek IoT</span>
+</label>
+<label class="flex items-center justify-between hover:bg-surface-container-low p-space-xs rounded-lg cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Netherlands</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">Rijk Zwaan</span>
+</label>
+<label class="flex items-center justify-between hover:bg-surface-container-low p-space-xs rounded-lg cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Germany</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">BASF Agronomic</span>
+</label>
+<label class="flex items-center justify-between hover:bg-surface-container-low p-space-xs rounded-lg cursor-pointer transition-colors">
+<div class="flex items-center gap-space-xs">
+<input class="accent-primary rounded" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface">Jordan</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">Arab Potash Co</span>
+</label>
+</div>
+</div>
+<!-- Institutional Regulatory Certifications -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Accreditation Standards</span>
+<div class="flex flex-wrap gap-space-2xs">
+<button class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface font-label-code text-label-code hover:bg-primary-container hover:text-on-primary transition-colors" type="button">GLOBALG.A.P.</button>
+<button class="px-space-xs py-space-2xs rounded bg-primary-container text-on-primary font-label-code text-label-code" type="button">OMRI Organic</button>
+<button class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface font-label-code text-label-code hover:bg-primary-container hover:text-on-primary transition-colors" type="button">ISO 9001</button>
+<button class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface font-label-code text-label-code hover:bg-primary-container hover:text-on-primary transition-colors" type="button">CE Certified</button>
+<button class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface font-label-code text-label-code hover:bg-primary-container hover:text-on-primary transition-colors" type="button">USDA BioPreferred</button>
+</div>
+</div>
+<!-- Logistics Readiness & Settlement -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Freight Availability</span>
+<div class="flex flex-col gap-space-xs">
+<label class="flex items-center gap-space-xs cursor-pointer">
+<input checked="" class="accent-primary" name="leadtime" type="radio"/>
+<span class="font-body-sm text-body-sm text-on-surface">In-Stock / Ready to Dispatch</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer">
+<input class="accent-primary" name="leadtime" type="radio"/>
+<span class="font-body-sm text-body-sm text-on-surface">Pre-Order: 2026 Season B</span>
+</label>
+<label class="flex items-center gap-space-xs cursor-pointer">
+<input class="accent-primary" name="leadtime" type="radio"/>
+<span class="font-body-sm text-body-sm text-on-surface">Contract Forward (Bulk FOB)</span>
+</label>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-secondary font-label-code text-label-code">
+<span>Escrow Settlement</span>
+<span class="text-on-surface font-semibold">LC / Net-60</span>
+</div>
+</div>
+</aside>
+<!-- Products Grid Section -->
+<section class="lg:col-span-9 flex flex-col gap-space-md">
+<!-- Results Header Meta -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-container-lowest p-space-sm px-space-md rounded-xl shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Curated Agronomic Inputs</span>
+<span class="font-label-code text-label-code px-space-xs py-space-2xs rounded bg-surface-container text-secondary font-semibold">6 Precision Recommendations</span>
+</div>
+<div class="flex items-center gap-space-sm text-secondary font-body-sm text-body-sm">
+<span>Sort by:</span>
+<select class="bg-surface-container-low px-space-sm py-space-2xs rounded-lg text-on-surface font-semibold border-none outline-none text-body-sm cursor-pointer">
+<option>Scenario Suitability (Highest)</option>
+<option>Lead Time (Fastest Dispatch)</option>
+<option>MOQ (Lowest First)</option>
+<option>Price: Wholesale Unit</option>
+</select>
+</div>
+</div>
+<!-- Product Cards Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Product Card 1: Haifa Poly-Feed -->
+<article class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<!-- Image & Match Badge Header -->
+<div class="relative w-full h-48 bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Industrial 25kg multi-layer sacks of Haifa Poly-Feed 19-19-19 water soluble precision fertilizer stacked on clean wooden logistics pallets in a spotless temperature-controlled agricultural supply warehouse with soft daylight and emerald accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAjNomMRkWbmKCDhbOIdB5f5VlZ0dv_LYss2bsTJDpRTiy-QJ3SFh3huJwIF8WaY2eynXMpxq0cpvqwT1dgobGNlu7c-GeYrp4EpTcNUDg5QguV7OZurp3bWKFrTR6m3xUbdVG0KcjbgJpCQU-auumXsKeQ3t5QKyH_E0F8DYLpCkBpSe5uKm1aEmisFCYlbl1_b03uQyYRWYr4D9JD-vOOwXMJk42nP9uYehATjrdm2QFgO4m0IPJ"/>
+<div class="absolute top-space-sm left-space-sm flex flex-col gap-space-2xs items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-code text-label-code font-bold text-tertiary-container">96% Match: Tomato Vegetative</span>
+</div>
+<div class="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-secondary">
+<span>🇮🇱 Haifa, Israel</span>
+</div>
+</div>
+<div class="absolute top-space-sm right-space-sm">
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md hover:bg-surface-container-lowest flex items-center justify-center text-secondary hover:text-primary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+</button>
+</div>
+<div class="absolute bottom-space-xs left-space-sm flex gap-space-2xs">
+<span class="px-space-xs py-space-2xs rounded bg-primary text-on-primary font-label-code text-label-code">OMRI Organic</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">ISO 9001</span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-space-md flex-1 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary font-label-code text-label-code">
+<span>Haifa Chemicals Ltd</span>
+<span class="text-primary font-medium">SKU: HFA-191919-ME</span>
+</div>
+<h3 class="font-headline-sm text-body-lg font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">
+                  Haifa Poly-Feed™ 19-19-19 + ME Fertigation Compound
+                </h3>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">
+                  Fully water-soluble NPK enrichment with chelated micronutrients engineered for high-salinity tomato fertigation regimens.
+                </p>
+</div>
+<!-- Telemetry Match Explainer Metric -->
+<div class="p-space-xs rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-sm">water_ph</span>
+<span class="font-label-code text-label-code text-on-surface">Target pH Buffering: <strong>5.8 - 6.4</strong></span>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold">In-Stock</span>
+</div>
+<!-- Price & MOQ Box -->
+<div class="pt-space-xs flex items-baseline justify-between">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-metric-headline text-headline-sm font-bold text-on-surface">$38.50</span>
+<span class="font-label-code text-label-code text-secondary">/ 25kg bag</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">MOQ: 500 kg (20 bags pallet)</span>
+</div>
+<div class="text-right">
+<span class="font-label-code text-label-code text-on-primary-fixed-variant bg-primary-fixed/40 px-space-xs py-space-2xs rounded font-medium">Global Freight: 4-6 Days</span>
+</div>
+</div>
+<!-- Action CTAs -->
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-label-badge transition-colors flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">description</span>
+<span>Agronomic Specs</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-badge text-label-badge transition-colors shadow-sm flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+<span>Quick Add Lot</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 2: Rivulis D5000 PC Drip Line -->
+<article class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative w-full h-48 bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High quality heavy-duty coils of Rivulis 16mm black polyethylene drip irrigation line with built-in emitter outlets photographed on a high-tech agricultural testing farm background with desert greenhouse infrastructure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZi57xzo0Gb2223VgUUBdZMUPSLjSDJqmEZnUdnPlUSslH39whrvUbXlAVSDVizrqzH82q7uMhgKS7G8UoETHy9mDK1b3G019bW_XxMJvqx2xz_Dsck9XZspEy45l8dTBioF_uxc3yN2clS6XXDfvSdg0EYG7QobLibBaGHioq83YPT2ZIcedOykxGcoDubPhueADbr6RItV2Dy83HXJrW7-rAdtOwk_QhuwMLDh4NECOhc2-Gj9mF"/>
+<div class="absolute top-space-sm left-space-sm flex flex-col gap-space-2xs items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-code text-label-code font-bold text-tertiary-container">94% Match: Water Budget</span>
+</div>
+<div class="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-secondary">
+<span>🇮🇱/🇬🇷 Rivulis Global</span>
+</div>
+</div>
+<div class="absolute top-space-sm right-space-sm">
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md hover:bg-surface-container-lowest flex items-center justify-center text-secondary hover:text-primary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+</button>
+</div>
+<div class="absolute bottom-space-xs left-space-sm flex gap-space-2xs">
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">ISO 9261 Certified</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">Anti-Clog Tech</span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary font-label-code text-label-code">
+<span>Rivulis Irrigation Ltd</span>
+<span class="text-primary font-medium">SKU: RIV-D5000-16PC</span>
+</div>
+<h3 class="font-headline-sm text-body-lg font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">
+                  Rivulis D5000 PC Pressure Compensating Drip Line (16mm)
+                </h3>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">
+                  Engineered labyrinth emitter flow regulation engineered for Sector 4B water budget of 4,200 m³/Ha across sandy gradients.
+                </p>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-sm">speed</span>
+<span class="font-label-code text-label-code text-on-surface">Flow: <strong>1.20 LPH @ 1.5 Bar</strong></span>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold">Immediate Air Cargo</span>
+</div>
+<div class="pt-space-xs flex items-baseline justify-between">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-metric-headline text-headline-sm font-bold text-on-surface">$185.00</span>
+<span class="font-label-code text-label-code text-secondary">/ 500m spool</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">MOQ: 5 Spools (2,500m)</span>
+</div>
+<div class="text-right">
+<span class="font-label-code text-label-code text-secondary">Tier: $162.00 @ 20+ spools</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-label-badge transition-colors flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span>Hydraulic Run Specs</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-badge text-label-badge transition-colors shadow-sm flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+<span>Quick Add Lot</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 3: Syngenta Qualitest F1 Hybrid Seed -->
+<article class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative w-full h-48 bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sealed agricultural seed cans and foil canisters with high tech Syngenta security seals displaying macro shot of vibrant premium Roma tomatoes on the plant under controlled glasshouse conditions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATOJ-1nLfpDdZBjyBiGefcsS8pDGzTnzym_6Hj_eeNjMN3EmBd23d3kudBLR7AunTrOZQ4zR86TK7B59Eemm4ZRPyqVucp-FRwI3JVeeOkpDbdrwJ3TI-sP_vlnn4ynIHssjXakIkYJR77ZGbg_c0rY1K0Ztd26gxDLax4kIQVQQvefyZwSIJBqmAxXD2pclXYtiMqjIY4WHLh_gJW1dJjOvnpO_Ed0PcjT5HA8WpEcTeT3GZ-S__z"/>
+<div class="absolute top-space-sm left-space-sm flex flex-col gap-space-2xs items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-code text-label-code font-bold text-tertiary-container">98% Match: Extreme Heat Tolerant</span>
+</div>
+<div class="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-secondary">
+<span>🇨🇭 Basel, Switzerland</span>
+</div>
+</div>
+<div class="absolute top-space-sm right-space-sm">
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md hover:bg-surface-container-lowest flex items-center justify-center text-secondary hover:text-primary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+</button>
+</div>
+<div class="absolute bottom-space-xs left-space-sm flex gap-space-2xs">
+<span class="px-space-xs py-space-2xs rounded bg-primary text-on-primary font-label-code text-label-code">GlobalG.A.P. Seed</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">TYLCV Resistant</span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary font-label-code text-label-code">
+<span>Syngenta Seeds AG</span>
+<span class="text-primary font-medium">SKU: SYN-ROMA-Q7F1</span>
+</div>
+<h3 class="font-headline-sm text-body-lg font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">
+                  Syngenta Qualitest F1 Roma Hybrid Seed (High-Vigor)
+                </h3>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">
+                  Exceptional fruit firmness with extended shelf-life under high daytime heat indices. Resistant to ToBRFV, Fol: 1-3, and Nematodes.
+                </p>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-sm">thermostat</span>
+<span class="font-label-code text-label-code text-on-surface">Pollen Viability: <strong>Up to 42.5°C</strong></span>
+</div>
+<span class="font-label-code text-label-code text-secondary font-semibold">99.2% Germ. Tested</span>
+</div>
+<div class="pt-space-xs flex items-baseline justify-between">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-metric-headline text-headline-sm font-bold text-on-surface">$420.00</span>
+<span class="font-label-code text-label-code text-secondary">/ can (10k seeds)</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">MOQ: 1 Canister (10,000 Seeds)</span>
+</div>
+<div class="text-right">
+<span class="font-label-code text-label-code text-primary font-bold">DHL Cold-Chain (3d)</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-label-badge transition-colors flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">biotech</span>
+<span>Genetic Lineage</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-badge text-label-badge transition-colors shadow-sm flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+<span>Quick Add Lot</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 4: BioWorks RootShield PLUS+ Biological Fungicide -->
+<article class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative w-full h-48 bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="BioWorks RootShield commercial sealed chemical-resistant tub container sitting beside laboratory test beakers containing biological fungal inoculant with root sample visuals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD_ayu0Mi1cw2pE_zm2E97oe18c2R_q6zJsmfL8qr_-awKeXES-4nRwJpRVerUH4yfCFUujy8E1TTDaFPRsPVNiUrddRGo6ktinlGvFEoGTboT9WfS-rAo52Z68OZ5fUzLkImJvrDDiE9h9mfbWsiRzphcqMYzZu-LOhaQfvT1wSuIjI6mfNv3ZugATVN4vFEkUTEkNCRXNo5iLh79gqHptMhAlNzG08Y25ymF-KAgWoBWtpuitQgH"/>
+<div class="absolute top-space-sm left-space-sm flex flex-col gap-space-2xs items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-code text-label-code font-bold text-tertiary-container">92% Match: Pythium &amp; Rhizoctonia</span>
+</div>
+<div class="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-secondary">
+<span>🇺🇸 New York, USA</span>
+</div>
+</div>
+<div class="absolute top-space-sm right-space-sm">
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md hover:bg-surface-container-lowest flex items-center justify-center text-secondary hover:text-primary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+</button>
+</div>
+<div class="absolute bottom-space-xs left-space-sm flex gap-space-2xs">
+<span class="px-space-xs py-space-2xs rounded bg-primary text-on-primary font-label-code text-label-code">OMRI Listed</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">0-Day REI</span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary font-label-code text-label-code">
+<span>BioWorks Biologicals Inc</span>
+<span class="text-primary font-medium">SKU: BW-RSP-10KG</span>
+</div>
+<h3 class="font-headline-sm text-body-lg font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">
+                  BioWorks RootShield® PLUS+ Bio-Fungicide (WP)
+                </h3>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">
+                  Dual-strain Trichoderma bio-agent guarding rhizosphere in high soil heat. Prevents root rot and fosters heavy feeder root expansion.
+                </p>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-sm">format_image_left</span>
+<span class="font-label-code text-label-code text-on-surface">Persistence: <strong>Up to 12 Weeks Root Zone</strong></span>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold">Port Jebel Ali Stock</span>
+</div>
+<div class="pt-space-xs flex items-baseline justify-between">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-metric-headline text-headline-sm font-bold text-on-surface">$195.00</span>
+<span class="font-label-code text-label-code text-secondary">/ 10kg bucket</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">MOQ: 10 kg (1 Container)</span>
+</div>
+<div class="text-right">
+<span class="font-label-code text-label-code text-secondary">Bulk: $174.00 @ 5+</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-label-badge transition-colors flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">science</span>
+<span>Safety &amp; MSDS</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-badge text-label-badge transition-colors shadow-sm flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+<span>Quick Add Lot</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 5: Sentek Wireless Moisture & Salinity Probe -->
+<article class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative w-full h-48 bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sentek Drill &amp; Drop slender cylindrical multi-depth soil sensor probe with telemetry antenna installed in precision sandy soil farm field with sunlight glistening." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjxJAXcup5KIs33BWGKU08xYYzdTHMEggLQQKX5ZiAlLRhMuiMUb2NutDfyMtBtkLnCYyyKs6iIAKJ7jwdk_qpyKIb3c7ZhRKAIG_9HzdbunmtVv3QgBu5PYBeKHCt78kN1Fa_zHhi65czByWw1h5gr6EA9KaFWwJHta0Tj0M6o8_8fKMk_Kwlw8qycZrqw5sJiUQy9O8ucxfdEtOVKBWl5UC2QTT0GvVEnsiEtY622aBDZxAbDtfA"/>
+<div class="absolute top-space-sm left-space-sm flex flex-col gap-space-2xs items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-code text-label-code font-bold text-tertiary-container">99% Match: Telemetry Mesh</span>
+</div>
+<div class="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-secondary">
+<span>🇦🇺 Stepney, Australia</span>
+</div>
+</div>
+<div class="absolute top-space-sm right-space-sm">
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md hover:bg-surface-container-lowest flex items-center justify-center text-secondary hover:text-primary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+</button>
+</div>
+<div class="absolute bottom-space-xs left-space-sm flex gap-space-2xs">
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">NABTA Telemetry Native</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">LoRaWAN Ready</span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary font-label-code text-label-code">
+<span>Sentek Technologies</span>
+<span class="text-primary font-medium">SKU: STK-DND-60CM</span>
+</div>
+<h3 class="font-headline-sm text-body-lg font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">
+                  Sentek Drill &amp; Drop Wireless Moisture &amp; Salinity Probe (60cm)
+                </h3>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">
+                  Tri-sensor per depth segment (Moisture, Salinity &amp; Temperature) configured at 10, 20, 30, 40, 50, 60cm layers. Direct plug-and-play to Sector 4B node.
+                </p>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-sm">sensors</span>
+<span class="font-label-code text-label-code text-on-surface">Precision: <strong>±1% Volumetric Water</strong></span>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold">5-Yr Battery Incl.</span>
+</div>
+<div class="pt-space-xs flex items-baseline justify-between">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-metric-headline text-headline-sm font-bold text-on-surface">$680.00</span>
+<span class="font-label-code text-label-code text-secondary">/ calibrated device</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">MOQ: 1 Unit</span>
+</div>
+<div class="text-right">
+<span class="font-label-code text-label-code text-secondary">Calibration Cert. Incl.</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-label-badge transition-colors flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">settings_remote</span>
+<span>Sensor Drivers</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-badge text-label-badge transition-colors shadow-sm flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+<span>Quick Add Unit</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 6: Eurodrip Hydrogol Tubing -->
+<article class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+<div class="relative w-full h-48 bg-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Industrial rolls of Eurodrip Hydrogol specialized agricultural emitter tubing stacked neatly ready for export in warehouse loading bay with technical irrigation tags visible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB551z8BhodvHsuhmE5cPuoAMm09WUs8J93oTb4Ou_0Zob5TIMaloH29SR_882GSQchrPFUoq9bla4yVgbgIJp8coaOD3UVzClU9_b8SesD9DZr5mkolJ6iLJZTX3vyhryF1M32ATk8Yyd6bUQcFjAOSn6zeysa_MJYb5bV6Xs1ZOod7vXT-lABO8pMsFPLp9SDFGfT5xHhreehgJ50L8bmHdg6-dCjGjQqFVtwvYCocV2t1644byn2"/>
+<div class="absolute top-space-sm left-space-sm flex flex-col gap-space-2xs items-start">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-code text-label-code font-bold text-on-surface">88% Match: Secondary Lateral</span>
+</div>
+<div class="inline-flex items-center gap-space-2xs px-space-xs py-space-2xs rounded bg-surface-container-lowest/80 backdrop-blur-md font-label-code text-label-code text-secondary">
+<span>🇺🇸 Fresno, CA / Greece</span>
+</div>
+</div>
+<div class="absolute top-space-sm right-space-sm">
+<button class="w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-md hover:bg-surface-container-lowest flex items-center justify-center text-secondary hover:text-primary transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-sm">bookmark_border</span>
+</button>
+</div>
+<div class="absolute bottom-space-xs left-space-sm flex gap-space-2xs">
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">Jain Global Network</span>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container-lowest text-on-surface font-label-code text-label-code shadow-sm">Non-Drain System</span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary font-label-code text-label-code">
+<span>Jain Irrigation Inc</span>
+<span class="text-primary font-medium">SKU: JAI-EDR-HYD16</span>
+</div>
+<h3 class="font-headline-sm text-body-lg font-bold text-on-surface leading-tight group-hover:text-primary transition-colors">
+                  Eurodrip Hydrogol™ Non-Drain Compact Emitter Lateral
+                </h3>
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2">
+                  Precision turbulent-flow path design for pulse irrigation intervals. Maintains pipe fill between fertigation injections preventing root suck-back.
+                </p>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-sm">valve</span>
+<span class="font-label-code text-label-code text-on-surface">Spacing: <strong>33cm Pitch (1.6 LPH)</strong></span>
+</div>
+<span class="font-label-code text-label-code text-secondary font-semibold">Seasonal Clearance</span>
+</div>
+<div class="pt-space-xs flex items-baseline justify-between">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-metric-headline text-headline-sm font-bold text-on-surface">$142.00</span>
+<span class="font-label-code text-label-code text-secondary">/ 400m coil</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">MOQ: 10 Coils</span>
+</div>
+<div class="text-right">
+<span class="font-label-code text-label-code text-primary font-bold">FOB Dubai Ready</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-space-xs">
+<button class="px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-label-badge transition-colors flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">architecture</span>
+<span>Emitter Curve</span>
+</button>
+<button class="px-space-sm py-space-xs rounded-lg bg-primary-container hover:bg-primary text-on-primary font-label-badge text-label-badge transition-colors shadow-sm flex items-center justify-center gap-space-2xs" type="button">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+<span>Quick Add Lot</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Institutional Batch Order Dock / Bottom Agronomic Summary -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md mt-space-md shadow-inner">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">Pre-Calculated Bundle for Sector 4B (140 Ha)</span>
+<span class="font-body-sm text-body-sm text-secondary">Includes total calculated seed volume, 30-day initial fertigation, and 12-node IoT telemetry mesh.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-end md:self-auto flex-shrink-0">
+<div class="text-right mr-space-xs hidden sm:block">
+<span class="font-label-code text-label-code text-secondary block">Estimated Total C&amp;F</span>
+<span class="font-metric-headline text-headline-sm font-bold text-on-surface">$41,850.00</span>
+</div>
+<button class="px-space-md py-space-sm rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-badge text-label-badge font-semibold transition-colors shadow-md flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-sm">request_quote</span>
+<span>Generate Consolidated Purchase Order</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Interactive Client Filter Logic -->
+<script>
+    (function() {
+      const scenarioBtn = document.getElementById('filterScenarioBtn');
+      const allBtn = document.getElementById('filterAllBtn');
+      const searchInput = document.getElementById('marketplaceSearch');
+
+      if (scenarioBtn && allBtn) {
+        scenarioBtn.addEventListener('click', function() {
+          scenarioBtn.className = 'px-space-sm py-space-2xs rounded-lg bg-primary-container text-on-primary font-label-badge text-label-badge shadow-sm transition-all flex items-center gap-space-2xs';
+          allBtn.className = 'px-space-sm py-space-2xs rounded-lg text-secondary hover:text-on-surface font-label-badge text-label-badge transition-colors';
+        });
+
+        allBtn.addEventListener('click', function() {
+          allBtn.className = 'px-space-sm py-space-2xs rounded-lg bg-primary-container text-on-primary font-label-badge text-label-badge shadow-sm transition-all flex items-center gap-space-2xs';
+          scenarioBtn.className = 'px-space-sm py-space-2xs rounded-lg text-secondary hover:text-on-surface font-label-badge text-label-badge transition-colors';
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+          const val = e.target.value.toLowerCase();
+          const cards = document.querySelectorAll('article');
+          cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            if (text.includes(val)) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.03)] py-space-sm"><div class="w-full px-space-lg flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md font-label-code text-label-code text-secondary flex-wrap"><div class="inline-flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span><span class="text-primary font-semibold">NABTA Engine v4.2 Online</span></div><span>•</span><span>Real-time Satellite Sync</span><span>•</span><span>Global ISO 14064 Compliant</span></div><div class="flex items-center gap-space-md font-label-code text-label-code text-secondary"><span class="text-secondary">Latency: <strong class="text-on-surface">18ms</strong></span><span class="text-secondary">Coordinates: <strong class="text-on-surface">24.8607° N, 55.0272° E</strong></span></div></div></footer></body></html>

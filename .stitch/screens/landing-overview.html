@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed": "#002111", "tertiary": "#003623", "on-secondary": "#ffffff", "on-primary": "#ffffff", "surface-bright": "#f8f9ff", "secondary-container": "#dae2fd", "surface-variant": "#d3e4fe", "background": "#f8f9ff", "surface-container-lowest": "#ffffff", "on-secondary-fixed": "#131b2e", "on-secondary-container": "#5c647a", "tertiary-container": "#004f34", "surface-container-highest": "#d3e4fe", "on-secondary-fixed-variant": "#3f465c", "on-background": "#0b1c30", "on-tertiary-container": "#31c98f", "surface-container": "#e5eeff", "on-primary-container": "#7fc099", "tertiary-fixed": "#6ffbbe", "primary-fixed-dim": "#93d5ad", "on-error-container": "#93000a", "tertiary-fixed-dim": "#4edea3", "secondary-fixed": "#dae2fd", "surface-tint": "#2a6a49", "error-container": "#ffdad6", "surface-dim": "#cbdbf5", "surface-container-low": "#eff4ff", "surface-container-high": "#dce9ff", "secondary": "#565e74", "error": "#ba1a1a", "outline-variant": "#bfc9c0", "primary-container": "#054f31", "primary": "#003620", "inverse-primary": "#93d5ad", "on-surface-variant": "#404942", "inverse-surface": "#213145", "outline": "#707972", "surface": "#f8f9ff", "on-tertiary": "#ffffff", "secondary-fixed-dim": "#bec6e0", "on-surface": "#0b1c30", "on-tertiary-fixed": "#002113", "inverse-on-surface": "#eaf1ff", "on-tertiary-fixed-variant": "#005236", "on-primary-fixed-variant": "#095133", "on-error": "#ffffff", "primary-fixed": "aef1c8" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "2rem", "space-xs": "0.25rem", "margin-mobile": "1rem", "gutter-mobile": "1rem", "space-md": "0.75rem", "space-2xl": "3rem", "space-lg": "1.5rem", "space-2xs": "0.125rem", "space-sm": "0.5rem", "space-base": "1rem", "gutter-desktop": "1.5rem", "margin-tablet": "2rem", "margin-desktop": "3rem", "space-3xl": "4rem" }, "fontFamily": { "headline-lg": [ "Plus Jakarta Sans" ], "label-code": [ "JetBrains Mono" ], "metric-headline": [ "JetBrains Mono" ], "headline-xl-mobile": [ "Plus Jakarta Sans" ], "display-hero-mobile": [ "Plus Jakarta Sans" ], "display-hero": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "body-lg": [ "Inter" ], "body-md": [ "Inter" ], "headline-xl": [ "Plus Jakarta Sans" ], "label-badge": [ "Inter" ], "headline-sm": [ "Plus Jakarta Sans" ] }, "fontSize": { "headline-lg": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "label-code": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "metric-headline": [ "28px", { "lineHeight": "32px", "letterSpacing": "-0.03em", "fontWeight": "600" } ], "headline-xl-mobile": [ "26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "display-hero-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "display-hero": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "body-lg": [ "16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" } ], "headline-xl": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "headline-sm": [ "18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-gutter-desktop max-w-7xl mx-auto flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><a class="flex items-center gap-space-sm group" data-path="home" href="#"><img alt="Brand logo. - Primary color: #054f31
+- Font: plusJakartaSans
+- Mode: light
+- Roundness: rounded-md
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VDFGhgBP4C5Vdjsmgmxrw9fieUZukMKD3b4P6wvgHPO80WyHU_ve6P1wbiJcSS4RNcooYDRMfpuuT3S3Re542ywJXpzzrnabZ5f9aFOWc86B82L1Gi9pbpSc48L_5JxNavEKdyNxUIK1XucOJy1gBZv3r4hfR2V7-N1WOD8skv82Hv31sRsgt7ymUd4X5JrX1_9mnbU-7NhOnG4XgK1sUbAanXqBXcuzdQU8mSYEcbKr8l1PPYdO07OQ"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">NABTA</span></a><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-headline-sm"><a class="text-on-surface-variant hover:text-on-surface font-headline-sm text-body-md transition-colors" data-path="farm-intelligence" href="#">Farm Intelligence</a><a class="text-on-surface-variant hover:text-on-surface font-headline-sm text-body-md transition-colors" data-path="crop-recommendation" href="#">Crop Recommendation</a><a class="text-on-surface-variant hover:text-on-surface font-headline-sm text-body-md transition-colors" data-path="marketplace" href="#">Marketplace</a><a class="text-on-surface-variant hover:text-on-surface font-headline-sm text-body-md transition-colors" data-path="how-it-works" href="#">How It Works</a><a class="text-on-surface-variant hover:text-on-surface font-headline-sm text-body-md transition-colors" data-path="global-network" href="#">Global Network</a></nav></div><div class="flex items-center gap-space-base"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-low text-secondary font-label-code text-label-code tracking-wider"><span class="material-symbols-outlined text-[14px]">language</span><span>EN</span><span class="text-outline-variant">|</span><span>USD $</span></div><a class="hidden sm:inline-flex items-center px-space-md py-space-sm rounded-lg font-headline-sm text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="login" href="#">Log In</a><a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-headline-sm text-body-md shadow-[0_0_24px_rgba(5,79,49,0.28)] hover:bg-primary transition-all" data-path="farm-intelligence" href="#"><span>Start Farm Analysis</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- Top Ticker / Trust Proof Banner -->
+<section class="w-full bg-primary text-on-primary py-space-sm px-gutter-desktop shadow-inner">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-xs text-center md:text-left">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed animate-pulse"></span>
+<span class="font-label-code text-label-code tracking-wider text-tertiary-fixed uppercase font-semibold">Live Telemetry Feed</span>
+<span class="text-on-primary-container text-body-sm hidden md:inline">|</span>
+<span class="font-body-sm text-body-sm text-surface-container-high tracking-tight">Monitoring 420,000+ Hectares across 18 Countries</span>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-space-md font-label-code text-label-code text-surface-container-highest">
+<span>$142M+ YIELD PROTECTED</span>
+<span>•</span>
+<span>99.4% FORECAST ACCURACY</span>
+<span>•</span>
+<span class="bg-surface-container-lowest/10 px-space-xs py-0.5 rounded text-surface-container-lowest">ISO 14064 &amp; GLOBALG.A.P. CERTIFIED</span>
+</div>
+</div>
+</section>
+<!-- Hero Section -->
+<section class="relative w-full overflow-hidden bg-surface py-space-2xl md:py-space-3xl px-gutter-desktop">
+<div class="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+<!-- Precision Agro Tag -->
+<div class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-high shadow-sm mb-space-lg">
+<span class="material-symbols-outlined text-primary text-[18px]">satellite_alt</span>
+<span class="font-label-code text-label-code text-primary uppercase font-bold tracking-wider">Planetary-Scale Bio-Intelligence Suite</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="font-body-sm text-body-sm text-secondary font-medium">v4.8 Sentinel Engine</span>
+</div>
+<!-- Main Heading -->
+<h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-on-surface max-w-5xl tracking-tight mb-space-base">
+        The Operating System for <span class="text-primary underline decoration-tertiary-fixed decoration-4 underline-offset-8">Precision Agriculture</span> &amp; Global Input Sourcing
+      </h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mb-space-xl">
+        NABTA combines multi-spectral satellite telemetry, chemical soil modeling, and stochastic yield forecasting to tell farmers exactly what to grow, how to optimize yield, and contextually order the verified inputs required to maximize profit.
+      </p>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-space-md mb-space-2xl w-full justify-center">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-xl bg-primary text-on-primary font-headline-sm text-body-lg shadow-xl hover:bg-primary-container transition-all group" href="#analyze">
+<span>Start Your Farm Analysis</span>
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-xl bg-surface-container-lowest text-on-surface font-headline-sm text-body-lg shadow-md hover:bg-surface-container transition-all" href="#marketplace">
+<span class="material-symbols-outlined text-[20px] text-primary">storefront</span>
+<span>Explore Marketplace</span>
+</a>
+</div>
+<!-- Hero Visual Showcase (HUD Framing with user image) -->
+<div class="w-full max-w-6xl relative rounded-2xl shadow-2xl overflow-hidden bg-primary">
+<!-- Visual Container with background image and overlays -->
+<div class="relative aspect-[16/9] w-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-304fe31S9khysqMqugUSjMpWpOzceTrBs_Ft5gOvr_JZjr2nSOf9QG2APfxiNybMBrd2x5Gj2KhOGLVpQXsvv9qdPHguwRHoyQhbOoVDDi47QrLaCw7wIUVFKA59SdmrIFc4XF0F6wA3fJmpA7uHYEYC_eB80_dHWO0UZ6odWfvvqFSk6qJlNDfGtcEKuELqZArtD3nHYv85HgiDIHwyOQ_ge2MwoT3ww9XK4EE6K_fZ_K3YSD4c')">
+<!-- Darkened Vignette & Grid Scrim Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/40 opacity-80"></div>
+<!-- Top Telemetry Readout Strip inside HUD -->
+<div class="absolute top-4 left-4 right-4 flex flex-wrap items-center justify-between gap-space-sm pointer-events-none">
+<div class="flex items-center gap-space-xs bg-surface-container-lowest/90 backdrop-blur-md px-space-md py-space-xs rounded-lg shadow-md">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-code text-label-code text-on-surface font-semibold">GEO-SECTOR: 7G // AL-WASL IRRIGATED SECTOR</span>
+</div>
+<div class="hidden sm:flex items-center gap-space-base bg-surface-container-lowest/90 backdrop-blur-md px-space-md py-space-xs rounded-lg shadow-md">
+<span class="font-label-code text-label-code text-secondary">SENTINEL-2 FLYOVER: <strong class="text-on-surface">T-00:14:22</strong></span>
+<span class="font-label-code text-label-code text-secondary">SUN ANGULAR: <strong class="text-on-surface">34.2°</strong></span>
+</div>
+</div>
+<!-- Center Targeting Reticle Simulation -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center shadow-inner">
+<div class="absolute top-0 w-8 h-1 bg-tertiary-fixed"></div>
+<div class="absolute bottom-0 w-8 h-1 bg-tertiary-fixed"></div>
+<div class="absolute left-0 h-8 w-1 bg-tertiary-fixed"></div>
+<div class="absolute right-0 h-8 w-1 bg-tertiary-fixed"></div>
+<!-- Floating Center Pill -->
+<div class="bg-primary/85 backdrop-blur-md text-on-primary px-space-md py-space-xs rounded-xl shadow-lg flex flex-col items-center">
+<span class="font-label-code text-label-code text-tertiary-fixed tracking-widest uppercase">Center Pivot 04</span>
+<span class="font-headline-sm text-body-md font-bold">Roma Tomato Var. F1</span>
+<span class="font-label-code text-label-code text-surface-container-high">Suitability: 96.8%</span>
+</div>
+</div>
+</div>
+<!-- Bottom Telemetry Chips HUD -->
+<div class="absolute bottom-4 left-4 right-4 grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">science</span>
+</div>
+<div class="text-left">
+<span class="font-label-code text-label-code text-secondary block">SOIL CHEMISTRY</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">pH 6.4 (Optimal)</span>
+</div>
+</div>
+<span class="font-label-code text-label-code px-space-xs py-0.5 rounded bg-surface-container text-primary font-bold">N-P-K BALANCED</span>
+</div>
+<div class="bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">grass</span>
+</div>
+<div class="text-left">
+<span class="font-label-code text-label-code text-secondary block">VEGETATION DENSITY</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">NDVI 0.78 (Vigor)</span>
+</div>
+</div>
+<span class="font-label-code text-label-code px-space-xs py-0.5 rounded bg-surface-container text-primary font-bold">+4.2% WK</span>
+</div>
+<div class="bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">water_drop</span>
+</div>
+<div class="text-left">
+<span class="font-label-code text-label-code text-secondary block">HYDRAULIC RESERVES</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">82,400 m³</span>
+</div>
+</div>
+<span class="font-label-code text-label-code px-space-xs py-0.5 rounded bg-surface-container text-primary font-bold">92% CAP</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Value Proposition: Answering the Three Fundamental Farm Questions -->
+<section class="w-full bg-surface-container-low py-space-3xl px-gutter-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="text-center max-w-3xl mx-auto mb-space-2xl">
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">Foundational Architecture</span>
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight mt-space-xs">
+          Answering the Three Fundamental Farm Questions
+        </h2>
+<p class="font-body-md text-body-md text-secondary mt-space-sm">
+          Precision agriculture shouldn't end at a colorful satellite heatmap. NABTA translates complex soil thermodynamics and orbital telemetry into prescriptive commercial action.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-md flex flex-col justify-between hover:shadow-xl transition-shadow relative overflow-hidden group">
+<div class="space-y-space-base">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">query_stats</span>
+</div>
+<div class="font-label-code text-label-code text-secondary font-bold tracking-wider">PILLAR 01 // TELEMETRY</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">"What is happening with my farm?"</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Continuous multi-spectral Sentinel-2 &amp; Landsat audits, LoRaWAN root-depth soil sensors, electrical conductivity meters, and micro-climatic vapor pressure deficit tracking across every square meter.
+            </p>
+</div>
+<div class="pt-space-xl">
+<div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+<div class="flex justify-between font-label-code text-label-code text-secondary">
+<span>CANOPY HYDRATION</span>
+<span class="text-primary font-bold">NORMAL 94%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-md flex flex-col justify-between hover:shadow-xl transition-shadow relative overflow-hidden group">
+<div class="space-y-space-base">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">biotech</span>
+</div>
+<div class="font-label-code text-label-code text-secondary font-bold tracking-wider">PILLAR 02 // RECOMMENDATION</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">"What should I grow?"</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Stochastic AI scenario modeling balances your specific hydraulic allotment, chill hours, solar irradiance curves, and forward wholesale crop contract pricing to generate the optimal crop matrix.
+            </p>
+</div>
+<div class="pt-space-xl">
+<div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+<div class="flex justify-between font-label-code text-label-code text-secondary">
+<span>SCENARIO ALPHA</span>
+<span class="text-primary font-bold">+$11,430/HA NET</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-md flex flex-col justify-between hover:shadow-xl transition-shadow relative overflow-hidden group">
+<div class="space-y-space-base">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">local_mall</span>
+</div>
+<div class="font-label-code text-label-code text-secondary font-bold tracking-wider">PILLAR 03 // FULFILLMENT</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">"What should I buy?"</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Contextual agronomic marketplace recommending verified seeds, fertilizers, biological inoculants, and pressure-compensating drip systems mathematically tailored to your farm's chemical profile.
+            </p>
+</div>
+<div class="pt-space-xl">
+<div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+<div class="flex justify-between font-label-code text-label-code text-secondary">
+<span>COMPATIBLE INPUTS</span>
+<span class="text-primary font-bold">100% VERIFIED</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- "How NABTA Works" — The 5-Step Guided Journey -->
+<section class="w-full bg-surface py-space-3xl px-gutter-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-2xl">
+<div>
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">Execution Pipeline</span>
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight mt-space-xs">
+            How NABTA Works
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-secondary max-w-md">
+          A seamless 5-phase closed loop connecting raw planetary observations to international certified input deliveries.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-md">
+<!-- Step 1 -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl flex flex-col justify-between space-y-space-base shadow-sm hover:bg-surface-container transition-colors">
+<div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary font-label-code text-label-code font-bold mb-space-sm">01</span>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Ingest Telemetry</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Input GPS polygon, existing lab soil test results, and water pump flow meters.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs text-primary font-label-code text-label-code">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span>
+<span>SHAPEFILE / KML</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl flex flex-col justify-between space-y-space-base shadow-sm hover:bg-surface-container transition-colors">
+<div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary font-label-code text-label-code font-bold mb-space-sm">02</span>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Multi-Vector Synthesis</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Neural agronomy engines correlate 10-year historical weather with mineral leaching dynamics.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs text-primary font-label-code text-label-code">
+<span class="material-symbols-outlined text-[16px]">hub</span>
+<span>STOCHASTIC SIM</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl flex flex-col justify-between space-y-space-base shadow-sm hover:bg-surface-container transition-colors">
+<div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary font-label-code text-label-code font-bold mb-space-sm">03</span>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Tradeoff Matrix</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Review side-by-side cultivar options with net margin projections and stress sensitivities.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs text-primary font-label-code text-label-code">
+<span class="material-symbols-outlined text-[16px]">balance</span>
+<span>PROFIT RISK CURVE</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl flex flex-col justify-between space-y-space-base shadow-sm hover:bg-surface-container transition-colors">
+<div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary font-label-code text-label-code font-bold mb-space-sm">04</span>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Input Prescription</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Receive a precise shopping bill: exact fertilizer formulas, seed counts, and emitter spacings.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs text-primary font-label-code text-label-code">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>ZERO GUESSWORK</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="bg-surface-container-low p-space-lg rounded-2xl flex flex-col justify-between space-y-space-base shadow-sm hover:bg-surface-container transition-colors">
+<div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary text-on-primary font-label-code text-label-code font-bold mb-space-sm">05</span>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Fulfillment</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Direct checkout from verified tier-one global suppliers with cold-chain bonded freight.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs text-primary font-label-code text-label-code">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+<span>DOORSTEP LOGISTICS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Crop Recommendation & Agricultural Intelligence Preview -->
+<section class="w-full bg-surface-container-low py-space-3xl px-gutter-desktop" id="analyze">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-2xl">
+<div>
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container font-label-code text-label-code text-primary font-bold uppercase mb-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            Simulated Recommendation Engine
+          </div>
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight">
+            Cultivar Alpha &amp; Explainable Agronomic Reasoning
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-secondary max-w-md">
+          NABTA evaluates thousands of seed varieties against your local micro-climate, water salinity, and forward commodity contracts.
+        </p>
+</div>
+<!-- Recommendation Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg mb-space-2xl">
+<!-- Cultivar Card 1 (Top Pick) -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-xl p-space-xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary text-on-primary font-label-code text-label-code px-space-md py-space-xs rounded-bl-xl font-bold">
+            RECOMMENDED PRIMARY
+          </div>
+<div>
+<div class="flex items-center gap-space-sm mb-space-base">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container text-primary font-metric-headline text-headline-sm font-bold">92%</span>
+<div>
+<span class="font-label-code text-label-code text-secondary block">SUITABILITY SCORE</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Indeterminate Roma Tomato</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl mb-space-base">
+<div>
+<span class="font-label-code text-label-code text-secondary block">PROJECTED NET MARGIN</span>
+<span class="font-headline-sm text-body-lg font-bold text-primary">+$11,430 / Ha</span>
+</div>
+<div>
+<span class="font-label-code text-label-code text-secondary block">EXPECTED YIELD</span>
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">84.5 t / Ha</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-base">
+              Superior thermal tolerance during flowering; ideal match for sandy-loam with electrical conductivity &lt; 2.1 dS/m.
+            </p>
+</div>
+<div class="pt-space-base space-y-space-xs">
+<span class="font-label-code text-label-code text-secondary uppercase font-bold">Validation Factors</span>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary font-label-code text-label-code">pH 6.4 Compatible</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary font-label-code text-label-code">Water Deficit Index 0.12</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary font-label-code text-label-code">Forward Contract +18%</span>
+</div>
+</div>
+</div>
+<!-- Cultivar Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-md p-space-xl flex flex-col justify-between hover:shadow-xl transition-shadow">
+<div>
+<div class="flex items-center gap-space-sm mb-space-base">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface font-metric-headline text-headline-sm font-bold">84%</span>
+<div>
+<span class="font-label-code text-label-code text-secondary block">SUITABILITY SCORE</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Golden Bantam Sweet Corn</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl mb-space-base">
+<div>
+<span class="font-label-code text-label-code text-secondary block">PROJECTED NET MARGIN</span>
+<span class="font-headline-sm text-body-lg font-bold text-primary">+$5,650 / Ha</span>
+</div>
+<div>
+<span class="font-label-code text-label-code text-secondary block">EXPECTED YIELD</span>
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">14.2 t / Ha</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-base">
+              Rapid biomass turnover with lower nitrogen demand, though water consumption is 22% higher than Solanaceae options.
+            </p>
+</div>
+<div class="pt-space-base space-y-space-xs">
+<span class="font-label-code text-label-code text-secondary uppercase font-bold">Validation Factors</span>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-secondary font-label-code text-label-code">High Solar Index</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-secondary font-label-code text-label-code">Soil Bulk Density 1.3</span>
+</div>
+</div>
+</div>
+<!-- Cultivar Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-md p-space-xl flex flex-col justify-between hover:shadow-xl transition-shadow">
+<div>
+<div class="flex items-center gap-space-sm mb-space-base">
+<span class="px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface font-metric-headline text-headline-sm font-bold">76%</span>
+<div>
+<span class="font-label-code text-label-code text-secondary block">SUITABILITY SCORE</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Hydro-Protected Strawberry</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl mb-space-base">
+<div>
+<span class="font-label-code text-label-code text-secondary block">PROJECTED NET MARGIN</span>
+<span class="font-headline-sm text-body-lg font-bold text-primary">+$13,500 / Ha</span>
+</div>
+<div>
+<span class="font-label-code text-label-code text-secondary block">EXPECTED YIELD</span>
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">32.0 t / Ha</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-base">
+              Extremely high financial yield, but requires shade tunnels and strict saline filtration (&lt; 1.2 dS/m). High CapEx requirement.
+            </p>
+</div>
+<div class="pt-space-base space-y-space-xs">
+<span class="font-label-code text-label-code text-secondary uppercase font-bold">Validation Factors</span>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-code text-label-code">Requires Desal Unit</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-secondary font-label-code text-label-code">High Labor Density</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Explainable AI Breakdown Box -->
+<div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-lg">
+<div class="flex items-center gap-space-sm mb-space-base">
+<span class="material-symbols-outlined text-primary text-[24px]">psychology</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Why NABTA Recommends Roma Tomato For Sector 7G</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-base">
+<div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+<span class="font-label-code text-label-code text-primary font-bold">01. CHEMO-DYNAMICS</span>
+<h5 class="font-headline-sm text-body-md font-bold text-on-surface">Soil Buffer Match</h5>
+<p class="font-body-sm text-body-sm text-secondary">Present phosphorus reserves (42 ppm Olsen) and calcium saturation minimize blossom end rot risk without synthetic supplements.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+<span class="font-label-code text-label-code text-primary font-bold">02. CLIMATE PHENOLOGY</span>
+<h5 class="font-headline-sm text-body-md font-bold text-on-surface">Thermal Windows</h5>
+<p class="font-body-sm text-body-sm text-secondary">Anticipated flowering matches the 22°C - 28°C window in 44 days, minimizing abortive pollen drop during vegetative stages.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+<span class="font-label-code text-label-code text-primary font-bold">03. HYDROLOGICAL QUOTA</span>
+<h5 class="font-headline-sm text-body-md font-bold text-on-surface">Allocated Reserves</h5>
+<p class="font-body-sm text-body-sm text-secondary">Seasonal requirement of 5,800 m³/Ha matches available pivot capacity while maintaining 20% reservoir reserve headroom.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low space-y-space-xs">
+<span class="font-label-code text-label-code text-primary font-bold">04. MARKET ARBITRAGE</span>
+<h5 class="font-headline-sm text-body-md font-bold text-on-surface">Forward Spot Spread</h5>
+<p class="font-body-sm text-body-sm text-secondary">Local terminal markets project +24% harvest pricing spread due to off-season production window alignment.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Global Agricultural Marketplace Preview -->
+<section class="w-full bg-surface py-space-3xl px-gutter-desktop" id="marketplace">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-2xl">
+<div>
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">Contextual Input Bridge</span>
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight mt-space-xs">
+            Not A Random Store. Inputs Paired Mathematically to Your Field.
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-secondary max-w-md">
+          Zero guesswork. Every product recommended here is verified for agronomic compatibility with your specific soil profile and climate predictions.
+        </p>
+</div>
+<!-- Categories Filter Strip -->
+<div class="flex flex-wrap items-center gap-space-xs mb-space-xl">
+<button class="px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-label-code text-label-code font-semibold shadow-sm">
+          All Prescribed Inputs (4)
+        </button>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant font-label-code text-label-code font-semibold hover:bg-surface-container transition-colors">
+          Seeds &amp; Genetics
+        </button>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant font-label-code text-label-code font-semibold hover:bg-surface-container transition-colors">
+          Fertilisers &amp; Bio-stimulants
+        </button>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant font-label-code text-label-code font-semibold hover:bg-surface-container transition-colors">
+          Precision Irrigation
+        </button>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant font-label-code text-label-code font-semibold hover:bg-surface-container transition-colors">
+          Sensors &amp; Farm IoT
+        </button>
+</div>
+<!-- Marketplace Products Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Product 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-base shadow-md flex flex-col justify-between hover:shadow-xl transition-shadow">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-space-base bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="BioNutrient Ultra-K specialized potassium liquid agronomic container standing in high-tech agricultural laboratory with green accent lighting and clean packaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCIiDeVXGdWahTfzBGbZHgn10g3MmsLVZYlK0KvaYNN4KLfzjeE33r4Llioso6F0SPAzrlMU_tqYOtkhTaWS3qFs9hQp2C198yQw9q_qVjlTIW2hlm4M7GReyIHxYlF_jtq82xL9j4lgd6cKsCj0-BC4bEIf_i37pAC9RXQ5T9l2LnZudo4ixB7DZ2q2OFGSNXSzSiyFqciLd3wIJQfoV0FJxsoOkn4VZvpclni7uY3ehkSITJUxZD"/>
+<span class="absolute top-2 right-2 px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-code text-label-code font-bold">96% MATCH</span>
+</div>
+<div class="font-label-code text-label-code text-secondary">HAIFA AGRO // ISRAEL / GLOBAL</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface mt-space-2xs">BioNutrient Ultra-K</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Fast-absorption chelated potassium formulated specifically to counteract high soil sodium without chloride buildup.
+            </p>
+</div>
+<div class="pt-space-base flex items-center justify-between">
+<div>
+<span class="font-label-code text-label-code text-secondary block">CONTAINER (200L)</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">$410.00</span>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary font-label-code text-label-code font-semibold hover:bg-primary transition-colors">
+              Add To Plan
+            </button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-base shadow-md flex flex-col justify-between hover:shadow-xl transition-shadow">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-space-base bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High precision industrial drip irrigation spool with pressure compensating emitters Rivulis D5000 in clean daylight warehouse setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTNMrfImYFgc2vn6gO3B6k2_637aa14VqkBtN6tl9-NMazw6F47Dy4bkOc8CDv4jVmhQlJzJHoaxzi5idngOxf0dWvHv1PYB-T-Ed1mT8YA3Ms0HpBtkeolxuoLAWud8lliGcrf_TM5bHKgtZVpE73M0IABuvag9JNNsUu1_CV-Ni2Bd-LCbfQ_y0tP5e65XbjQ6IMBe7b2XtcIb4x3nG3lNvYH80A3x8I62FjFWOun4MDsYggq87H"/>
+<span class="absolute top-2 right-2 px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-code text-label-code font-bold">94% MATCH</span>
+</div>
+<div class="font-label-code text-label-code text-secondary">RIVULIS GLOBAL // ISRAEL</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface mt-space-2xs">Rivulis D5000 PC Drip Line</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              16mm diameter with 1.2 L/h self-flushing emitters matched to field slope and soil infiltration rate.
+            </p>
+</div>
+<div class="pt-space-base flex items-center justify-between">
+<div>
+<span class="font-label-code text-label-code text-secondary block">REEL (1,000M)</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">$285.00</span>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary font-label-code text-label-code font-semibold hover:bg-primary transition-colors">
+              Add To Plan
+            </button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-base shadow-md flex flex-col justify-between hover:shadow-xl transition-shadow">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-space-base bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Certified certified hybrid tomato seed packaging Syngenta Qualitest F1 sealed vacuum pouch on wooden seed selection table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClpvGs23D4LDaoO39mKo8Jtw6fCGBeAqItq6yws-GoDaV3bwyL_IIZptnUEtW719ZBF-JdQlP2vC_B7m68FtFh8e3CTZ4ryQ1x7Y9pz6ZNxYnCM37e1u969CkpSuElcO-MkOofZ73Hd5lwYC2JooXVb8_u7_q1ucI1kTvlvztT8eTrrL65KmPxLjO0YsQHnHtnrkJ8SsN0yYeqgxp5UZpnO8zohNB_1DwbvPnC5zeEtAGS2Anrggqf"/>
+<span class="absolute top-2 right-2 px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-code text-label-code font-bold">98% MATCH</span>
+</div>
+<div class="font-label-code text-label-code text-secondary">SYNGENTA // SWITZERLAND</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface mt-space-2xs">Qualitest F1 Hybrid Seed</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Direct match for Sector 7G thermal curve. Broad resistance against TYLCV, Verticillium, and Fusarium races 1-3.
+            </p>
+</div>
+<div class="pt-space-base flex items-center justify-between">
+<div>
+<span class="font-label-code text-label-code text-secondary block">PACK (10,000 SEEDS)</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">$540.00</span>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary font-label-code text-label-code font-semibold hover:bg-primary transition-colors">
+              Add To Plan
+            </button>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-base shadow-md flex flex-col justify-between hover:shadow-xl transition-shadow">
+<div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-space-base bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Microbiological bio-fungicide packaging RootShield Plus container with certified organic OMRI seals in crisp technical agricultural setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRITT2R1dFu2_WHc2g7Qv0NgOZVEbKjApTK795TEzS6sWzbZgIjJurvRQBbMIdEcFNKTtWPcxll-UXdt04ZDgGkist5DriBRTQsCLN3CSnFoPPxFynZwe26xlII9EEK8b5f5LkqX9dXUxlK-HOTPTYDjIozMzHdjNSOvbNQS9h09PJU1DGOBOX-5GXHiQtg6GyI-O0NHTXK8RfsM7lmPO4y7an0mtnP696podjg4b1z9HD5D_arr50"/>
+<span class="absolute top-2 right-2 px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-code text-label-code font-bold">92% MATCH</span>
+</div>
+<div class="font-label-code text-label-code text-secondary">BIOWORKS INC // USA</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface mt-space-2xs">RootShield® PLUS+</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Dual Trichoderma biological inoculant providing up to 12 weeks of root protection against Pythium and Rhizoctonia.
+            </p>
+</div>
+<div class="pt-space-base flex items-center justify-between">
+<div>
+<span class="font-label-code text-label-code text-secondary block">BOX (10 KG)</span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">$375.00</span>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary font-label-code text-label-code font-semibold hover:bg-primary transition-colors">
+              Add To Plan
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Global Reach & Institutional Impact Statistics -->
+<section class="w-full bg-surface-container-low py-space-3xl px-gutter-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Stats column -->
+<div class="lg:col-span-5 space-y-space-xl">
+<div>
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">Global Scale &amp; Footprint</span>
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight mt-space-xs">
+              Proven Across 4 Continent Agro-Ecological Zones
+            </h2>
+<p class="font-body-md text-body-md text-secondary mt-space-sm">
+              From high-salinity desert pivot irrigation to temperate cereal belts, NABTA coordinates real-time agronomy across the world's most demanding agricultural basins.
+            </p>
+</div>
+<div class="grid grid-cols-2 gap-space-lg">
+<div class="space-y-space-2xs">
+<span class="font-metric-headline text-headline-xl font-bold text-primary">18</span>
+<span class="font-label-code text-label-code text-secondary block font-semibold">COUNTRIES DEPLOYED</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">EMEA, North America, LATAM, and APAC operational zones.</p>
+</div>
+<div class="space-y-space-2xs">
+<span class="font-metric-headline text-headline-xl font-bold text-primary">420K Ha</span>
+<span class="font-label-code text-label-code text-secondary block font-semibold">MONITORED REAL-TIME</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Under autonomous IoT &amp; satellite surveillance.</p>
+</div>
+<div class="space-y-space-2xs">
+<span class="font-metric-headline text-headline-xl font-bold text-primary">32%</span>
+<span class="font-label-code text-label-code text-secondary block font-semibold">AVG. WATER SAVINGS</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Through phenological VPD-regulated pulsing.</p>
+</div>
+<div class="space-y-space-2xs">
+<span class="font-metric-headline text-headline-xl font-bold text-primary">$1.6B+</span>
+<span class="font-label-code text-label-code text-secondary block font-semibold">CROP VALUE MODELED</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Safeguarded against climatic volatility.</p>
+</div>
+</div>
+</div>
+<!-- Distribution Map Graphic Panel -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-xl rounded-2xl shadow-xl flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-base">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-primary animate-ping"></span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Active Global Logistics Hubs</span>
+</div>
+<span class="font-label-code text-label-code text-secondary">5 CONSOLIDATION CORRIDORS</span>
+</div>
+<!-- Stylized World Hub Map visualization -->
+<div class="w-full h-72 bg-cover bg-center rounded-xl relative overflow-hidden shadow-inner flex flex-col justify-end p-space-md" data-location="Dubai, United Arab Emirates" style="">
+<div class="absolute inset-0 bg-primary/60 backdrop-blur-sm"></div>
+<!-- Hub markers overlay -->
+<div class="relative z-10 grid grid-cols-2 sm:grid-cols-3 gap-space-xs text-on-primary">
+<div class="bg-surface-container-lowest/20 backdrop-blur-md p-space-xs rounded-lg">
+<span class="font-label-code text-label-code font-bold block text-tertiary-fixed">JAFZA DUBAI (HQ)</span>
+<span class="text-body-sm text-surface-container-high">MENA Central Hub</span>
+</div>
+<div class="bg-surface-container-lowest/20 backdrop-blur-md p-space-xs rounded-lg">
+<span class="font-label-code text-label-code font-bold block text-tertiary-fixed">ROTTERDAM HUB</span>
+<span class="text-body-sm text-surface-container-high">EU Seed &amp; Input Port</span>
+</div>
+<div class="bg-surface-container-lowest/20 backdrop-blur-md p-space-xs rounded-lg">
+<span class="font-label-code text-label-code font-bold block text-tertiary-fixed">HAIFA LOGISTICS</span>
+<span class="text-body-sm text-surface-container-high">Ag-Tech R&amp;D Depot</span>
+</div>
+<div class="bg-surface-container-lowest/20 backdrop-blur-md p-space-xs rounded-lg">
+<span class="font-label-code text-label-code font-bold block text-tertiary-fixed">NEW YORK PORT</span>
+<span class="text-body-sm text-surface-container-high">Americas Gateway</span>
+</div>
+<div class="bg-surface-container-lowest/20 backdrop-blur-md p-space-xs rounded-lg">
+<span class="font-label-code text-label-code font-bold block text-tertiary-fixed">MELBOURNE TERMINAL</span>
+<span class="text-body-sm text-surface-container-high">APAC Dryland Network</span>
+</div>
+<div class="bg-surface-container-lowest/20 backdrop-blur-md p-space-xs rounded-lg flex items-center justify-center text-center">
+<span class="font-label-code text-label-code text-tertiary-fixed">100% BONDED LOGISTICS</span>
+</div>
+</div>
+</div>
+<div class="mt-space-base flex flex-wrap items-center justify-between text-body-sm text-secondary gap-space-sm pt-space-sm">
+<span>Guaranteed cold-chain delivery for microbials and hybrid biologicals.</span>
+<span class="font-label-code text-label-code text-primary font-bold">AVG. CLEARANCE: 36 HOURS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Agricultural Categories -->
+<section class="w-full bg-surface py-space-3xl px-gutter-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="text-center max-w-2xl mx-auto mb-space-2xl">
+<span class="font-label-code text-label-code uppercase tracking-widest text-primary font-bold">Catalog Breadth</span>
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface tracking-tight mt-space-xs">
+          Verified Agronomic Classifications
+        </h2>
+<p class="font-body-md text-body-md text-secondary mt-space-sm">
+          Browse certified agricultural equipment, biologicals, and genetic assets audited by NABTA's science board.
+        </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">potted_plant</span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Seeds &amp; Genetics</h4>
+<p class="font-body-sm text-body-sm text-secondary">Hybrid cultivars, disease-resistant rootstocks, and certified non-GMO lines.</p>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold mt-space-base block">1,240+ SKUs</span>
+</div>
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">shield</span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Crop Protection</h4>
+<p class="font-body-sm text-body-sm text-secondary">Targeted bio-fungicides, pheromone traps, and organic microbial solutions.</p>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold mt-space-base block">890+ SKUs</span>
+</div>
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">water</span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Precision Irrigation</h4>
+<p class="font-body-sm text-body-sm text-secondary">Compensating emitters, solenoid banks, and automated fertigation injection skids.</p>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold mt-space-base block">450+ SKUs</span>
+</div>
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">compost</span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Soil Amendments</h4>
+<p class="font-body-sm text-body-sm text-secondary">Humic acids, micronutrient chelates, and mycorrhizal soil conditioners.</p>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold mt-space-base block">780+ SKUs</span>
+</div>
+<div class="bg-surface-container-low p-space-lg rounded-2xl shadow-sm flex flex-col justify-between hover:bg-surface-container transition-colors">
+<div class="space-y-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">sensors</span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Telemetry Nodes</h4>
+<p class="font-body-sm text-body-sm text-secondary">Solar-powered LoRaWAN root sensors, sap-flow needles, and weather probes.</p>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold mt-space-base block">120+ SKUs</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Final High-Impact Conversion CTA Section -->
+<section class="w-full bg-surface px-gutter-desktop py-space-2xl">
+<div class="max-w-7xl mx-auto rounded-3xl bg-primary text-on-primary p-space-xl md:p-space-3xl shadow-2xl relative overflow-hidden">
+<!-- Subtle Decorative Background Pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-lowest/10 text-tertiary-fixed font-label-code text-label-code uppercase tracking-widest font-semibold mb-space-base">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
+          Ready For Next Season
+        </div>
+<h2 class="font-display-hero text-headline-xl-mobile md:text-display-hero tracking-tight text-on-primary mb-space-base">
+          Transform Your Farm Data into Predictable High-Margin Harvests
+        </h2>
+<p class="font-body-lg text-body-lg text-surface-container-high mb-space-2xl max-w-2xl">
+          Join institutional agricultural operations, family estates, and certified suppliers running on NABTA's planetary operating system.
+        </p>
+<div class="flex flex-col sm:flex-row items-center gap-space-base w-full justify-center mb-space-lg">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-xl bg-surface-container-lowest text-primary font-headline-sm text-body-lg shadow-xl hover:bg-surface-container-high transition-all" href="#analyze">
+<span>Start Your Farm Analysis</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-sm px-space-xl py-space-md rounded-xl bg-surface-container-lowest/10 text-on-primary font-headline-sm text-body-lg hover:bg-surface-container-lowest/20 transition-all" href="#demo">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+<span>Schedule an Agronomic Demo</span>
+</a>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-space-md font-label-code text-label-code text-surface-container-high">
+<span>NO CREDIT CARD REQUIRED</span>
+<span>•</span>
+<span>INSTANT SOIL PROFILE CHECK</span>
+<span>•</span>
+<span>GLOBAL ISO 14064 VERIFIED</span>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-space-3xl"><div class="w-full max-w-7xl mx-auto px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 space-y-space-base"><div class="flex items-center gap-space-sm"><img alt="Brand logo. - Primary color: #054f31
+- Font: plusJakartaSans
+- Mode: light
+- Roundness: rounded-md
+" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VDFGhgBP4C5Vdjsmgmxrw9fieUZukMKD3b4P6wvgHPO80WyHU_ve6P1wbiJcSS4RNcooYDRMfpuuT3S3Re542ywJXpzzrnabZ5f9aFOWc86B82L1Gi9pbpSc48L_5JxNavEKdyNxUIK1XucOJy1gBZv3r4hfR2V7-N1WOD8skv82Hv31sRsgt7ymUd4X5JrX1_9mnbU-7NhOnG4XgK1sUbAanXqBXcuzdQU8mSYEcbKr8l1PPYdO07OQ"/><span class="font-headline-sm text-headline-sm text-primary">NABTA</span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Autonomous Agronomic Intelligence &amp; Precision Supply Infrastructure for planetary-scale observation, yield modeling, and commercial trade settlement.</p><div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span><span class="font-label-code text-label-code text-on-surface-variant">TELEMETRY NODES ACTIVE</span></div></div><div class="space-y-space-md"><h4 class="font-headline-sm text-body-md font-semibold text-on-surface uppercase tracking-wider">Product</h4><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Intelligence Engine</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Scenario Simulator</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Input Marketplace</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Telemetry Node Sync</li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-body-md font-semibold text-on-surface uppercase tracking-wider">Agronomic Science</h4><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">NDVI Satellite Calibrations</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Soil Chemo-Dynamics</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Stochastic Yield Modeling</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Biomass Sensor Fusion</li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-body-md font-semibold text-on-surface uppercase tracking-wider">Platform</h4><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">API Documentation</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Global Suppliers</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Farmer Network</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Certifications Directory</li></ul></div><div class="space-y-space-md"><h4 class="font-headline-sm text-body-md font-semibold text-on-surface uppercase tracking-wider">Legal &amp; Security</h4><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">ISO 14064 Compliance</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">GLOBALG.A.P Alignment</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Privacy Policy</li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface cursor-pointer transition-colors">Data Governance</li></ul></div></div><div class="pt-space-xl flex flex-col md:flex-row items-center justify-between gap-space-base"><p class="font-body-sm text-body-sm text-secondary">© 2026 NABTA Agronomic Technologies Inc. All rights reserved.</p><div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span><span class="font-label-code text-label-code text-on-surface">All Satellite &amp; IoT Systems Operational</span></div></div></div></footer></body></html>

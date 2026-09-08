@@ -1,0 +1,84 @@
+{
+  "$schema": "https://stitch.withgoogle.com/schema/project.json",
+  "connectedAt": "2026-09-08T22:38:00Z",
+  "project": {
+    "id": "1043060193342908525",
+    "name": "projects/1043060193342908525",
+    "title": "NABTA AgriTech Intelligence & Marketplace",
+    "visibility": "PUBLIC",
+    "origin": "STITCH",
+    "deviceType": "DESKTOP",
+    "projectType": "TEXT_TO_UI_PRO",
+    "theme": {
+      "colorMode": "LIGHT",
+      "headlineFont": "PLUS_JAKARTA_SANS",
+      "bodyFont": "INTER",
+      "labelFont": "JETBRAINS_MONO",
+      "primaryColor": "#054f31",
+      "roundness": "ROUND_EIGHT"
+    }
+  },
+  "screens": [
+    {
+      "id": "7e18716a8da34c63a5510f567a71a7aa",
+      "slug": "landing-overview",
+      "route": "/",
+      "title": "NABTA — Global Agronomic Intelligence & Marketplace Platform",
+      "deviceType": "DESKTOP",
+      "width": 2560,
+      "height": 12224,
+      "localHtml": ".stitch/screens/landing-overview.html",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UmEjI9rwzH8VqN4GZskvz9ojbzGyo-3Gwkf-mNRI1F2nLGEflgSwSZ-gXcZeZMoayV0hkWlwcspUqGq0AqLT6CJZdvFWfDBq1L7SW77Bh8xGo_N6rHQjN0z1ogiBB8mBSox6_DCPxSNp_zdBx-CMccM5RhkqMbiHoZZFfPyrDmsE3SGh2R1D2mGXsnDuVs-wGBdazGz733sdwPoZdgvoV9g77vafhGfs0UC1hkHf4I9Ql7nAi-0V-rAg"
+    },
+    {
+      "id": "21fbd3bb90f343b8a2b410b7773d058a",
+      "slug": "farm-operations-telemetry",
+      "route": "/farm-intelligence",
+      "title": "Farm Operations & Telemetry Dashboard",
+      "deviceType": "DESKTOP",
+      "width": 2560,
+      "height": 4244,
+      "localHtml": ".stitch/screens/farm-operations-telemetry.html",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UwylcX6kxr1uwE6uwF1-ZUryMaKqZCD6MlsFhwk0eHYtXO9STCmYvBj5Yx3gbm-62y6tEjTascvHD1yiPJZvkCPJjUNmpf-6qnSVShyvUdF369t_GZOnjpFx3JVgue1PVLE9hZzvu8shdviHXTgdMVVzzmwUGckqFO7pkE0LLz63XlwKXDQ9uFnsmR9v2zJTJQxif3lGZnl5-Uqc5WxQFgZK4LcUf_M0-bvMf9aHdWsMuwJTgI_d9naA"
+    },
+    {
+      "id": "f0a7fd5cc51c42acae7fc25b4d275377",
+      "slug": "crop-recommendation-intelligence",
+      "route": "/crop-recommendation",
+      "title": "Crop Recommendation & Intelligence Engine",
+      "deviceType": "DESKTOP",
+      "width": 2560,
+      "height": 4432,
+      "localHtml": ".stitch/screens/crop-recommendation-intelligence.html",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1XLTCKmTI69b5FU4k9wZsGvexVs7uAUR7GTSvGtGeMFtojmAl11z5kB0JFUMeiKIcrRytxJh3NLDvLj-Xl--LH5r7K71VNRt6lZSrmIsgObcCaj66N3kB7-3RW4qPpXtLynVmYRyK6FVByovzkCoQD_aYhtz22pgOX2fyr0dlIM4WGofFPoE937qftRs6UT6fwMUkrCOYz5lc8Pgt53rDzLPRYNDQBy2_mj8T8r0IaAAavI-NelC01kfec"
+    },
+    {
+      "id": "6aec0319b8b9435293e80fe086b329c4",
+      "slug": "agricultural-marketplace",
+      "route": "/marketplace",
+      "title": "Global Agricultural Marketplace",
+      "deviceType": "DESKTOP",
+      "width": 2560,
+      "height": 3864,
+      "localHtml": ".stitch/screens/agricultural-marketplace.html",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1V_taLDDxo0j_BZ-RJJDFsuBeX4CvI4xKqm43-Py-n2zd8fxNufC8LOX183Nz8qr9zwDJzjl8wOfDbOAQWNfc7zwPvRI0VYEDckU9TXqLVRKKWpiuzAVhdvq5XZQsCgYqQ5155mHlSGBFbDuX5YuKNaPHoaQ4CMxWgmorAefM_jPt_s-c5I0S4MtN8b409OVkOJITCch5QKZylVz_oMjqXX4zK0d-SJreEHDf4vPCNgJ823nqTyGr61cw"
+    },
+    {
+      "id": "45a1d64ce55242ad8cea359981d562c9",
+      "slug": "scenario-tradeoff-matrix",
+      "route": "/scenarios",
+      "title": "Scenario Comparison & Tradeoff Matrix",
+      "deviceType": "DESKTOP",
+      "width": 2560,
+      "height": 3684,
+      "localHtml": ".stitch/screens/scenario-tradeoff-matrix.html",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UrhAuYH1s6ZJNCIH1c5WT9nvSRDWfrEqeXbsuF11Qgqod48j679UMhBzXpIYSnYyVQOZBSIIGMayUpObj55wYk2HB7aHpAQP1W6jYEXtAYSA0PtuCkTDKt0SS40E8WPToxz2XRh6T1ioiP2X4BEkD55nzbLFoIxin1es5gGxT3ZrmXe2SEkn3T6FyfLnAQIT2DsT8ybfSaZXo-zoZRTn1Bk7N0bClCB-kMjcTSwYzWSTNNmgg0axsfbS8"
+    }
+  ],
+  "assets": {
+    "logoSvg": "public/logo.svg",
+    "logoScreenId": "dc8d0fdb17704cafa0d6233845af0a40",
+    "heroDronePhotoScreenId": "b5b4384532b9404ba69747de564a646e",
+    "agronomistAvatarScreenId": "4f3a5ce1ca3e4802ad8ef10974337ba2"
+  }
+}

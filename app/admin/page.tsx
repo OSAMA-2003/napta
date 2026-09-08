@@ -1,0 +1,302 @@
+'use client';
+
+import React, { useState } from 'react';
+import { useNabta } from '@/context/NabtaContext';
+import { formatCurrency } from '@/lib/utils';
+import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
+import { Badge } from '@/ui/Badge';
+import { Button } from '@/ui/Button';
+import { Tabs } from '@/ui/Tabs';
+import {
+  ShieldAlert,
+  CheckCircle2,
+  XCircle,
+  Users,
+  Building2,
+  Package,
+  Layers,
+  ShoppingBag,
+  Activity,
+} from 'lucide-react';
+
+export default function AdminDashboardPage() {
+  const { products, farms, scenarios, orders, updateProductModeration, currency } = useNabta();
+  const [adminTab, setAdminTab] = useState<'moderation' | 'suppliers' | 'farms'>('moderation');
+
+  const pendingProducts = products.filter((p) => p.moderationStatus === 'PENDING');
+  const allProducts = products;
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      {/* Top Header */}
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <Badge variant="crimson" size="sm" dot>
+              Sovereign Administration Console
+            </Badge>
+            <span className="text-xs font-mono text-secondary">
+              Security Clearance: Master Admin
+            </span>
+          </div>
+          <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
+            Compliance, Moderation &amp; Platform Governance
+          </h1>
+          <p className="text-xs text-secondary mt-1">
+            Inspect incoming supplier germplasm and chemical formulations, verify seller accreditations, and audit farm operations.
+          </p>
+        </div>
+      </div>
+
+      {/* High-Level KPIs */}
+      <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 text-xs font-mono">
+        <div className="p-3 rounded-xl bg-white border border-slate-200">
+          <span className="text-secondary text-[10px] uppercase block">Registered Farms</span>
+          <span className="font-bold text-lg text-on-surface">{farms.length}</span>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white border border-slate-200">
+          <span className="text-secondary text-[10px] uppercase block">Active Scenarios</span>
+          <span className="font-bold text-lg text-on-surface">{scenarios.length}</span>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white border border-slate-200">
+          <span className="text-secondary text-[10px] uppercase block">Catalog SKUs</span>
+          <span className="font-bold text-lg text-on-surface">{products.length}</span>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white border border-slate-200">
+          <span className="text-secondary text-[10px] uppercase block">Pending Review</span>
+          <span className="font-bold text-lg text-amber-600">{pendingProducts.length}</span>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white border border-slate-200">
+          <span className="text-secondary text-[10px] uppercase block">Total Orders</span>
+          <span className="font-bold text-lg text-on-surface">{orders.length}</span>
+        </div>
+
+        <div className="p-3 rounded-xl bg-white border border-slate-200">
+          <span className="text-secondary text-[10px] uppercase block">Monitored Area</span>
+          <span className="font-bold text-lg text-primary">
+            {farms.reduce((acc, f) => acc + f.areaHectares, 0)} ha
+          </span>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <Tabs
+        activeTab={adminTab}
+        onChange={(id: string) => setAdminTab(id as 'moderation' | 'suppliers' | 'farms')}
+        tabs={[
+          { id: 'moderation', label: 'Product Moderation Queue', count: pendingProducts.length },
+          { id: 'suppliers', label: 'Registered Suppliers', count: 6 },
+          { id: 'farms', label: 'Monitored Farms Audit', count: farms.length },
+        ]}
+      />
+
+      {/* Tab Content 1: Product Moderation */}
+      {adminTab === 'moderation' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="font-headline font-bold text-base text-on-surface">
+              Pending Input SKUs Awaiting Compliance Certification
+            </h3>
+            <span className="text-xs font-mono text-secondary">
+              Review chemical purity and MRL compliance prior to marketplace display
+            </span>
+          </div>
+
+          {pendingProducts.length === 0 ? (
+            <div className="p-12 text-center rounded-2xl border border-slate-200 bg-white space-y-2">
+              <CheckCircle2 className="w-8 h-8 text-[#10b981] mx-auto" />
+              <h4 className="font-headline font-semibold text-sm text-on-surface">
+                Queue is Clear
+              </h4>
+              <p className="text-xs text-secondary">
+                All submitted agricultural inputs have been moderated. You can review all catalog items below.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {pendingProducts.map((p) => (
+                <Card key={p.id} className="p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={p.images[0]}
+                      alt={p.name}
+                      className="w-14 h-14 rounded-xl object-cover border border-slate-200 bg-slate-50"
+                    />
+                    <div>
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <Badge variant="amber" size="sm" dot>Pending Review</Badge>
+                        <span className="text-[11px] font-mono text-secondary uppercase">
+                          {p.category}
+                        </span>
+                      </div>
+                      <h4 className="font-headline font-bold text-sm text-on-surface">{p.name}</h4>
+                      <p className="text-xs text-secondary font-mono">
+                        Supplier: <strong>{p.supplierName}</strong> ({p.countryOfOrigin}) | Price: {formatCurrency(p.priceUSD, currency)} / {p.unit}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 w-full md:w-auto">
+                    <Button
+                      size="sm"
+                      variant="primary"
+                      onClick={() => updateProductModeration(p.id, 'APPROVED')}
+                      icon={<CheckCircle2 className="w-3.5 h-3.5" />}
+                    >
+                      Approve &amp; Publish
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="danger"
+                      onClick={() => updateProductModeration(p.id, 'REJECTED')}
+                      icon={<XCircle className="w-3.5 h-3.5" />}
+                    >
+                      Reject
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {/* All Catalog Table for Reference */}
+          <div className="pt-6">
+            <h4 className="font-headline font-bold text-sm text-on-surface mb-3">
+              All Active &amp; Historical Catalog Submissions ({allProducts.length})
+            </h4>
+            <div className="border border-slate-200 rounded-2xl bg-white shadow-sm overflow-hidden text-xs">
+              <table className="w-full divide-y divide-slate-200">
+                <thead className="bg-slate-50 font-mono text-[10px] text-secondary uppercase">
+                  <tr>
+                    <th className="py-3 px-4 text-left">SKU Name</th>
+                    <th className="py-3 px-4 text-left">Supplier</th>
+                    <th className="py-3 px-4 text-left">Category</th>
+                    <th className="py-3 px-4 text-center">Status</th>
+                    <th className="py-3 px-4 text-right">Moderation Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 font-mono">
+                  {allProducts.map((p) => (
+                    <tr key={p.id} className="hover:bg-slate-50/50">
+                      <td className="py-3 px-4 font-sans font-semibold text-on-surface">
+                        {p.name}
+                      </td>
+                      <td className="py-3 px-4 text-secondary">{p.supplierName}</td>
+                      <td className="py-3 px-4 uppercase text-[10px] text-secondary">{p.category}</td>
+                      <td className="py-3 px-4 text-center">
+                        <Badge
+                          variant={
+                            p.moderationStatus === 'APPROVED'
+                              ? 'mint'
+                              : p.moderationStatus === 'PENDING'
+                              ? 'amber'
+                              : 'crimson'
+                          }
+                          size="sm"
+                          dot
+                        >
+                          {p.moderationStatus}
+                        </Badge>
+                      </td>
+                      <td className="py-3 px-4 text-right">
+                        {p.moderationStatus === 'APPROVED' ? (
+                          <button
+                            onClick={() => updateProductModeration(p.id, 'REJECTED')}
+                            className="text-xs text-rose-600 hover:underline"
+                          >
+                            Revoke Approval
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => updateProductModeration(p.id, 'APPROVED')}
+                            className="text-xs text-emerald-600 hover:underline font-semibold"
+                          >
+                            Approve
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tab Content 2: Registered Suppliers */}
+      {adminTab === 'suppliers' && (
+        <div className="border border-slate-200 rounded-2xl bg-white shadow-sm overflow-hidden text-xs">
+          <table className="w-full divide-y divide-slate-200">
+            <thead className="bg-slate-50 font-mono text-[10px] text-secondary uppercase">
+              <tr>
+                <th className="py-3 px-4 text-left">Supplier Entity</th>
+                <th className="py-3 px-4 text-left">Country</th>
+                <th className="py-3 px-4 text-left">Certifications</th>
+                <th className="py-3 px-4 text-center">Status</th>
+                <th className="py-3 px-4 text-right">Settlement Rating</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 font-mono">
+              <tr className="hover:bg-slate-50">
+                <td className="py-3 px-4 font-sans font-semibold text-on-surface">AgroBio International</td>
+                <td className="py-3 px-4">Netherlands</td>
+                <td className="py-3 px-4 text-secondary">ISTA, GLOBALG.A.P.</td>
+                <td className="py-3 px-4 text-center"><Badge variant="mint" size="sm" dot>Verified</Badge></td>
+                <td className="py-3 px-4 text-right font-bold text-primary">99.4%</td>
+              </tr>
+              <tr className="hover:bg-slate-50">
+                <td className="py-3 px-4 font-sans font-semibold text-on-surface">EuroAgro Chemical Corp</td>
+                <td className="py-3 px-4">Belgium</td>
+                <td className="py-3 px-4 text-secondary">REACH, ISO 14001</td>
+                <td className="py-3 px-4 text-center"><Badge variant="mint" size="sm" dot>Verified</Badge></td>
+                <td className="py-3 px-4 text-right font-bold text-primary">98.8%</td>
+              </tr>
+              <tr className="hover:bg-slate-50">
+                <td className="py-3 px-4 font-sans font-semibold text-on-surface">Netafim Ltd.</td>
+                <td className="py-3 px-4">Egypt / Israel</td>
+                <td className="py-3 px-4 text-secondary">ISO 9261</td>
+                <td className="py-3 px-4 text-center"><Badge variant="mint" size="sm" dot>Verified</Badge></td>
+                <td className="py-3 px-4 text-right font-bold text-primary">99.8%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Tab Content 3: Monitored Farms Audit */}
+      {adminTab === 'farms' && (
+        <div className="border border-slate-200 rounded-2xl bg-white shadow-sm overflow-hidden text-xs">
+          <table className="w-full divide-y divide-slate-200">
+            <thead className="bg-slate-50 font-mono text-[10px] text-secondary uppercase">
+              <tr>
+                <th className="py-3 px-4 text-left">Sector / Farm</th>
+                <th className="py-3 px-4 text-left">Location</th>
+                <th className="py-3 px-4 text-center">Hectares</th>
+                <th className="py-3 px-4 text-center">Canopy NDVI</th>
+                <th className="py-3 px-4 text-right">Audit Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 font-mono">
+              {farms.map((farm) => (
+                <tr key={farm.id} className="hover:bg-slate-50">
+                  <td className="py-3 px-4 font-sans font-semibold text-on-surface">{farm.name}</td>
+                  <td className="py-3 px-4 text-secondary">{farm.location}</td>
+                  <td className="py-3 px-4 text-center font-bold">{farm.areaHectares} ha</td>
+                  <td className="py-3 px-4 text-center font-bold text-primary">{farm.ndviAverage}</td>
+                  <td className="py-3 px-4 text-right">
+                    <Badge variant="mint" size="sm" dot>Compliant</Badge>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
