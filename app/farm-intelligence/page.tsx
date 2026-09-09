@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { SatelliteHealthMap } from '@/components/farm/SatelliteHealthMap';
 import { SoilTelemetryCard } from '@/components/farm/SoilTelemetryCard';
@@ -13,18 +14,18 @@ import {
   Satellite,
   Plus,
   ArrowRight,
+  ArrowLeft,
   Sun,
   Droplets,
-  Wind,
-  Layers,
   Thermometer,
   ShieldCheck,
-  Compass,
 } from 'lucide-react';
 
 export default function FarmIntelligencePage() {
-  const { farms, activeFarmId, setActiveFarmId, activeFarm } = useNabta();
+  const { t, i18n } = useTranslation(['farm', 'common']);
+  const { farms, activeFarmId, setActiveFarmId, activeFarm, dir } = useNabta();
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const NextArrow = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -33,17 +34,17 @@ export default function FarmIntelligencePage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Badge variant="emerald" size="sm" dot>
-              Real-Time Sentinel Telemetry
+              {t('farm:farmIntelligence.badge')}
             </Badge>
             <span className="text-xs font-mono text-secondary">
-              Resolution: 10m Ground Sample
+              {t('farm:farmIntelligence.resolution')}
             </span>
           </div>
           <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-            Farm Operations &amp; Telemetry Dashboard
+            {t('farm:farmIntelligence.title')}
           </h1>
           <p className="text-xs text-secondary mt-1">
-            Continuous remote sensing, sub-surface soil diagnostics, and micro-climate observation.
+            {t('farm:farmIntelligence.subtitle')}
           </p>
         </div>
 
@@ -56,7 +57,7 @@ export default function FarmIntelligencePage() {
           >
             {farms.map((f) => (
               <option key={f.id} value={f.id}>
-                {f.name} ({f.areaHectares} ha) - {f.country}
+                {f.name} ({f.areaHectares} {t('common:units.ha')}) - {f.country}
               </option>
             ))}
           </select>
@@ -67,7 +68,7 @@ export default function FarmIntelligencePage() {
             onClick={() => setAddModalOpen(true)}
             icon={<Plus className="w-3.5 h-3.5" />}
           >
-            Register Plot
+            {t('farm:farmIntelligence.registerPlot')}
           </Button>
         </div>
       </div>
@@ -76,53 +77,61 @@ export default function FarmIntelligencePage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">NDVI Vegetation Health</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('farm:farmIntelligence.ndviTitle')}
+            </span>
             <Satellite className="w-4 h-4 text-primary" />
           </div>
           <span className="font-mono text-2xl font-bold text-on-surface">
             {activeFarm.ndviAverage}
           </span>
           <span className="text-[10px] text-[#10b981] font-semibold block mt-0.5">
-            +4.2% vs 30-day baseline
+            {t('farm:farmIntelligence.ndviSubtitle')}
           </span>
         </div>
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">Surface Temperature</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('farm:farmIntelligence.temp')}
+            </span>
             <Thermometer className="w-4 h-4 text-amber-600" />
           </div>
           <span className="font-mono text-2xl font-bold text-on-surface">
             {activeFarm.climate.currentTempC}°C
           </span>
           <span className="text-[10px] text-secondary block mt-0.5">
-            Diurnal Span: {activeFarm.climate.avgSummerTempC - activeFarm.climate.avgWinterTempC}°C
+            {t('farm:farmIntelligence.diurnalSpan')}: {activeFarm.climate.avgSummerTempC - activeFarm.climate.avgWinterTempC}°C
           </span>
         </div>
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">Water Allocation</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('farm:farmIntelligence.waterAllocation')}
+            </span>
             <Droplets className="w-4 h-4 text-blue-600" />
           </div>
           <span className="font-mono text-2xl font-bold text-on-surface">
             {activeFarm.water.allocationM3Ha} m³
           </span>
           <span className="text-[10px] text-blue-600 font-semibold block mt-0.5">
-            EC: {activeFarm.water.qualityEc} dS/m (Good)
+            EC: {activeFarm.water.qualityEc} dS/m
           </span>
         </div>
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">Overall Vitality Score</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('farm:farmIntelligence.vitalityScore')}
+            </span>
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
           </div>
           <span className="font-mono text-2xl font-bold text-primary">
             {activeFarm.healthIndex} / 100
           </span>
           <span className="text-[10px] text-secondary block mt-0.5">
-            Status: {activeFarm.analysisStatus}
+            {t('farm:farmIntelligence.status')}: {activeFarm.analysisStatus}
           </span>
         </div>
       </div>
@@ -148,41 +157,65 @@ export default function FarmIntelligencePage() {
               <Sun className="w-4 h-4" />
             </div>
             <div>
-              <CardTitle>Micro-Climate &amp; Environmental Telemetry</CardTitle>
+              <CardTitle>{t('farm:farmIntelligence.weatherStation')}</CardTitle>
               <p className="text-xs text-secondary font-mono">
-                Zone: {activeFarm.climate.zone}
+                {t('farm:farmIntelligence.zone')}: {activeFarm.climate.zone}
               </p>
             </div>
           </div>
           <Badge variant="slate" size="sm">
-            Station Calibrated
+            {t('farm:farmIntelligence.stationCalibrated')}
           </Badge>
         </CardHeader>
 
         <CardContent className="pt-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono">
             <div className="p-3 rounded-lg bg-slate-50 border border-slate-100">
-              <span className="text-[10px] text-secondary uppercase block mb-1">Growing Degree Days</span>
-              <span className="text-lg font-bold text-on-surface">{activeFarm.climate.growingDegreeDays} GDD</span>
-              <span className="text-[10px] text-emerald-600 block mt-0.5">Thermal sum on track</span>
+              <span className="text-[10px] text-secondary uppercase block mb-1">
+                {t('farm:locationSelector.thermalSumLabel')}
+              </span>
+              <span className="text-lg font-bold text-on-surface">
+                {activeFarm.climate.growingDegreeDays} GDD
+              </span>
+              <span className="text-[10px] text-emerald-600 block mt-0.5">
+                {t('farm:farmIntelligence.thermalOnTrack')}
+              </span>
             </div>
 
             <div className="p-3 rounded-lg bg-slate-50 border border-slate-100">
-              <span className="text-[10px] text-secondary uppercase block mb-1">Solar Radiation</span>
-              <span className="text-lg font-bold text-on-surface">{activeFarm.climate.solarRadiationWm2} W/m²</span>
-              <span className="text-[10px] text-secondary block mt-0.5">High PAR intensity</span>
+              <span className="text-[10px] text-secondary uppercase block mb-1">
+                {t('farm:farmIntelligence.solar')}
+              </span>
+              <span className="text-lg font-bold text-on-surface">
+                {activeFarm.climate.solarRadiationWm2} W/m²
+              </span>
+              <span className="text-[10px] text-secondary block mt-0.5">
+                {t('farm:farmIntelligence.highPar')}
+              </span>
             </div>
 
             <div className="p-3 rounded-lg bg-slate-50 border border-slate-100">
-              <span className="text-[10px] text-secondary uppercase block mb-1">Relative Humidity</span>
-              <span className="text-lg font-bold text-on-surface">{activeFarm.climate.humidityPercent}%</span>
-              <span className="text-[10px] text-secondary block mt-0.5">Vapor pressure 1.8 kPa</span>
+              <span className="text-[10px] text-secondary uppercase block mb-1">
+                {t('farm:farmIntelligence.humidity')}
+              </span>
+              <span className="text-lg font-bold text-on-surface">
+                {activeFarm.climate.humidityPercent}%
+              </span>
+              <span className="text-[10px] text-secondary block mt-0.5">
+                VPD: 1.8 kPa
+              </span>
             </div>
 
             <div className="p-3 rounded-lg bg-slate-50 border border-slate-100">
-              <span className="text-[10px] text-secondary uppercase block mb-1">Surface Wind Velocity</span>
-              <span className="text-lg font-bold text-on-surface">{activeFarm.climate.windSpeedKmh} km/h</span>
-              <span className="text-[10px] text-secondary block mt-0.5">Spray drift safe</span>
+              <span className="text-[10px] text-secondary uppercase block mb-1">
+                {t('farm:farmIntelligence.wind')}
+              </span>
+              <span className="text-lg font-bold text-on-surface">
+                {activeFarm.climate.windSpeedKmh} km/h
+              </span>
+              <span className="text-[10px] text-secondary block mt-0.5">
+                {t('farm:farmIntelligence.sprayDriftSafe')}
+              </span>
             </div>
           </div>
         </CardContent>
@@ -192,13 +225,13 @@ export default function FarmIntelligencePage() {
       <div className="p-6 rounded-2xl bg-[#003620] text-white flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
         <div>
           <span className="text-[10px] font-mono text-[#6ffbbe] uppercase tracking-wider font-bold">
-            Agronomic Next Action
+            {t('farm:farmIntelligence.agronomicNextAction')}
           </span>
           <h3 className="font-headline text-lg font-bold">
-            Generate Multi-Scenario Recommendation for {activeFarm.name}
+            {t('farm:farmIntelligence.actionBannerTitle', { farmName: activeFarm.name })}
           </h3>
           <p className="text-xs text-slate-300 mt-1 max-w-xl">
-            Pass live N-P-K reserves and thermal degree days into the recommendation engine to generate optimal crop choices and input prescriptions.
+            {t('farm:farmIntelligence.actionBannerDesc')}
           </p>
         </div>
 
@@ -208,9 +241,9 @@ export default function FarmIntelligencePage() {
               variant="telemetry"
               size="md"
               className="w-full"
-              icon={<ArrowRight className="w-4 h-4" />}
+              icon={<NextArrow className="w-4 h-4" />}
             >
-              Launch Crop AI Engine
+              {t('farm:farmIntelligence.launchAiEngine')}
             </Button>
           </Link>
         </div>

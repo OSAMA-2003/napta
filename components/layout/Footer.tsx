@@ -1,12 +1,17 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { ShieldCheck, Globe2, Cpu, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Globe2, CheckCircle2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function Footer() {
+  const { t } = useTranslation('common');
+
   return (
     <footer className="w-full bg-[#0b1c30] text-slate-300 pt-14 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80 text-start">
           {/* Col 1: Brand & Sovereignty */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
@@ -26,23 +31,22 @@ export function Footer() {
                 </svg>
               </div>
               <span className="font-headline font-extrabold text-xl text-white tracking-tight">
-                NABTA AGRI-INTELLIGENCE
+                {t('brand.fullName')}
               </span>
             </div>
             <p className="text-xs text-slate-400 font-body leading-relaxed max-w-sm">
-              The Sovereign Agronomic Operating System bridging planetary-scale remote sensing,
-              stochastic yield modeling, and international agricultural input procurement.
+              {t('footer.desc')}
             </p>
 
             {/* Certifications Row */}
             <div className="pt-2 flex flex-wrap items-center gap-2">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-[10px] font-mono text-slate-200">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#10b981]" />
-                ISO 14064 Carbon Audited
+                {t('footer.isoAudited')}
               </div>
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-[10px] font-mono text-slate-200">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#10b981]" />
-                GLOBALG.A.P. Standard
+                {t('footer.globalGap')}
               </div>
             </div>
           </div>
@@ -50,27 +54,27 @@ export function Footer() {
           {/* Col 2: Telemetry & Intelligence */}
           <div>
             <h4 className="font-headline text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Intelligence
+              {t('footer.colIntelligence')}
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
                 <Link href="/farm-intelligence" className="hover:text-white transition-colors">
-                  Sentinel Remote Sensing
+                  {t('footer.sentinelRemote')}
                 </Link>
               </li>
               <li>
                 <Link href="/recommendations" className="hover:text-white transition-colors">
-                  Crop Recommendation Engine
+                  {t('footer.cropEngine')}
                 </Link>
               </li>
               <li>
                 <Link href="/scenarios" className="hover:text-white transition-colors">
-                  Scenario Tradeoff Matrix
+                  {t('footer.tradeoffMatrix')}
                 </Link>
               </li>
               <li>
                 <Link href="/farms" className="hover:text-white transition-colors">
-                  Precision Soil Profiles
+                  {t('footer.soilProfiles')}
                 </Link>
               </li>
             </ul>
@@ -79,32 +83,32 @@ export function Footer() {
           {/* Col 3: Global Marketplace */}
           <div>
             <h4 className="font-headline text-xs font-bold text-white uppercase tracking-wider mb-4">
-              B2B Marketplace
+              {t('footer.colMarketplace')}
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
                 <Link href="/marketplace?category=seeds" className="hover:text-white transition-colors">
-                  Certified Seeds &amp; Germplasm
+                  {t('footer.certifiedSeeds')}
                 </Link>
               </li>
               <li>
                 <Link href="/marketplace?category=fertilizers" className="hover:text-white transition-colors">
-                  Water-Soluble Fertigation
+                  {t('footer.solubleFertigation')}
                 </Link>
               </li>
               <li>
                 <Link href="/marketplace?category=irrigation" className="hover:text-white transition-colors">
-                  Pressure Drip Systems
+                  {t('footer.dripSystems')}
                 </Link>
               </li>
               <li>
                 <Link href="/marketplace?category=sensors-iot" className="hover:text-white transition-colors">
-                  Sub-surface IoT Probes
+                  {t('footer.iotProbes')}
                 </Link>
               </li>
               <li>
                 <Link href="/seller/new" className="hover:text-white transition-colors">
-                  Sell Produce (Growers)
+                  {t('footer.sellProduceGrowers')}
                 </Link>
               </li>
             </ul>
@@ -113,27 +117,27 @@ export function Footer() {
           {/* Col 4: Platform & Compliance */}
           <div>
             <h4 className="font-headline text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Enterprise Portals
+              {t('footer.colPortals')}
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
                 <Link href="/supplier" className="hover:text-white transition-colors">
-                  Supplier Logistics Hub
+                  {t('footer.supplierHub')}
                 </Link>
               </li>
               <li>
                 <Link href="/supplier/products/new" className="hover:text-white transition-colors">
-                  Publish Input SKU
+                  {t('footer.publishSku')}
                 </Link>
               </li>
               <li>
                 <Link href="/admin" className="hover:text-white transition-colors">
-                  Compliance &amp; Moderation
+                  {t('footer.complianceAdmin')}
                 </Link>
               </li>
               <li>
                 <Link href="/settings" className="hover:text-white transition-colors">
-                  System Settings &amp; API
+                  {t('footer.systemSettings')}
                 </Link>
               </li>
             </ul>
@@ -144,12 +148,12 @@ export function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
           <div className="flex items-center gap-2">
             <Globe2 className="w-3.5 h-3.5 text-slate-400" />
-            <span>NABTA GLOBAL AGROTECHNOLOGIES CORP. &copy; 2026. ALL RIGHTS RESERVED.</span>
+            <span>{t('footer.rights')}</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-[#10b981] font-semibold">STATUS: SYSTEMS NOMINAL</span>
+            <span className="text-[#10b981] font-semibold">{t('footer.statusNominal')}</span>
             <span>•</span>
-            <span>SENTINEL-2C CONNECTED</span>
+            <span>{t('footer.sentinelConnected')}</span>
           </div>
         </div>
       </div>

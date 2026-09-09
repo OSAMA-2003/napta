@@ -2,13 +2,16 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { formatCurrency } from '@/lib/utils';
 import { Button } from '@/ui/Button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
+import { Card } from '@/ui/Card';
 import { ShoppingCart, Trash2, ArrowRight, ArrowLeft, ShieldCheck, Truck } from 'lucide-react';
 
 export default function CartPage() {
+  const { t, i18n } = useTranslation(['orders', 'common']);
+  const isRtl = i18n.language === 'ar';
   const { cart, removeFromCart, updateCartQuantity, cartSubtotalUSD, cartShippingUSD, cartTotalUSD, currency } = useNabta();
 
   if (cart.length === 0) {
@@ -17,19 +20,21 @@ export default function CartPage() {
         <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-secondary">
           <ShoppingCart className="w-8 h-8" />
         </div>
-        <h2 className="font-headline font-bold text-2xl text-on-surface">Your Procurement Cart is Empty</h2>
+        <h2 className="font-headline font-bold text-2xl text-on-surface">
+          {t('orders:cart.emptyTitle')}
+        </h2>
         <p className="text-xs text-secondary max-w-sm mx-auto">
-          No agricultural inputs or machinery components are currently staged for order. Browse prescribed inputs from your crop scenario or open the global catalog.
+          {t('orders:cart.emptyDesc')}
         </p>
         <div className="pt-2 flex justify-center gap-3">
           <Link href="/recommendations/products">
             <Button variant="primary" size="sm">
-              View Recommended Inputs
+              {t('orders:cart.viewRecommendedBtn')}
             </Button>
           </Link>
           <Link href="/marketplace">
             <Button variant="secondary" size="sm">
-              Browse Marketplace
+              {t('orders:cart.browseMarketplaceBtn')}
             </Button>
           </Link>
         </div>
@@ -43,15 +48,20 @@ export default function CartPage() {
       <div className="flex items-center justify-between pb-6 border-b border-slate-200">
         <div>
           <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-            Procurement Cart &amp; Order Staging
+            {t('orders:cart.title')}
           </h1>
           <p className="text-xs text-secondary mt-1">
-            Review wholesale quantities, consolidated supplier shipping, and escrow guarantees.
+            {t('orders:cart.subtitle')}
           </p>
         </div>
         <Link href="/marketplace">
-          <Button variant="secondary" size="sm" icon={<ArrowLeft className="w-3.5 h-3.5" />} iconPosition="left">
-            Continue Sourcing
+          <Button
+            variant="secondary"
+            size="sm"
+            icon={isRtl ? <ArrowRight className="w-3.5 h-3.5" /> : <ArrowLeft className="w-3.5 h-3.5" />}
+            iconPosition={isRtl ? 'right' : 'left'}
+          >
+            {t('orders:cart.continueSourcingBtn')}
           </Button>
         </Link>
       </div>
@@ -77,7 +87,7 @@ export default function CartPage() {
                       {item.product.name}
                     </Link>
                     <span className="text-xs text-secondary font-mono block mt-0.5">
-                      Supplier: <strong>{item.product.supplierName}</strong> ({item.product.countryOfOrigin})
+                      {t('orders:cart.supplierLabel')}: <strong>{item.product.supplierName}</strong> ({item.product.countryOfOrigin})
                     </span>
                     <span className="text-xs font-mono text-primary font-semibold block mt-1">
                       {formatCurrency(item.product.priceUSD, currency)} / {item.product.unit}
@@ -105,7 +115,7 @@ export default function CartPage() {
                     </button>
                   </div>
 
-                  <div className="text-right min-w-[100px]">
+                  <div className="text-end min-w-[100px]">
                     <span className="font-headline font-bold text-sm text-on-surface block">
                       {formatCurrency(item.product.priceUSD * item.quantity, currency)}
                     </span>
@@ -114,6 +124,7 @@ export default function CartPage() {
                   <button
                     onClick={() => removeFromCart(item.product.id)}
                     className="p-1.5 text-secondary hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors"
+                    title={t('orders:cart.removeBtn')}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -125,7 +136,7 @@ export default function CartPage() {
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-3 text-xs text-secondary">
             <Truck className="w-4 h-4 text-primary shrink-0" />
             <span>
-              All shipments are verified by NABTA Cross-Border Logistics and cleared with sanitary/phytosanitary certificates prior to port departure.
+              {t('orders:cart.logisticsNotice')}
             </span>
           </div>
         </div>
@@ -134,24 +145,24 @@ export default function CartPage() {
         <div className="lg:col-span-4">
           <Card className="sticky top-28 p-6 space-y-5">
             <h3 className="font-headline font-bold text-base text-on-surface pb-3 border-b border-slate-100">
-              Order Summary
+              {t('orders:cart.orderSummaryTitle')}
             </h3>
 
             <div className="space-y-2.5 text-xs font-mono">
               <div className="flex justify-between text-secondary">
-                <span>Items Subtotal:</span>
+                <span>{t('orders:cart.subtotal')}:</span>
                 <span className="font-bold text-on-surface">{formatCurrency(cartSubtotalUSD, currency)}</span>
               </div>
               <div className="flex justify-between text-secondary">
-                <span>Consolidated Freight:</span>
+                <span>{t('orders:cart.shipping')}:</span>
                 <span className="font-bold text-on-surface">{formatCurrency(cartShippingUSD, currency)}</span>
               </div>
               <div className="flex justify-between text-secondary">
-                <span>Customs &amp; Tariffs:</span>
-                <span className="text-emerald-700 font-semibold">Included</span>
+                <span>{t('orders:cart.customsTariffs')}:</span>
+                <span className="text-emerald-700 font-semibold">{t('orders:cart.included')}</span>
               </div>
               <div className="pt-3 border-t border-slate-200 flex justify-between text-sm font-headline">
-                <span className="font-bold text-on-surface">Total Order:</span>
+                <span className="font-bold text-on-surface">{t('orders:cart.total')}:</span>
                 <span className="font-extrabold text-primary text-base">
                   {formatCurrency(cartTotalUSD, currency)}
                 </span>
@@ -161,13 +172,19 @@ export default function CartPage() {
             <div className="p-3 rounded-lg bg-emerald-50 border border-emerald-200 text-[11px] text-emerald-900 flex items-start gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
               <span>
-                Protected by NABTA Escrow. Funds are released to suppliers only upon verified customs clearance.
+                {t('orders:cart.escrowNoticeCart')}
               </span>
             </div>
 
             <Link href="/checkout" className="block">
-              <Button size="lg" variant="primary" className="w-full" icon={<ArrowRight className="w-4 h-4" />}>
-                Proceed to Checkout
+              <Button
+                size="lg"
+                variant="primary"
+                className="w-full"
+                icon={isRtl ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+                iconPosition={isRtl ? 'left' : 'right'}
+              >
+                {t('orders:cart.proceedToCheckoutBtn')}
               </Button>
             </Link>
           </Card>

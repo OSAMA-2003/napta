@@ -1,0 +1,53 @@
+{
+  "badge": "Stochastic Yield & Water Modeling",
+  "title": "Scenario Trade-off Matrix & Crop Comparison",
+  "subtitle": "Compare multi-crop strategies side-by-side to evaluate water consumption, field duration, input costs, and net margins per hectare.",
+  "farmContext": "Calibrated Plot",
+  "recommendationsBtn": "Final Crop Recommendation",
+  "prescribedInputsBtn": "Prescribed Inputs",
+  "selectPrompt": "Click \"Select Plan\" to apply to active plot",
+  "methodologyTitle": "Decision Modeling Methodology:",
+  "methodologyDesc": "Calculations incorporate historical regional auction gate prices, local aquifer extraction coefficients, and verified seed yield trials. Selecting a scenario dynamically recalibrates your farm’s input prescription list in the global marketplace.",
+  "tabs": {
+    "cards": "Scenario Cards",
+    "matrix": "Matrix Table"
+  },
+  "card": {
+    "suitable": "SUITABLE",
+    "selected": "Selected Plan",
+    "analyzed": "Analyzed",
+    "metricsTitle": "Key Agronomic & Financial Forecasts",
+    "expectedYield": "Expected Yield",
+    "waterBudget": "Water Budget",
+    "duration": "Field Cycle",
+    "capex": "Estimated Capex",
+    "grossRevenue": "Gross Revenue",
+    "netProfit": "Estimated Net Profit",
+    "selectScenarioBtn": "Select Scenario",
+    "inspectReportBtn": "Inspect Agronomic Report",
+    "agronomicRationale": "Agronomic Match Rationale",
+    "soilFit": "Soil Fit",
+    "climateFit": "Climate Fit",
+    "waterFit": "Water Fit",
+    "activeCalibrated": "Active Calibrated Scenario"
+  },
+  "matrix": {
+    "title": "Full Agronomic Trade-Off Matrix",
+    "subtitle": "Cross-evaluate financial ROI versus water depletion risk.",
+    "colCrop": "Crop & Cultivar",
+    "colSuitability": "Suitability",
+    "colWater": "Water Demand",
+    "colCycle": "Cycle",
+    "colCapex": "Capex/ha",
+    "colRevenue": "Revenue/ha",
+    "colProfit": "Net Profit/ha",
+    "colAction": "Action",
+    "selectBtn": "Select",
+    "selectedBtn": "Active",
+    "colMetric": "Decision Factor / Metric",
+    "suitabilityIndex": "Overall Suitability Index",
+    "cycleDuration": "Cycle Duration (Field Days)",
+    "projectedRoi": "Projected ROI (%)",
+    "carbonIntensity": "Carbon Intensity"
+  }
+}

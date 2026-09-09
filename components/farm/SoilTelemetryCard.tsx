@@ -1,14 +1,26 @@
+'use client';
+
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { SoilProfile } from '@/types/nabta';
 import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
-import { FlaskConical, Thermometer, Droplets } from 'lucide-react';
+import { FlaskConical } from 'lucide-react';
 
 interface SoilTelemetryCardProps {
   soil: SoilProfile;
 }
 
 export function SoilTelemetryCard({ soil }: SoilTelemetryCardProps) {
+  const { t } = useTranslation(['farm', 'common']);
+
+  const riskLabel =
+    soil.salinityRisk === 'Low'
+      ? t('farm:soilTelemetry.lowRisk')
+      : soil.salinityRisk === 'Moderate'
+      ? t('farm:soilTelemetry.moderateRisk')
+      : t('farm:soilTelemetry.highRisk');
+
   return (
     <Card className="h-full">
       <CardHeader className="pb-3">
@@ -17,8 +29,8 @@ export function SoilTelemetryCard({ soil }: SoilTelemetryCardProps) {
             <FlaskConical className="w-4 h-4" />
           </div>
           <div>
-            <CardTitle>Soil Chemistry &amp; Macro-Nutrients</CardTitle>
-            <p className="text-xs text-secondary">Real-time telemetry from sub-surface sensors</p>
+            <CardTitle>{t('farm:soilTelemetry.title')}</CardTitle>
+            <p className="text-xs text-secondary">{t('farm:soilTelemetry.subtitle')}</p>
           </div>
         </div>
         <Badge
@@ -26,7 +38,7 @@ export function SoilTelemetryCard({ soil }: SoilTelemetryCardProps) {
           dot
           size="sm"
         >
-          {soil.salinityRisk} Salinity Risk
+          {riskLabel}
         </Badge>
       </CardHeader>
 
@@ -34,34 +46,36 @@ export function SoilTelemetryCard({ soil }: SoilTelemetryCardProps) {
         {/* Top 3 Core Metrics */}
         <div className="grid grid-cols-3 gap-2 text-center">
           <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200/80">
-            <span className="text-[10px] font-mono text-secondary uppercase block">Soil pH</span>
+            <span className="text-[10px] font-mono text-secondary uppercase block">{t('farm:soilTelemetry.ph')}</span>
             <span className="text-xl font-mono font-bold text-on-surface">{soil.ph.toFixed(1)}</span>
-            <span className="text-[10px] text-[#054f31] font-semibold block">Optimum 6.5-7.2</span>
+            <span className="text-[10px] text-[#054f31] font-semibold block">6.5-7.2</span>
           </div>
           <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200/80">
-            <span className="text-[10px] font-mono text-secondary uppercase block">EC (dS/m)</span>
+            <span className="text-[10px] font-mono text-secondary uppercase block">{t('farm:soilTelemetry.ec')}</span>
             <span className="text-xl font-mono font-bold text-on-surface">{soil.ec.toFixed(2)}</span>
-            <span className="text-[10px] text-secondary block">Bulk Conductivity</span>
+            <span className="text-[10px] text-secondary block">dS/m</span>
           </div>
           <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200/80">
-            <span className="text-[10px] font-mono text-secondary uppercase block">Organic Matter</span>
+            <span className="text-[10px] font-mono text-secondary uppercase block">{t('farm:soilTelemetry.organicMatter')}</span>
             <span className="text-xl font-mono font-bold text-on-surface">{soil.organicMatter}%</span>
-            <span className="text-[10px] text-[#f59e0b] font-semibold block">Conditioning Rec.</span>
+            <span className="text-[10px] text-[#f59e0b] font-semibold block">2.0%+</span>
           </div>
         </div>
 
         {/* N-P-K Macro Readouts */}
         <div>
           <div className="flex items-center justify-between text-xs font-semibold text-secondary mb-2">
-            <span>Macro-Nutrient Reserves (PPM)</span>
-            <span className="font-mono text-[10px]">Texture: {soil.texture}</span>
+            <span>{t('farm:soilTelemetry.macroNutrients')}</span>
+            <span className="font-mono text-[10px]">
+              {t('farm:soilTelemetry.texture')}: {soil.texture}
+            </span>
           </div>
           <div className="space-y-2.5 text-xs">
             {/* Nitrogen */}
             <div>
               <div className="flex justify-between font-mono mb-1 text-[11px]">
-                <span className="text-secondary font-medium">Nitrogen (N)</span>
-                <span className="font-bold text-on-surface">{soil.nitrogenPpm} ppm (Moderate)</span>
+                <span className="text-secondary font-medium">{t('farm:soilTelemetry.nitrogen')}</span>
+                <span className="font-bold text-on-surface">{soil.nitrogenPpm} ppm</span>
               </div>
               <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
                 <div
@@ -74,8 +88,8 @@ export function SoilTelemetryCard({ soil }: SoilTelemetryCardProps) {
             {/* Phosphorus */}
             <div>
               <div className="flex justify-between font-mono mb-1 text-[11px]">
-                <span className="text-secondary font-medium">Phosphorus (P)</span>
-                <span className="font-bold text-on-surface">{soil.phosphorusPpm} ppm (Optimal)</span>
+                <span className="text-secondary font-medium">{t('farm:soilTelemetry.phosphorus')}</span>
+                <span className="font-bold text-on-surface">{soil.phosphorusPpm} ppm</span>
               </div>
               <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
                 <div
@@ -88,8 +102,8 @@ export function SoilTelemetryCard({ soil }: SoilTelemetryCardProps) {
             {/* Potassium */}
             <div>
               <div className="flex justify-between font-mono mb-1 text-[11px]">
-                <span className="text-secondary font-medium">Potassium (K)</span>
-                <span className="font-bold text-on-surface">{soil.potassiumPpm} ppm (High)</span>
+                <span className="text-secondary font-medium">{t('farm:soilTelemetry.potassium')}</span>
+                <span className="font-bold text-on-surface">{soil.potassiumPpm} ppm</span>
               </div>
               <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
                 <div
@@ -99,12 +113,6 @@ export function SoilTelemetryCard({ soil }: SoilTelemetryCardProps) {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Secondary Micronutrients */}
-        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-secondary">
-          <span>Calcium: <strong className="text-on-surface">{soil.calciumPpm} ppm</strong></span>
-          <span>Magnesium: <strong className="text-on-surface">{soil.magnesiumPpm} ppm</strong></span>
         </div>
       </CardContent>
     </Card>

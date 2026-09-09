@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, JetBrains_Mono, Cairo } from 'next/font/google';
 import './globals.css';
+import '@/i18n';
 import { NabtaProvider } from '@/context/NabtaContext';
 import { TelemetryTicker } from '@/components/layout/TelemetryTicker';
 import { Navbar } from '@/components/layout/Navbar';
@@ -21,6 +22,12 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
 });
 
+const cairo = Cairo({
+  variable: '--font-arabic',
+  subsets: ['arabic', 'latin'],
+  weight: ['400', '500', '600', '700', '800'],
+});
+
 export const metadata: Metadata = {
   title: 'NABTA — Global Agronomic Intelligence & Marketplace Platform',
   description:
@@ -38,7 +45,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      dir="ltr"
+      className={`${plusJakartaSans.variable} ${inter.variable} ${jetbrainsMono.variable} ${cairo.variable} h-full antialiased`}
     >
       <head>
         <link
@@ -46,7 +54,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-surface text-on-surface">
+      <body className="min-h-full flex flex-col bg-surface text-on-surface overflow-x-hidden">
         <NabtaProvider>
           <TelemetryTicker />
           <Navbar />

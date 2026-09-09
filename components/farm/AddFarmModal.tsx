@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Modal } from '@/ui/Modal';
 import { Button } from '@/ui/Button';
 import { useNabta } from '@/context/NabtaContext';
@@ -11,7 +12,9 @@ interface AddFarmModalProps {
 }
 
 export function AddFarmModal({ isOpen, onClose }: AddFarmModalProps) {
+  const { t } = useTranslation(['farm', 'common']);
   const { addFarm } = useNabta();
+
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [country, setCountry] = useState('Egypt');
@@ -52,99 +55,110 @@ export function AddFarmModal({ isOpen, onClose }: AddFarmModalProps) {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Register New Agricultural Plot"
-      description="Connect satellite spectral monitoring and calibrate baseline soil parameters."
+      title={t('farm:addFarmModal.title')}
+      description={t('farm:addFarmModal.description')}
     >
-      <form onSubmit={handleSubmit} className="space-y-4 text-xs font-body">
+      <form onSubmit={handleSubmit} className="space-y-4 text-xs font-body text-start">
         <div>
-          <label className="block font-semibold text-on-surface mb-1">Plot / Farm Name</label>
+          <label className="block font-semibold text-on-surface mb-1">
+            {t('farm:addFarmModal.nameLabel')}
+          </label>
           <input
             type="text"
             required
-            placeholder="e.g. Nile Oasis Sector 08"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-[#054f31] focus:ring-1 focus:ring-[#054f31]"
+            placeholder={t('farm:addFarmModal.namePlaceholder')}
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-xs"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block font-semibold text-on-surface mb-1">Country</label>
+            <label className="block font-semibold text-on-surface mb-1">
+              {t('farm:addFarmModal.locationLabel')}
+            </label>
+            <input
+              type="text"
+              required
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder={t('farm:addFarmModal.locationPlaceholder')}
+              className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-xs"
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-on-surface mb-1">
+              {t('farm:addFarmModal.countryLabel')}
+            </label>
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-[#054f31]"
+              className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-xs bg-white"
             >
-              <option value="Egypt">Egypt</option>
-              <option value="Saudi Arabia">Saudi Arabia</option>
-              <option value="UAE">United Arab Emirates</option>
-              <option value="Jordan">Jordan</option>
-              <option value="Morocco">Morocco</option>
-              <option value="Spain">Spain</option>
+              <option value="Egypt">{t('common:countries.Egypt')}</option>
+              <option value="Saudi Arabia">{t('common:countries.Saudi Arabia')}</option>
+              <option value="Spain">{t('common:countries.Spain')}</option>
+              <option value="USA">{t('common:countries.USA')}</option>
             </select>
           </div>
-          <div>
-            <label className="block font-semibold text-on-surface mb-1">Total Area (Hectares)</label>
-            <input
-              type="number"
-              min="1"
-              step="0.5"
-              required
-              value={areaHectares}
-              onChange={(e) => setAreaHectares(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-[#054f31]"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block font-semibold text-on-surface mb-1">Regional Location</label>
-          <input
-            type="text"
-            required
-            placeholder="e.g. Sadat City Industrial & Agro Zone"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-[#054f31]"
-          />
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block font-semibold text-on-surface mb-1">Irrigation System</label>
-            <select
-              value={irrigationType}
-              onChange={(e) => setIrrigationType(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-[#054f31]"
-            >
-              <option value="Solar-Powered Precision Drip System">Precision Drip System</option>
-              <option value="Center Pivot VRI (Variable Rate Irrigation)">Center Pivot VRI</option>
-              <option value="Closed-Loop Hydroponic Recirculation">Hydroponic Recirculation</option>
-              <option value="Sub-Surface Micro Drip">Sub-Surface Micro Drip</option>
-            </select>
+            <label className="block font-semibold text-on-surface mb-1">
+              {t('farm:addFarmModal.areaLabel')}
+            </label>
+            <input
+              type="number"
+              min="1"
+              max="5000"
+              value={areaHectares}
+              onChange={(e) => setAreaHectares(e.target.value)}
+              className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-xs font-mono"
+            />
           </div>
+
           <div>
-            <label className="block font-semibold text-on-surface mb-1">Primary Soil Texture</label>
+            <label className="block font-semibold text-on-surface mb-1">
+              {t('farm:addFarmModal.soilLabel')}
+            </label>
             <select
               value={soilTexture}
               onChange={(e) => setSoilTexture(e.target.value)}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-[#054f31]"
+              className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-xs bg-white"
             >
               <option value="Sandy Clay Loam">Sandy Clay Loam</option>
-              <option value="Loamy Sand">Loamy Sand</option>
               <option value="Alluvial Silt Loam">Alluvial Silt Loam</option>
-              <option value="Hydroponic Inert Substrate">Hydroponic Substrate</option>
+              <option value="Arid Calcareous Sand">Arid Calcareous Sand</option>
+              <option value="Clay">Heavy Clay</option>
             </select>
           </div>
         </div>
 
-        <div className="pt-4 border-t border-slate-100 flex items-center justify-end gap-2">
-          <Button type="button" variant="secondary" onClick={onClose}>
-            Cancel
+        <div>
+          <label className="block font-semibold text-on-surface mb-1">
+            {t('farm:addFarmModal.irrigationLabel')}
+          </label>
+          <select
+            value={irrigationType}
+            onChange={(e) => setIrrigationType(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 focus:outline-none focus:border-primary text-xs bg-white"
+          >
+            <option value="Solar-Powered Precision Drip System">Solar-Powered Precision Drip System</option>
+            <option value="Center Pivot Sprinkler System">Center Pivot Sprinkler System</option>
+            <option value="Sub-surface Drip (SDI)">Sub-surface Drip (SDI)</option>
+            <option value="Gated Pipe Furrow System">Gated Pipe Furrow System</option>
+          </select>
+        </div>
+
+        <div className="pt-3 flex justify-end gap-2 border-t border-slate-200">
+          <Button type="button" variant="secondary" size="sm" onClick={onClose}>
+            {t('common:actions.cancel')}
           </Button>
-          <Button type="submit" variant="primary">
-            Register &amp; Launch Analysis
+          <Button type="submit" variant="primary" size="sm">
+            {t('farm:addFarmModal.submitBtn')}
           </Button>
         </div>
       </form>

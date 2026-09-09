@@ -2,25 +2,25 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { AddFarmModal } from '@/components/farm/AddFarmModal';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/ui/Card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
 import {
   MapPin,
   Plus,
   ArrowRight,
-  Satellite,
-  Layers,
-  Droplets,
-  Activity,
+  ArrowLeft,
   CheckCircle2,
 } from 'lucide-react';
 
 export default function FarmsDirectoryPage() {
-  const { farms, activeFarmId, setActiveFarmId, scenarios } = useNabta();
+  const { t, i18n } = useTranslation(['farm', 'common']);
+  const { farms, activeFarmId, setActiveFarmId, scenarios, dir } = useNabta();
   const [addModalOpen, setAddModalOpen] = useState(false);
+  const NextArrow = dir === 'rtl' ? ArrowLeft : ArrowRight;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -29,17 +29,17 @@ export default function FarmsDirectoryPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Badge variant="emerald" size="sm" dot>
-              Multi-Sector Landholding
+              {t('farm:myFarms.badge')}
             </Badge>
             <span className="text-xs font-mono text-secondary">
-              Total Plots: {farms.length}
+              {t('farm:myFarms.totalPlots')}: {farms.length}
             </span>
           </div>
           <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-            My Registered Agricultural Plots
+            {t('farm:myFarms.title')}
           </h1>
           <p className="text-xs text-secondary mt-1">
-            Directory of managed land sectors, precision irrigation grids, and live remote sensing status.
+            {t('farm:myFarms.subtitle')}
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export default function FarmsDirectoryPage() {
           onClick={() => setAddModalOpen(true)}
           icon={<Plus className="w-4 h-4" />}
         >
-          Add New Farm Plot
+          {t('farm:addFarmModal.title')}
         </Button>
       </div>
 
@@ -84,51 +84,56 @@ export default function FarmsDirectoryPage() {
                     </span>
                   </div>
 
-                  <div className="text-right">
+                  <div className="text-end">
                     <span className="font-mono text-lg font-bold text-on-surface block">
                       {farm.areaHectares}
                     </span>
-                    <span className="text-[10px] font-mono text-secondary uppercase">Hectares</span>
+                    <span className="text-[10px] font-mono text-secondary uppercase">
+                      {t('common:units.ha')}
+                    </span>
                   </div>
                 </CardHeader>
 
                 <CardContent className="space-y-3 pt-3 text-xs">
                   <div className="p-3 rounded-lg bg-slate-50 border border-slate-200/80 space-y-1.5 font-mono">
                     <div className="flex justify-between">
-                      <span className="text-secondary">Current Crop Plan:</span>
+                      <span className="text-secondary">{t('farm:myFarms.currentCropPlan')}:</span>
                       <strong className="text-on-surface font-sans">{activeSc?.cropName || 'Tomato'}</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-secondary">Irrigation Grid:</span>
-                      <span className="truncate max-w-[170px] text-right font-sans">{farm.irrigationType}</span>
+                      <span className="text-secondary">{t('farm:myFarms.irrigationLabel')}:</span>
+                      <strong className="text-on-surface truncate max-w-[150px]">{farm.irrigationType}</strong>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-secondary">Canopy NDVI:</span>
-                      <strong className="text-[#054f31]">{farm.ndviAverage} (Healthy)</strong>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-secondary">Vitality Index:</span>
-                      <strong className="text-primary">{farm.healthIndex} / 100</strong>
+                      <span className="text-secondary">{t('farm:myFarms.soilLabel')}:</span>
+                      <strong className="text-on-surface">{farm.soil.texture}</strong>
                     </div>
                   </div>
                 </CardContent>
               </div>
 
-              <CardFooter className="pt-3 flex items-center justify-between gap-2">
-                <Button
-                  size="sm"
-                  variant={isActive ? 'secondary' : 'ghost'}
-                  onClick={() => setActiveFarmId(farm.id)}
-                >
-                  {isActive ? 'Active Plot' : 'Set as Active'}
-                </Button>
+              <div className="p-4 pt-0 flex items-center justify-between gap-2 border-t border-slate-100 mt-2">
+                {isActive ? (
+                  <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-primary">
+                    <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
+                    {t('farm:myFarms.currentlyActive')}
+                  </span>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={() => setActiveFarmId(farm.id)}
+                  >
+                    {t('farm:myFarms.switchBtn')}
+                  </Button>
+                )}
 
                 <Link href={`/farms/${farm.id}`}>
-                  <Button size="sm" variant="primary" icon={<ArrowRight className="w-3.5 h-3.5" />}>
-                    View Farm Dashboard
+                  <Button variant="primary" size="sm" icon={<NextArrow className="w-3.5 h-3.5" />}>
+                    {t('farm:myFarms.inspectBtn')}
                   </Button>
                 </Link>
-              </CardFooter>
+              </div>
             </Card>
           );
         })}

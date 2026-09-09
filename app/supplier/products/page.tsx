@@ -2,15 +2,17 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { formatCurrency } from '@/lib/utils';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
 import { Tabs } from '@/ui/Tabs';
-import { Plus, ArrowLeft, Trash2, Eye, Edit3, CheckCircle2, Clock } from 'lucide-react';
+import { Plus, ArrowLeft, ArrowRight, Trash2, Eye } from 'lucide-react';
 
 export default function SupplierProductsManagementPage() {
+  const { t, i18n } = useTranslation(['portals', 'common']);
+  const isRtl = i18n.language === 'ar';
   const { products, deleteProduct, currency } = useNabta();
   const [activeTab, setActiveTab] = useState<'all' | 'published' | 'pending'>('all');
 
@@ -28,23 +30,23 @@ export default function SupplierProductsManagementPage() {
           href="/supplier"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-on-surface mb-3 transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Supplier Dashboard</span>
+          {isRtl ? <ArrowRight className="w-3.5 h-3.5" /> : <ArrowLeft className="w-3.5 h-3.5" />}
+          <span>{t('portals:supplier.backToDashboard')}</span>
         </Link>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
           <div>
             <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-              Supplier Catalog &amp; Inventory Management
+              {t('portals:supplier.catalogTitle')}
             </h1>
             <p className="text-xs text-secondary mt-1">
-              Active inventory allocation, compliance verification status, and wholesale price controls.
+              {t('portals:supplier.catalogSubtitle')}
             </p>
           </div>
 
           <Link href="/supplier/products/new">
             <Button variant="primary" size="sm" icon={<Plus className="w-3.5 h-3.5" />}>
-              Add New Product
+              {t('portals:supplier.addNewProduct')}
             </Button>
           </Link>
         </div>
@@ -55,9 +57,9 @@ export default function SupplierProductsManagementPage() {
         activeTab={activeTab}
         onChange={(id: string) => setActiveTab(id as 'all' | 'published' | 'pending')}
         tabs={[
-          { id: 'all', label: 'All Catalog SKUs', count: products.length },
-          { id: 'published', label: 'Approved & Live', count: products.filter((p) => p.moderationStatus === 'APPROVED').length },
-          { id: 'pending', label: 'Pending Moderation', count: products.filter((p) => p.moderationStatus === 'PENDING').length },
+          { id: 'all', label: t('portals:supplier.tabAll'), count: products.length },
+          { id: 'published', label: t('portals:supplier.tabPublished'), count: products.filter((p) => p.moderationStatus === 'APPROVED').length },
+          { id: 'pending', label: t('portals:supplier.tabPending'), count: products.filter((p) => p.moderationStatus === 'PENDING').length },
         ]}
       />
 
@@ -66,13 +68,13 @@ export default function SupplierProductsManagementPage() {
         <table className="w-full divide-y divide-slate-200">
           <thead className="bg-slate-50 font-mono text-[10px] text-secondary uppercase">
             <tr>
-              <th className="py-3 px-4 text-left">Product SKU</th>
-              <th className="py-3 px-4 text-left">Category</th>
-              <th className="py-3 px-4 text-left">Origin</th>
-              <th className="py-3 px-4 text-center">Stock</th>
-              <th className="py-3 px-4 text-right">Wholesale Price</th>
-              <th className="py-3 px-4 text-center">Status</th>
-              <th className="py-3 px-4 text-right">Actions</th>
+              <th className="py-3 px-4 text-start">{t('portals:supplier.colProduct')}</th>
+              <th className="py-3 px-4 text-start">{t('portals:supplier.colCategory')}</th>
+              <th className="py-3 px-4 text-start">{t('portals:supplier.colOrigin')}</th>
+              <th className="py-3 px-4 text-center">{t('portals:supplier.colStock')}</th>
+              <th className="py-3 px-4 text-end">{t('portals:supplier.colPrice')}</th>
+              <th className="py-3 px-4 text-center">{t('portals:supplier.colStatus')}</th>
+              <th className="py-3 px-4 text-end">{t('portals:supplier.colActions')}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 font-mono">
@@ -102,7 +104,7 @@ export default function SupplierProductsManagementPage() {
                 <td className="py-3 px-4 text-center font-bold">
                   {product.stockQuantity} {product.unit}
                 </td>
-                <td className="py-3 px-4 text-right font-bold text-on-surface">
+                <td className="py-3 px-4 text-end font-bold text-on-surface">
                   {formatCurrency(product.priceUSD, currency)}
                 </td>
                 <td className="py-3 px-4 text-center">
@@ -120,17 +122,17 @@ export default function SupplierProductsManagementPage() {
                     {product.moderationStatus}
                   </Badge>
                 </td>
-                <td className="py-3 px-4 text-right">
+                <td className="py-3 px-4 text-end">
                   <div className="flex items-center justify-end gap-1">
                     <Link href={`/marketplace/${product.id}`}>
-                      <button className="p-1.5 rounded hover:bg-slate-100 text-secondary hover:text-on-surface" title="View in Catalog">
+                      <button className="p-1.5 rounded hover:bg-slate-100 text-secondary hover:text-on-surface" title={t('portals:supplier.viewInCatalog')}>
                         <Eye className="w-3.5 h-3.5" />
                       </button>
                     </Link>
                     <button
                       onClick={() => deleteProduct(product.id)}
                       className="p-1.5 rounded hover:bg-rose-50 text-secondary hover:text-rose-600"
-                      title="Delete Product"
+                      title={t('portals:supplier.deleteProduct')}
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>

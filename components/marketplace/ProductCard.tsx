@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { Product } from '@/types/nabta';
 import { Card } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
@@ -15,6 +16,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { t, i18n } = useTranslation(['marketplace', 'common']);
   const { currency, addToCart, activeScenario } = useNabta();
   const [added, setAdded] = React.useState(false);
 
@@ -33,8 +35,15 @@ export function ProductCard({ product }: ProductCardProps) {
     setTimeout(() => setAdded(false), 1500);
   };
 
+  const availabilityLabel =
+    product.availability === 'In Stock'
+      ? t('marketplace:card.inStock')
+      : product.availability === 'Low Stock'
+      ? t('marketplace:card.lowStock')
+      : t('marketplace:card.preOrder');
+
   return (
-    <Card className="group overflow-hidden flex flex-col hover:border-slate-300 hover:shadow-md transition-all">
+    <Card className="group overflow-hidden flex flex-col hover:border-slate-300 hover:shadow-md transition-all text-start">
       {/* Product Image Slot */}
       <Link href={`/marketplace/${product.id}`} className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 block">
         <img
@@ -45,14 +54,14 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Engine Match Tag */}
         {isRecommended && (
-          <div className="absolute top-2.5 left-2.5 bg-[#003620]/90 backdrop-blur-sm text-white border border-[#10b981]/50 px-2 py-0.5 rounded text-[10px] font-mono font-semibold uppercase flex items-center gap-1">
+          <div className="absolute top-2.5 start-2.5 bg-[#003620]/90 backdrop-blur-sm text-white border border-[#10b981]/50 px-2 py-0.5 rounded text-[10px] font-mono font-semibold uppercase flex items-center gap-1">
             <ShieldCheck className="w-3 h-3 text-[#10b981]" />
-            Scenario Match
+            {t('marketplace:card.scenarioMatch')}
           </div>
         )}
 
         {/* Availability Badge */}
-        <div className="absolute top-2.5 right-2.5">
+        <div className="absolute top-2.5 end-2.5">
           <Badge
             variant={
               product.availability === 'In Stock'
@@ -64,7 +73,7 @@ export function ProductCard({ product }: ProductCardProps) {
             size="sm"
             dot
           >
-            {product.availability}
+            {availabilityLabel}
           </Badge>
         </div>
       </Link>
@@ -92,11 +101,13 @@ export function ProductCard({ product }: ProductCardProps) {
           <div className="mt-1.5 flex items-center gap-1 text-xs text-secondary">
             <div className="flex items-center text-amber-500">
               <Star className="w-3.5 h-3.5 fill-current" />
-              <span className="ml-1 font-mono font-bold text-on-surface text-xs">
+              <span className="ms-1 font-mono font-bold text-on-surface text-xs">
                 {product.rating.toFixed(1)}
               </span>
             </div>
-            <span className="text-slate-400 font-mono text-[11px]">({product.reviewCount} reviews)</span>
+            <span className="text-slate-400 font-mono text-[11px]">
+              ({product.reviewCount} {t('marketplace:card.reviews')})
+            </span>
           </div>
         </div>
 
@@ -111,14 +122,16 @@ export function ProductCard({ product }: ProductCardProps) {
             </span>
           ))}
           <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
-            MOQ: {product.minOrderQuantity}
+            {t('marketplace:card.moq')}: {product.minOrderQuantity}
           </span>
         </div>
 
         {/* Pricing & Cart Action */}
         <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
           <div>
-            <span className="text-[10px] font-mono text-secondary uppercase block">Price per unit</span>
+            <span className="text-[10px] font-mono text-secondary uppercase block">
+              {t('marketplace:card.unitPrice')}
+            </span>
             <div className="flex items-baseline gap-1">
               <span className="font-headline font-bold text-base text-on-surface">
                 {formatCurrency(product.priceUSD, currency)}
@@ -133,7 +146,7 @@ export function ProductCard({ product }: ProductCardProps) {
             onClick={handleAddToCart}
             icon={added ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <ShoppingCart className="w-3.5 h-3.5" />}
           >
-            {added ? 'Added' : 'Add'}
+            {added ? t('marketplace:card.added') : t('marketplace:card.addToCart')}
           </Button>
         </div>
       </div>

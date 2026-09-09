@@ -3,25 +3,23 @@
 import React from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { formatCurrency } from '@/lib/utils';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
+import { Card } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
 import {
   CheckCircle2,
-  Package,
-  Truck,
-  ShieldCheck,
   ArrowRight,
-  Printer,
-  Calendar,
-  MapPin,
+  ArrowLeft,
 } from 'lucide-react';
 
 export default function OrderConfirmationPage() {
   const params = useParams();
   const orderId = params.id as string;
+  const { t, i18n } = useTranslation(['orders', 'common']);
+  const isRtl = i18n.language === 'ar';
   const { orders, currency } = useNabta();
 
   const order = orders.find((o) => o.id === orderId) || orders[0];
@@ -29,9 +27,13 @@ export default function OrderConfirmationPage() {
   if (!order) {
     return (
       <div className="max-w-3xl mx-auto py-20 px-4 text-center space-y-4">
-        <h2 className="font-headline font-bold text-xl text-on-surface">Order Record Not Found</h2>
+        <h2 className="font-headline font-bold text-xl text-on-surface">
+          {t('orders:confirmation.notFound')}
+        </h2>
         <Link href="/marketplace">
-          <Button variant="primary" size="sm">Return to Marketplace</Button>
+          <Button variant="primary" size="sm">
+            {t('orders:checkout.returnBtn')}
+          </Button>
         </Link>
       </div>
     );
@@ -45,13 +47,13 @@ export default function OrderConfirmationPage() {
           <CheckCircle2 className="w-8 h-8 text-[#054f31]" />
         </div>
         <Badge variant="mint" size="md">
-          Escrow Deposited &amp; Confirmed
+          {t('orders:confirmation.badge')}
         </Badge>
         <h1 className="font-headline font-extrabold text-3xl text-on-surface tracking-tight">
-          Procurement Order Successfully Placed
+          {t('orders:confirmation.title')}
         </h1>
         <p className="text-xs text-secondary max-w-lg mx-auto font-mono">
-          Order Reference: <strong className="text-on-surface">{order.id}</strong> | Tracking ID:{' '}
+          {t('orders:confirmation.orderRef')}: <strong className="text-on-surface">{order.id}</strong> | {t('orders:confirmation.trackingId')}:{' '}
           <strong className="text-primary">{order.trackingNumber}</strong>
         </p>
       </div>
@@ -61,23 +63,27 @@ export default function OrderConfirmationPage() {
         {/* Logistics Milestones Bar */}
         <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
           <div className="flex items-center justify-between text-xs font-mono">
-            <span className="font-bold text-on-surface">Logistics Status: {order.status}</span>
-            <span className="text-secondary">Estimated Arrival: {order.estimatedDeliveryDate}</span>
+            <span className="font-bold text-on-surface">
+              {t('orders:confirmation.logisticsStatus')}: {order.status}
+            </span>
+            <span className="text-secondary">
+              {t('orders:confirmation.estimatedArrival')}: {order.estimatedDeliveryDate}
+            </span>
           </div>
 
           {/* Stepper */}
           <div className="grid grid-cols-4 gap-2 text-center text-[10px] font-mono">
             <div className="p-2 rounded bg-[#054f31] text-white font-bold">
-              1. Escrow Funded
+              {t('orders:confirmation.step1')}
             </div>
             <div className="p-2 rounded bg-primary/20 text-primary-container font-semibold">
-              2. Phytosanitary Insp.
+              {t('orders:confirmation.step2')}
             </div>
             <div className="p-2 rounded bg-slate-100 text-slate-500">
-              3. Port Customs
+              {t('orders:confirmation.step3')}
             </div>
             <div className="p-2 rounded bg-slate-100 text-slate-500">
-              4. Farm Gate Delivery
+              {t('orders:confirmation.step4')}
             </div>
           </div>
         </div>
@@ -86,7 +92,7 @@ export default function OrderConfirmationPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs font-body pt-2 border-t border-slate-100">
           <div>
             <span className="font-headline font-bold text-on-surface uppercase text-[11px] block mb-1">
-              Consignee &amp; Farm Delivery Coordinates
+              {t('orders:confirmation.consigneeTitle')}
             </span>
             <p className="font-semibold text-on-surface">{order.customerName}</p>
             <p className="text-secondary">{order.deliveryAddress.street}</p>
@@ -100,11 +106,11 @@ export default function OrderConfirmationPage() {
 
           <div>
             <span className="font-headline font-bold text-on-surface uppercase text-[11px] block mb-1">
-              Payment Protocol &amp; Guarantee
+              {t('orders:confirmation.paymentGuaranteeTitle')}
             </span>
             <p className="font-semibold text-on-surface">{order.paymentMethod}</p>
             <p className="text-secondary mt-1">
-              Backed by ISO 22000 Trade Verification. Inspection seal registered under Copernicus logistics telemetry.
+              {t('orders:confirmation.paymentGuaranteeDesc')}
             </p>
           </div>
         </div>
@@ -112,18 +118,18 @@ export default function OrderConfirmationPage() {
         {/* Itemized Table */}
         <div className="pt-4 border-t border-slate-100 space-y-3">
           <span className="font-headline font-bold text-on-surface uppercase text-[11px] block">
-            Itemized Agricultural Manifest
+            {t('orders:confirmation.manifestTitle')}
           </span>
 
           <div className="border border-slate-200 rounded-xl overflow-hidden text-xs">
             <table className="w-full divide-y divide-slate-200">
               <thead className="bg-slate-50 font-mono text-[10px] text-secondary uppercase">
                 <tr>
-                  <th className="py-2.5 px-4 text-left">SKU Description</th>
-                  <th className="py-2.5 px-4 text-left">Supplier</th>
-                  <th className="py-2.5 px-4 text-center">Qty</th>
-                  <th className="py-2.5 px-4 text-right">Price</th>
-                  <th className="py-2.5 px-4 text-right">Amount</th>
+                  <th className="py-2.5 px-4 text-start">{t('orders:confirmation.skuDesc')}</th>
+                  <th className="py-2.5 px-4 text-start">{t('orders:confirmation.supplier')}</th>
+                  <th className="py-2.5 px-4 text-center">{t('orders:cart.qty')}</th>
+                  <th className="py-2.5 px-4 text-end">{t('orders:confirmation.price')}</th>
+                  <th className="py-2.5 px-4 text-end">{t('orders:confirmation.amount')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-mono">
@@ -136,10 +142,10 @@ export default function OrderConfirmationPage() {
                       {item.product.supplierName} ({item.product.countryOfOrigin})
                     </td>
                     <td className="py-3 px-4 text-center font-bold">{item.quantity}</td>
-                    <td className="py-3 px-4 text-right">
+                    <td className="py-3 px-4 text-end">
                       {formatCurrency(item.product.priceUSD, currency)}
                     </td>
-                    <td className="py-3 px-4 text-right font-bold text-on-surface">
+                    <td className="py-3 px-4 text-end font-bold text-on-surface">
                       {formatCurrency(item.product.priceUSD * item.quantity, currency)}
                     </td>
                   </tr>
@@ -153,15 +159,15 @@ export default function OrderConfirmationPage() {
         <div className="flex justify-end pt-2 text-xs font-mono">
           <div className="w-64 space-y-1.5">
             <div className="flex justify-between text-secondary">
-              <span>Items Total:</span>
+              <span>{t('orders:confirmation.itemsTotal')}:</span>
               <span>{formatCurrency(order.subtotalUSD, currency)}</span>
             </div>
             <div className="flex justify-between text-secondary">
-              <span>Freight Logistics:</span>
+              <span>{t('orders:confirmation.freightLogistics')}:</span>
               <span>{formatCurrency(order.shippingUSD, currency)}</span>
             </div>
             <div className="flex justify-between text-base font-headline font-bold text-on-surface pt-2 border-t border-slate-200">
-              <span>Settled Total:</span>
+              <span>{t('orders:confirmation.settledTotal')}:</span>
               <span className="text-primary">{formatCurrency(order.totalUSD, currency)}</span>
             </div>
           </div>
@@ -170,14 +176,20 @@ export default function OrderConfirmationPage() {
         {/* Action buttons */}
         <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
           <Link href="/orders" className="w-full sm:w-auto">
-            <Button variant="primary" size="md" className="w-full" icon={<ArrowRight className="w-4 h-4" />}>
-              Track Order in Portal
+            <Button
+              variant="primary"
+              size="md"
+              className="w-full"
+              icon={isRtl ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+              iconPosition={isRtl ? 'left' : 'right'}
+            >
+              {t('orders:confirmation.trackOrderBtn')}
             </Button>
           </Link>
 
           <Link href="/marketplace" className="w-full sm:w-auto">
             <Button variant="secondary" size="md" className="w-full">
-              Continue Sourcing
+              {t('orders:cart.continueSourcingBtn')}
             </Button>
           </Link>
         </div>

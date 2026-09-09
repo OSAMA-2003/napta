@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
-import { Satellite, Eye, RefreshCw, Layers } from 'lucide-react';
+import { Satellite, RefreshCw, Eye } from 'lucide-react';
 import { Farm } from '@/types/nabta';
 
 interface SatelliteHealthMapProps {
@@ -12,6 +13,8 @@ interface SatelliteHealthMapProps {
 }
 
 export function SatelliteHealthMap({ farm }: SatelliteHealthMapProps) {
+  const { t } = useTranslation(['farm', 'common']);
+
   const [activeBand, setActiveBand] = useState<'NDVI' | 'TRUE_COLOR' | 'MOISTURE'>('NDVI');
   const [refreshing, setRefreshing] = useState(false);
 
@@ -28,7 +31,7 @@ export function SatelliteHealthMap({ farm }: SatelliteHealthMapProps) {
             <Satellite className="w-4 h-4" />
           </div>
           <div>
-            <CardTitle>Multispectral Orbit View</CardTitle>
+            <CardTitle>{t('farm:farmIntelligence.healthMapTitle')}</CardTitle>
             <p className="text-xs text-secondary font-mono">
               Lat: {farm.coordinates.lat.toFixed(3)}°N, Lng: {farm.coordinates.lng.toFixed(3)}°E
             </p>
@@ -37,7 +40,7 @@ export function SatelliteHealthMap({ farm }: SatelliteHealthMapProps) {
 
         <div className="flex items-center gap-2">
           <Badge variant="mint" dot size="sm">
-            Live Stream
+            {t('farm:farmIntelligence.liveStream')}
           </Badge>
           <Button
             variant="secondary"
@@ -45,7 +48,7 @@ export function SatelliteHealthMap({ farm }: SatelliteHealthMapProps) {
             onClick={handleRefresh}
             icon={<RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />}
           >
-            Refresh
+            {t('common:actions.reset')}
           </Button>
         </div>
       </CardHeader>
@@ -86,11 +89,15 @@ export function SatelliteHealthMap({ farm }: SatelliteHealthMapProps) {
         {/* Top HUD Stats Overlay */}
         <div className="relative z-10 p-4 flex items-center justify-between text-white text-xs font-mono">
           <div className="bg-[#0b1c30]/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700/80">
-            <span className="text-slate-400 block text-[9px] uppercase">Sentinel Resolution</span>
+            <span className="text-slate-400 block text-[9px] uppercase">
+              {t('farm:farmIntelligence.sentinelResolution')}
+            </span>
             <span className="text-[#6ffbbe] font-bold">10m / Ground Sample</span>
           </div>
-          <div className="bg-[#0b1c30]/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700/80 text-right">
-            <span className="text-slate-400 block text-[9px] uppercase">Canopy Health Index</span>
+          <div className="bg-[#0b1c30]/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700/80 text-end">
+            <span className="text-slate-400 block text-[9px] uppercase">
+              {t('farm:farmIntelligence.canopyHealthIndex')}
+            </span>
             <span className="text-[#10b981] font-bold text-sm">{farm.healthIndex} / 100</span>
           </div>
         </div>
@@ -100,32 +107,39 @@ export function SatelliteHealthMap({ farm }: SatelliteHealthMapProps) {
           <div className="inline-flex rounded-lg bg-[#0b1c30]/90 p-1 border border-slate-700">
             <button
               onClick={() => setActiveBand('NDVI')}
-              className={`px-2.5 py-1 text-[11px] font-mono rounded font-semibold transition-colors ${
-                activeBand === 'NDVI' ? 'bg-[#10b981] text-[#003620]' : 'text-slate-300 hover:text-white'
+              className={`px-3 py-1 rounded text-xs font-mono font-semibold transition-all ${
+                activeBand === 'NDVI'
+                  ? 'bg-[#10b981] text-[#002111] shadow-xs'
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
               NDVI (Canopy Vigor)
             </button>
             <button
               onClick={() => setActiveBand('MOISTURE')}
-              className={`px-2.5 py-1 text-[11px] font-mono rounded font-semibold transition-colors ${
-                activeBand === 'MOISTURE' ? 'bg-[#0284c7] text-white' : 'text-slate-300 hover:text-white'
+              className={`px-3 py-1 rounded text-xs font-mono font-semibold transition-all ${
+                activeBand === 'MOISTURE'
+                  ? 'bg-blue-500 text-white shadow-xs'
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
-              CWSI (Moisture Index)
+              NDMI (Soil Moisture)
             </button>
             <button
               onClick={() => setActiveBand('TRUE_COLOR')}
-              className={`px-2.5 py-1 text-[11px] font-mono rounded font-semibold transition-colors ${
-                activeBand === 'TRUE_COLOR' ? 'bg-slate-200 text-slate-900' : 'text-slate-300 hover:text-white'
+              className={`px-3 py-1 rounded text-xs font-mono font-semibold transition-all ${
+                activeBand === 'TRUE_COLOR'
+                  ? 'bg-slate-700 text-white shadow-xs'
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
-              RGB True Color
+              True Color (B4/B3/B2)
             </button>
           </div>
 
-          <div className="text-[10px] font-mono text-slate-300">
-            Last pass: {farm.lastSatellitePass}
+          <div className="flex items-center gap-1.5 text-xs text-[#aef1c8] font-mono">
+            <Eye className="w-3.5 h-3.5" />
+            <span>Sentinel-2C Overpass: 14h ago</span>
           </div>
         </div>
       </CardContent>

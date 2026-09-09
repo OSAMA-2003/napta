@@ -1,0 +1,109 @@
+{
+  "brand": {
+    "title": "NABTA",
+    "tagline": "AgriTech Intelligence & Trade",
+    "fullName": "NABTA AGRI-INTELLIGENCE"
+  },
+  "nav": {
+    "overview": "Overview",
+    "farmIntelligence": "Farm Intelligence",
+    "cropRecommendation": "Crop Recommendation",
+    "scenarios": "Scenarios",
+    "marketplace": "Marketplace",
+    "myFarms": "My Farms",
+    "orders": "Orders",
+    "activePlot": "Active Plot",
+    "sellProduce": "Sell Your Produce",
+    "switchRole": "Switch Role"
+  },
+  "roles": {
+    "farmer": "Farmer / Operator",
+    "supplier": "Supplier Portal",
+    "admin": "Admin Moderation"
+  },
+  "ticker": {
+    "liveFeed": "Live Telemetry Feed",
+    "monitoringArea": "Monitoring 420,000+ Hectares across 18 Countries (Sentinel-2C & PlanetScope)",
+    "yieldProtected": "$142M+ YIELD PROTECTED",
+    "forecastAccuracy": "99.4% FORECAST ACCURACY",
+    "isoCertified": "ISO 14064 & GLOBALG.A.P."
+  },
+  "footer": {
+    "desc": "The Sovereign Agronomic Operating System bridging planetary-scale remote sensing, stochastic yield modeling, and international agricultural input procurement.",
+    "isoAudited": "ISO 14064 Carbon Audited",
+    "globalGap": "GLOBALG.A.P. Standard",
+    "colIntelligence": "Intelligence",
+    "colMarketplace": "B2B Marketplace",
+    "colPortals": "Enterprise Portals",
+    "sentinelRemote": "Sentinel Remote Sensing",
+    "cropEngine": "Crop Recommendation Engine",
+    "tradeoffMatrix": "Scenario Tradeoff Matrix",
+    "soilProfiles": "Precision Soil Profiles",
+    "certifiedSeeds": "Certified Seeds & Germplasm",
+    "solubleFertigation": "Water-Soluble Fertigation",
+    "dripSystems": "Pressure Drip Systems",
+    "iotProbes": "Sub-surface IoT Probes",
+    "sellProduceGrowers": "Sell Produce (Growers)",
+    "supplierHub": "Supplier Logistics Hub",
+    "publishSku": "Publish Input SKU",
+    "complianceAdmin": "Compliance & Moderation",
+    "systemSettings": "System Settings & API",
+    "rights": "NABTA GLOBAL AGROTECHNOLOGIES CORP. © 2026. ALL RIGHTS RESERVED.",
+    "statusNominal": "STATUS: SYSTEMS NOMINAL",
+    "sentinelConnected": "SENTINEL-2C CONNECTED"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "view": "View",
+    "details": "Details",
+    "filter": "Filter",
+    "clear": "Clear",
+    "reset": "Reset",
+    "search": "Search",
+    "addToCart": "Add to Cart",
+    "checkout": "Checkout",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "compare": "Compare",
+    "proceed": "Proceed",
+    "apply": "Apply",
+    "download": "Download",
+    "learnMore": "Learn More"
+  },
+  "status": {
+    "active": "Active",
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "delivered": "Delivered",
+    "inTransit": "In Transit",
+    "processing": "Processing",
+    "inStock": "In Stock",
+    "lowStock": "Low Stock",
+    "preOrder": "Pre-Order"
+  },
+  "units": {
+    "ha": "ha",
+    "mtPerHa": "MT/ha",
+    "m3PerHa": "m³/ha",
+    "days": "Days",
+    "tons": "Tons",
+    "kg": "kg"
+  },
+  "countries": {
+    "Egypt": "Egypt",
+    "Saudi Arabia": "Saudi Arabia",
+    "Spain": "Spain",
+    "USA": "United States",
+    "Netherlands": "Netherlands",
+    "Germany": "Germany",
+    "France": "France",
+    "UAE": "UAE"
+  }
+}

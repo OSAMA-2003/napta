@@ -2,25 +2,26 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
-import { formatCurrency, formatNumber } from '@/lib/utils';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
+import { formatCurrency } from '@/lib/utils';
+import { Card } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
 import {
-  Building2,
   Package,
   Plus,
   ArrowRight,
-  TrendingUp,
+  ArrowLeft,
   DollarSign,
   Truck,
   ShieldCheck,
-  CheckCircle2,
 } from 'lucide-react';
 
 export default function SupplierDashboardPage() {
-  const { products, orders, currency } = useNabta();
+  const { t, i18n } = useTranslation(['portals', 'common']);
+  const isRtl = i18n.language === 'ar';
+  const { products, currency } = useNabta();
 
   // Metrics
   const totalListings = products.length;
@@ -34,29 +35,29 @@ export default function SupplierDashboardPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Badge variant="emerald" size="sm" dot>
-              Verified Global Supplier Hub
+              {t('portals:supplier.badge')}
             </Badge>
             <span className="text-xs font-mono text-secondary">
-              Tier 1 Agro-Chemical &amp; Seed Vendor
+              {t('portals:supplier.tier')}
             </span>
           </div>
           <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-            Supplier Operations &amp; Commercial Console
+            {t('portals:supplier.title')}
           </h1>
           <p className="text-xs text-secondary mt-1">
-            Manage international input SKUs, phytosanitary export documentation, order fulfillment, and wholesale pricing.
+            {t('portals:supplier.subtitle')}
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <Link href="/supplier/products">
             <Button variant="secondary" size="sm" icon={<Package className="w-3.5 h-3.5" />}>
-              Catalog Manager
+              {t('portals:supplier.catalogManagerBtn')}
             </Button>
           </Link>
           <Link href="/supplier/products/new">
             <Button variant="primary" size="sm" icon={<Plus className="w-3.5 h-3.5" />}>
-              Publish New Input SKU
+              {t('portals:supplier.publishSkuBtn')}
             </Button>
           </Link>
         </div>
@@ -66,47 +67,55 @@ export default function SupplierDashboardPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">Active Catalog SKUs</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('portals:supplier.activeCatalogSkus')}
+            </span>
             <Package className="w-4 h-4 text-primary" />
           </div>
           <span className="font-mono text-2xl font-bold text-on-surface">{approvedListings}</span>
           <span className="text-[10px] text-secondary block mt-0.5">
-            {pendingModeration} Pending Verification
+            {pendingModeration} {t('portals:supplier.pendingVerification')}
           </span>
         </div>
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">Gross Settlement GMV</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('portals:supplier.grossGmv')}
+            </span>
             <DollarSign className="w-4 h-4 text-emerald-600" />
           </div>
           <span className="font-mono text-2xl font-bold text-primary">
             {formatCurrency(48500, currency)}
           </span>
           <span className="text-[10px] text-[#10b981] font-semibold block mt-0.5">
-            100% Escrow Backed
+            {t('portals:supplier.escrowBacked')}
           </span>
         </div>
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">Active Shipments</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('portals:supplier.activeShipments')}
+            </span>
             <Truck className="w-4 h-4 text-blue-600" />
           </div>
-          <span className="font-mono text-2xl font-bold text-on-surface">6 Batches</span>
+          <span className="font-mono text-2xl font-bold text-on-surface">6 {t('portals:supplier.batches')}</span>
           <span className="text-[10px] text-blue-600 font-semibold block mt-0.5">
-            Zero customs delays
+            {t('portals:supplier.zeroDelays')}
           </span>
         </div>
 
         <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="flex items-center justify-between text-secondary mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider">Vendor Trust Rating</span>
+            <span className="text-[10px] font-mono uppercase tracking-wider">
+              {t('portals:supplier.vendorRating')}
+            </span>
             <ShieldCheck className="w-4 h-4 text-amber-600" />
           </div>
           <span className="font-mono text-2xl font-bold text-on-surface">99.2%</span>
           <span className="text-[10px] text-secondary block mt-0.5">
-            GLOBALG.A.P. &amp; ISTA Certified
+            {t('portals:supplier.certBadges')}
           </span>
         </div>
       </div>
@@ -120,17 +129,23 @@ export default function SupplierDashboardPage() {
             </div>
             <div>
               <h3 className="font-headline font-bold text-base text-on-surface">
-                Catalog &amp; Inventory Management
+                {t('portals:supplier.catalogInventoryTitle')}
               </h3>
               <p className="text-xs text-secondary mt-0.5">
-                Update stock levels, wholesale volume discounts, and chemical purity specs.
+                {t('portals:supplier.catalogInventoryDesc')}
               </p>
             </div>
           </div>
           <div className="pt-2">
             <Link href="/supplier/products">
-              <Button variant="secondary" size="sm" className="w-full" icon={<ArrowRight className="w-3.5 h-3.5" />}>
-                Open Product Catalog ({totalListings} Items)
+              <Button
+                variant="secondary"
+                size="sm"
+                className="w-full"
+                icon={isRtl ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
+                iconPosition={isRtl ? 'left' : 'right'}
+              >
+                {t('portals:supplier.openCatalogBtn')} ({totalListings})
               </Button>
             </Link>
           </div>
@@ -143,17 +158,23 @@ export default function SupplierDashboardPage() {
             </div>
             <div>
               <h3 className="font-headline font-bold text-base text-on-surface">
-                Publish New Agricultural SKU
+                {t('portals:supplier.publishNewSkuTitle')}
               </h3>
               <p className="text-xs text-secondary mt-0.5">
-                Register hybrid seed lines, biological pest agents, or IoT telemetry hardware.
+                {t('portals:supplier.publishNewSkuDesc')}
               </p>
             </div>
           </div>
           <div className="pt-2">
             <Link href="/supplier/products/new">
-              <Button variant="primary" size="sm" className="w-full" icon={<ArrowRight className="w-3.5 h-3.5" />}>
-                Launch Listing Wizard
+              <Button
+                variant="primary"
+                size="sm"
+                className="w-full"
+                icon={isRtl ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
+                iconPosition={isRtl ? 'left' : 'right'}
+              >
+                {t('portals:supplier.launchWizardBtn')}
               </Button>
             </Link>
           </div>

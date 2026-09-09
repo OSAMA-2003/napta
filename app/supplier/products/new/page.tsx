@@ -3,14 +3,17 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { ProductCategory } from '@/types/nabta';
 import { Button } from '@/ui/Button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
-import { ArrowLeft, Plus, Check } from 'lucide-react';
+import { Card } from '@/ui/Card';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 export default function AddSupplierProductPage() {
   const router = useRouter();
+  const { t, i18n } = useTranslation(['portals', 'common', 'marketplace']);
+  const isRtl = i18n.language === 'ar';
   const { addProduct } = useNabta();
 
   // Form State
@@ -67,15 +70,15 @@ export default function AddSupplierProductPage() {
           href="/supplier/products"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-on-surface mb-3 transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Product Management</span>
+          {isRtl ? <ArrowRight className="w-3.5 h-3.5" /> : <ArrowLeft className="w-3.5 h-3.5" />}
+          <span>{t('portals:supplier.newSku.back')}</span>
         </Link>
 
         <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-          Publish New Agricultural Input SKU
+          {t('portals:supplier.newSku.title')}
         </h1>
         <p className="text-xs text-secondary mt-1">
-          Submit product specifications and phytosanitary certificates for automated algorithmic matching in the NABTA Marketplace.
+          {t('portals:supplier.newSku.subtitle')}
         </p>
       </div>
 
@@ -83,16 +86,18 @@ export default function AddSupplierProductPage() {
         {/* Section 1: Basic Information */}
         <Card className="p-6 space-y-4">
           <h3 className="font-headline font-bold text-base text-on-surface">
-            1. Product Classification &amp; Identity
+            {t('portals:supplier.newSku.section1Title')}
           </h3>
 
           <div className="space-y-4 text-xs font-body">
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Commercial Product Name</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:supplier.newSku.nameLabel')}
+              </label>
               <input
                 type="text"
                 required
-                placeholder="e.g. SoluPotash High-K 12-12-36 + Chelated TE"
+                placeholder={t('portals:supplier.newSku.namePlaceholder')}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-primary"
@@ -101,25 +106,29 @@ export default function AddSupplierProductPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Product Category</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:supplier.newSku.categoryLabel')}
+                </label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value as ProductCategory)}
                   className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-primary"
                 >
-                  <option value="seeds">Seeds &amp; Germplasm</option>
-                  <option value="fertilizers">Fertilizers &amp; Nutrients</option>
-                  <option value="crop-protection">Crop Protection &amp; Bio-Agents</option>
-                  <option value="irrigation">Precision Irrigation Equipment</option>
-                  <option value="sensors-iot">Sensors &amp; IoT Telemetry</option>
-                  <option value="machinery">Machinery &amp; UAVs</option>
-                  <option value="greenhouses">Greenhouses &amp; Climate Shields</option>
-                  <option value="storage-packaging">Storage &amp; Cold Chain</option>
+                  <option value="seeds">{t('marketplace:categories.seeds')}</option>
+                  <option value="fertilizers">{t('marketplace:categories.fertilizers')}</option>
+                  <option value="crop-protection">{t('marketplace:categories.cropProtection')}</option>
+                  <option value="irrigation">{t('marketplace:categories.irrigation')}</option>
+                  <option value="sensors-iot">{t('marketplace:categories.sensors')}</option>
+                  <option value="machinery">{t('marketplace:categories.machinery')}</option>
+                  <option value="greenhouses">{t('marketplace:categories.greenhouses')}</option>
+                  <option value="storage-packaging">{t('marketplace:categories.storage')}</option>
                 </select>
               </div>
 
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Subcategory / Line</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:supplier.newSku.subcategoryLabel')}
+                </label>
                 <input
                   type="text"
                   value={subcategory}
@@ -131,7 +140,9 @@ export default function AddSupplierProductPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Manufacturer</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:supplier.newSku.manufacturerLabel')}
+                </label>
                 <input
                   type="text"
                   required
@@ -141,7 +152,9 @@ export default function AddSupplierProductPage() {
                 />
               </div>
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Supplier Entity</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:supplier.newSku.supplierLabel')}
+                </label>
                 <input
                   type="text"
                   required
@@ -151,7 +164,9 @@ export default function AddSupplierProductPage() {
                 />
               </div>
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Country of Origin</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:supplier.newSku.originLabel')}
+                </label>
                 <input
                   type="text"
                   required
@@ -167,12 +182,14 @@ export default function AddSupplierProductPage() {
         {/* Section 2: Pricing & Logistics */}
         <Card className="p-6 space-y-4">
           <h3 className="font-headline font-bold text-base text-on-surface">
-            2. Commercial Terms, Volume &amp; Packaging
+            {t('portals:supplier.newSku.section2Title')}
           </h3>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-body">
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Price (USD)</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:supplier.newSku.priceLabel')}
+              </label>
               <input
                 type="number"
                 step="0.1"
@@ -183,7 +200,9 @@ export default function AddSupplierProductPage() {
               />
             </div>
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Packaging Unit</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:supplier.newSku.unitLabel')}
+              </label>
               <input
                 type="text"
                 required
@@ -193,7 +212,9 @@ export default function AddSupplierProductPage() {
               />
             </div>
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Minimum Order (MOQ)</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:supplier.newSku.moqLabel')}
+              </label>
               <input
                 type="number"
                 min="1"
@@ -204,7 +225,9 @@ export default function AddSupplierProductPage() {
               />
             </div>
             <div>
-              <label className="block font-semibold text-on-surface mb-1">In-Stock Quantity</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:supplier.newSku.stockLabel')}
+              </label>
               <input
                 type="number"
                 min="1"
@@ -217,7 +240,9 @@ export default function AddSupplierProductPage() {
           </div>
 
           <div className="text-xs">
-            <label className="block font-semibold text-on-surface mb-1">Shipping &amp; Logistics Notes</label>
+            <label className="block font-semibold text-on-surface mb-1">
+              {t('portals:supplier.newSku.shippingLabel')}
+            </label>
             <input
               type="text"
               value={shippingInformation}
@@ -230,16 +255,18 @@ export default function AddSupplierProductPage() {
         {/* Section 3: Technical Specifications & Image */}
         <Card className="p-6 space-y-4">
           <h3 className="font-headline font-bold text-base text-on-surface">
-            3. Technical Specs, Agronomic Suitability &amp; Image
+            {t('portals:supplier.newSku.section3Title')}
           </h3>
 
           <div className="space-y-4 text-xs font-body">
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Product Description</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:supplier.newSku.descLabel')}
+              </label>
               <textarea
                 rows={3}
                 required
-                placeholder="Describe active ingredients, formulation, and field benefits..."
+                placeholder={t('portals:supplier.newSku.descPlaceholder')}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-primary"
@@ -247,7 +274,9 @@ export default function AddSupplierProductPage() {
             </div>
 
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Product Image URL</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:supplier.newSku.imageUrlLabel')}
+              </label>
               <input
                 type="url"
                 required
@@ -259,7 +288,9 @@ export default function AddSupplierProductPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Suitable Crops (comma separated)</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:supplier.newSku.cropsLabel')}
+                </label>
                 <input
                   type="text"
                   value={suitableCrops}
@@ -269,7 +300,9 @@ export default function AddSupplierProductPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Certifications (comma separated)</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:supplier.newSku.certsLabel')}
+                </label>
                 <input
                   type="text"
                   value={certifications}
@@ -283,10 +316,12 @@ export default function AddSupplierProductPage() {
 
         <div className="flex items-center justify-end gap-3 pt-2">
           <Link href="/supplier/products">
-            <Button type="button" variant="secondary">Cancel</Button>
+            <Button type="button" variant="secondary">
+              {t('common:actions.cancel')}
+            </Button>
           </Link>
           <Button type="submit" variant="primary" size="lg">
-            Submit SKU for Verification
+            {t('portals:supplier.newSku.submitBtn')}
           </Button>
         </div>
       </form>

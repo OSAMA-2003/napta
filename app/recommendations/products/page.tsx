@@ -2,23 +2,25 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { ProductCard } from '@/components/marketplace/ProductCard';
 import { Button } from '@/ui/Button';
 import { Badge } from '@/ui/Badge';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
 import {
   ShieldCheck,
   ArrowLeft,
+  ArrowRight,
   ShoppingCart,
   Check,
-  Layers,
   Store,
 } from 'lucide-react';
 
 export default function RecommendedProductsPage() {
-  const { activeScenario, activeFarm, products, addToCart } = useNabta();
+  const { t, i18n } = useTranslation(['recommendations', 'common', 'marketplace']);
+  const { activeScenario, activeFarm, products, addToCart, dir } = useNabta();
   const [bulkAdded, setBulkAdded] = useState(false);
+  const BackArrow = dir === 'rtl' ? ArrowRight : ArrowLeft;
 
   // Filter products matching scenario
   const recommendedProducts = products.filter((p) => {
@@ -38,96 +40,114 @@ export default function RecommendedProductsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 text-start">
       {/* Back link & Top bar */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
-        <div>
+        <div className="space-y-2">
           <Link
             href="/recommendations"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-on-surface mb-2 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-on-surface transition-colors"
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Crop Intelligence Report</span>
+            <BackArrow className="w-3.5 h-3.5" />
+            <span>{t('recommendations:products.backToReport')}</span>
           </Link>
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex flex-wrap items-center gap-2">
             <Badge variant="emerald" size="sm" dot>
-              Scenario-Bound Inputs
+              {t('recommendations:products.badge')}
             </Badge>
             <span className="text-xs font-mono text-secondary">
-              Target: {activeScenario.cropName} ({activeScenario.variety})
+              {t('recommendations:products.targetLabel')}: {activeScenario.cropName} ({activeScenario.variety})
             </span>
           </div>
           <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-            Prescribed Agricultural Inputs &amp; Equipment
+            {t('recommendations:products.title')}
           </h1>
-          <p className="text-xs text-secondary mt-1">
-            Verified materials directly calibrated to satisfy the nutritional, genetic, and irrigation parameters of your selected scenario.
+          <p className="text-xs sm:text-sm text-secondary max-w-2xl">
+            {t('recommendations:products.subtitle')}
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Link href="/cart">
-            <Button variant="secondary" size="sm" icon={<ShoppingCart className="w-3.5 h-3.5" />}>
-              View Cart
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full md:w-auto">
+          <Link href="/cart" className="w-full sm:w-auto">
+            <Button variant="secondary" size="sm" className="w-full sm:w-auto" icon={<ShoppingCart className="w-3.5 h-3.5" />}>
+              {t('recommendations:products.viewCart')}
             </Button>
           </Link>
           <Button
             variant="primary"
             size="sm"
+            className="w-full sm:w-auto whitespace-nowrap"
             onClick={handleAddAll}
             icon={bulkAdded ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <ShoppingCart className="w-3.5 h-3.5" />}
           >
-            {bulkAdded ? 'All Essentials Added!' : 'Add All Scenario Essentials to Cart'}
+            {bulkAdded ? t('recommendations:products.allAdded') : t('recommendations:products.addAllBtn')}
           </Button>
         </div>
       </div>
 
       {/* Scenario Context Banner */}
-      <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-primary text-white">
+      <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="flex items-start gap-3 w-full md:w-auto">
+          <div className="p-2.5 rounded-xl bg-primary text-white shrink-0 mt-0.5 sm:mt-0">
             <ShieldCheck className="w-5 h-5" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-headline font-bold text-sm text-on-surface">
-                Calibrated for {activeFarm.name}
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-headline font-bold text-sm sm:text-base text-on-surface">
+                {t('recommendations:products.calibratedFor', { farmName: activeFarm.name })}
               </span>
               <Badge variant="mint" size="sm">
-                Suitability: {activeScenario.suitabilityScore}%
+                {t('recommendations:suitabilityScore')}: {activeScenario.suitabilityScore}%
               </Badge>
             </div>
-            <p className="text-xs text-secondary mt-0.5">
-              Target Yield: <strong>{activeScenario.expectedProductionTonHa} MT/ha</strong> | Water Quota:{' '}
-              <strong>{activeScenario.waterDemandM3Ha} m³/ha</strong> | Soil pH:{' '}
-              <strong>{activeFarm.soil.ph}</strong>
-            </p>
+            
+            {/* Responsive metric badges */}
+            <div className="flex flex-wrap items-center gap-2 mt-2 font-mono">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-primary/15 text-xs shadow-2xs">
+                <span className="text-secondary">{t('recommendations:products.targetYieldLabel')}:</span>
+                <strong className="text-on-surface">{activeScenario.expectedProductionTonHa} {t('common:units.mtPerHa')}</strong>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-primary/15 text-xs shadow-2xs">
+                <span className="text-secondary">{t('recommendations:products.waterQuotaLabel')}:</span>
+                <strong className="text-on-surface">{activeScenario.waterDemandM3Ha} {t('common:units.m3PerHa')}</strong>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-primary/15 text-xs shadow-2xs">
+                <span className="text-secondary">{t('recommendations:products.soilPhLabel')}:</span>
+                <strong className="text-on-surface">{activeFarm.soil.ph}</strong>
+              </div>
+            </div>
           </div>
         </div>
 
-        <Link href="/marketplace">
-          <Button variant="secondary" size="sm" icon={<Store className="w-3.5 h-3.5" />}>
-            Browse Full Catalog
+        <Link href="/marketplace" className="w-full md:w-auto shrink-0">
+          <Button variant="secondary" size="sm" className="w-full md:w-auto" icon={<Store className="w-3.5 h-3.5" />}>
+            {t('recommendations:products.browseMarketplace')}
           </Button>
         </Link>
       </div>
 
       {/* Recommended Products Grid */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h3 className="font-headline font-bold text-lg text-on-surface">
-            Recommended Items ({recommendedProducts.length} Prescriptions)
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h3 className="font-headline font-bold text-lg sm:text-xl text-on-surface">
+            {t('recommendations:products.itemsCount', { count: recommendedProducts.length })}
           </h3>
           <span className="text-xs font-mono text-secondary">
-            Verified International Suppliers
+            {t('recommendations:products.verifiedSuppliers')}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {recommendedProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {recommendedProducts.length === 0 ? (
+          <div className="p-8 sm:p-12 text-center bg-slate-50 rounded-2xl border border-slate-200">
+            <p className="text-xs sm:text-sm text-secondary">{t('recommendations:products.noProductsFound')}</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            {recommendedProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -2,14 +2,17 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { formatCurrency } from '@/lib/utils';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
+import { Card } from '@/ui/Card';
 import { Badge } from '@/ui/Badge';
 import { Button } from '@/ui/Button';
-import { Package, Truck, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
+import { Package, ArrowRight, ArrowLeft, Clock } from 'lucide-react';
 
 export default function MyOrdersPage() {
+  const { t, i18n } = useTranslation(['orders', 'common']);
+  const isRtl = i18n.language === 'ar';
   const { orders, currency } = useNabta();
 
   return (
@@ -19,23 +22,23 @@ export default function MyOrdersPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Badge variant="emerald" size="sm" dot>
-              Cross-Border Tracking
+              {t('orders:myOrders.badge')}
             </Badge>
             <span className="text-xs font-mono text-secondary">
-              Active Shipments: {orders.filter((o) => o.status !== 'Delivered').length}
+              {t('orders:myOrders.activeShipments')}: {orders.filter((o) => o.status !== 'Delivered').length}
             </span>
           </div>
           <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-            Institutional Procurement Orders
+            {t('orders:myOrders.title')}
           </h1>
           <p className="text-xs text-secondary mt-1">
-            Track active agricultural input shipments, customs status, phytosanitary clearance, and historical receipts.
+            {t('orders:myOrders.subtitle')}
           </p>
         </div>
 
         <Link href="/marketplace">
           <Button variant="primary" size="sm">
-            Browse Input Catalog
+            {t('orders:myOrders.browseCatalogBtn')}
           </Button>
         </Link>
       </div>
@@ -52,12 +55,12 @@ export default function MyOrdersPage() {
                 </div>
                 <div>
                   <span className="font-headline font-bold text-sm text-on-surface">
-                    Order {order.id}
+                    {t('orders:myOrders.order')} {order.id}
                   </span>
                   <div className="flex items-center gap-2 text-xs text-secondary font-mono">
-                    <span>Date: {order.date}</span>
+                    <span>{t('orders:myOrders.date')}: {order.date}</span>
                     <span>•</span>
-                    <span>Tracking: <strong className="text-primary">{order.trackingNumber}</strong></span>
+                    <span>{t('orders:myOrders.tracking')}: <strong className="text-primary">{order.trackingNumber}</strong></span>
                   </div>
                 </div>
               </div>
@@ -86,7 +89,7 @@ export default function MyOrdersPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               <div>
                 <span className="font-headline font-semibold text-secondary uppercase text-[10px] block mb-1">
-                  Ordered Inputs ({order.items.length} SKUs)
+                  {t('orders:myOrders.orderedInputs')} ({order.items.length} SKUs)
                 </span>
                 <ul className="space-y-1 font-body">
                   {order.items.map((item, idx) => (
@@ -100,16 +103,16 @@ export default function MyOrdersPage() {
                 </ul>
               </div>
 
-              <div className="font-body text-secondary border-t md:border-t-0 md:border-l border-slate-100 md:pl-4 pt-2 md:pt-0">
+              <div className="font-body text-secondary border-t md:border-t-0 md:border-s border-slate-100 md:ps-4 pt-2 md:pt-0">
                 <span className="font-headline font-semibold text-secondary uppercase text-[10px] block mb-1">
-                  Consignee Destination
+                  {t('orders:myOrders.consigneeDestination')}
                 </span>
                 <p className="font-semibold text-on-surface">{order.customerName}</p>
                 <p className="text-[11px]">{order.deliveryAddress.street}, {order.deliveryAddress.city}</p>
                 <p className="text-[11px]">{order.deliveryAddress.country} ({order.deliveryAddress.postalCode})</p>
                 <div className="flex items-center gap-1.5 text-primary text-[11px] mt-1 font-mono">
                   <Clock className="w-3.5 h-3.5" />
-                  <span>Est. Arrival: {order.estimatedDeliveryDate}</span>
+                  <span>{t('orders:myOrders.estArrival')}: {order.estimatedDeliveryDate}</span>
                 </div>
               </div>
             </div>
@@ -117,8 +120,13 @@ export default function MyOrdersPage() {
             {/* Bottom Row: View Confirmation / Receipt */}
             <div className="pt-3 border-t border-slate-100 flex items-center justify-end">
               <Link href={`/order-confirmation/${order.id}`}>
-                <Button variant="secondary" size="sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
-                  View Full Receipt &amp; Customs Manifest
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  icon={isRtl ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
+                  iconPosition={isRtl ? 'left' : 'right'}
+                >
+                  {t('orders:myOrders.viewReceiptBtn')}
                 </Button>
               </Link>
             </div>

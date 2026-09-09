@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { RecommendationBanner } from '@/components/marketplace/RecommendationBanner';
 import { formatCurrency } from '@/lib/utils';
@@ -11,6 +12,7 @@ import { Button } from '@/ui/Button';
 import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
 import {
   ArrowLeft,
+  ArrowRight,
   Star,
   ShoppingCart,
   ShieldCheck,
@@ -24,7 +26,9 @@ import {
 export default function ProductDetailsPage() {
   const params = useParams();
   const router = useRouter();
-  const { products, activeScenario, activeFarm, addToCart, currency } = useNabta();
+  const { t, i18n } = useTranslation(['marketplace', 'common']);
+  const { products, activeScenario, activeFarm, addToCart, currency, dir } = useNabta();
+  const BackArrow = dir === 'rtl' ? ArrowRight : ArrowLeft;
 
   const productId = params.id as string;
   const product = products.find((p) => p.id === productId);
@@ -35,10 +39,16 @@ export default function ProductDetailsPage() {
   if (!product) {
     return (
       <div className="max-w-4xl mx-auto py-16 px-4 text-center space-y-4">
-        <h2 className="text-xl font-headline font-bold text-on-surface">Product Not Found</h2>
-        <p className="text-xs text-secondary">The requested agricultural input SKU does not exist or has been discontinued.</p>
+        <h2 className="text-xl font-headline font-bold text-on-surface">
+          {t('marketplace:notFound')}
+        </h2>
+        <p className="text-xs text-secondary">
+          {t('marketplace:notFoundDesc')}
+        </p>
         <Link href="/marketplace">
-          <Button variant="primary" size="sm">Return to Marketplace</Button>
+          <Button variant="primary" size="sm">
+            {t('marketplace:details.back')}
+          </Button>
         </Link>
       </div>
     );
@@ -56,14 +66,14 @@ export default function ProductDetailsPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 text-start">
       {/* Back Link */}
       <Link
         href="/marketplace"
         className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-on-surface transition-colors"
       >
-        <ArrowLeft className="w-3.5 h-3.5" />
-        <span>Back to Global Catalog</span>
+        <BackArrow className="w-3.5 h-3.5" />
+        <span>{t('marketplace:details.back')}</span>
       </Link>
 
       {/* Dynamic Agricultural Engine Compatibility Banner */}
@@ -86,7 +96,7 @@ export default function ProductDetailsPage() {
           </div>
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2">
             <span className="font-headline font-bold text-on-surface uppercase text-[11px] block">
-              Logistics &amp; Customs
+              {t('marketplace:details.shippingTitle')}
             </span>
             <div className="flex items-start gap-2 text-secondary">
               <Truck className="w-4 h-4 text-primary shrink-0 mt-0.5" />
@@ -94,179 +104,168 @@ export default function ProductDetailsPage() {
             </div>
             <div className="flex items-center gap-2 text-secondary pt-1 border-t border-slate-200/60 font-mono text-[11px]">
               <Package className="w-3.5 h-3.5 text-secondary" />
-              <span>Standard Unit: {product.unit} (MOQ: {product.minOrderQuantity})</span>
+              <span>{product.unit} (MOQ: {product.minOrderQuantity})</span>
             </div>
           </div>
         </div>
 
-        {/* Right: Technical Details & Buy Box (7 cols) */}
+        {/* Right: Technical Specifications & Order Terminal (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
-          {/* Title & Origin */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Badge
-                variant={
-                  product.availability === 'In Stock'
-                    ? 'mint'
-                    : product.availability === 'Low Stock'
-                    ? 'amber'
-                    : 'slate'
-                }
-                size="sm"
-                dot
-              >
-                {product.availability} ({product.stockQuantity} Available)
+              <Badge variant="emerald" size="sm">
+                {product.category.toUpperCase()}
               </Badge>
-              <span className="text-xs font-mono text-secondary uppercase tracking-wider">
-                Category: {product.category}
+              <span className="text-xs font-mono text-secondary">
+                {t('marketplace:details.sku')}: {product.id}
               </span>
             </div>
-
-            <h1 className="font-headline font-bold text-2xl sm:text-3xl text-on-surface tracking-tight">
+            <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
               {product.name}
             </h1>
+            <p className="text-xs font-mono text-secondary mt-1">
+              {product.subcategory}
+            </p>
+          </div>
 
-            {/* Supplier and Manufacturer */}
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-secondary mt-2">
-              <span className="flex items-center gap-1">
-                <Building2 className="w-3.5 h-3.5" />
-                Supplier: <strong className="text-on-surface">{product.supplierName}</strong>
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5" />
-                Origin: <strong className="text-on-surface">{product.countryOfOrigin}</strong>
-              </span>
-              <span>•</span>
-              <div className="flex items-center text-amber-500">
-                <Star className="w-3.5 h-3.5 fill-current" />
-                <span className="ml-1 font-bold text-on-surface">{product.rating.toFixed(1)}</span>
-                <span className="text-slate-400 ml-1">({product.reviewCount} reviews)</span>
+          {/* Supplier & Origin Credential Pill */}
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+            <div className="flex items-center gap-2">
+              <Building2 className="w-4 h-4 text-primary" />
+              <div>
+                <span className="text-[10px] text-secondary uppercase block">
+                  {t('marketplace:card.supplier')}
+                </span>
+                <strong className="text-on-surface font-sans">{product.supplierName}</strong>
               </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-secondary" />
+              <div>
+                <span className="text-[10px] text-secondary uppercase block">
+                  {t('marketplace:card.origin')}
+                </span>
+                <strong className="text-on-surface font-sans">{product.countryOfOrigin}</strong>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 text-amber-500">
+              <Star className="w-4 h-4 fill-current" />
+              <span className="font-bold text-on-surface font-mono">{product.rating.toFixed(1)}</span>
+              <span className="text-secondary font-sans text-[11px]">({product.reviewCount})</span>
             </div>
           </div>
 
-          {/* Pricing & Purchase Box */}
-          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-4">
+          {/* Pricing & Procurement Box */}
+          <div className="p-6 rounded-2xl border-2 border-primary/20 bg-[#003620]/5 space-y-4">
             <div className="flex items-baseline justify-between">
               <div>
                 <span className="text-[10px] font-mono text-secondary uppercase block">
-                  Wholesale Price
+                  {t('marketplace:details.wholesalePrice')}
                 </span>
-                <div className="flex items-baseline gap-1.5">
-                  <span className="font-headline font-extrabold text-3xl text-on-surface">
-                    {formatCurrency(product.priceUSD, currency)}
-                  </span>
-                  <span className="text-xs text-secondary font-mono">/ {product.unit}</span>
-                </div>
+                <span className="font-headline font-black text-3xl text-on-surface">
+                  {formatCurrency(product.priceUSD, currency)}
+                </span>
+                <span className="text-xs text-secondary font-mono"> / {product.unit}</span>
               </div>
-              <span className="text-xs font-mono text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-full font-semibold">
-                B2B Volume Verified
-              </span>
+
+              <Badge
+                variant={product.availability === 'In Stock' ? 'mint' : 'amber'}
+                size="md"
+                dot
+              >
+                {product.availability === 'In Stock' ? t('marketplace:card.inStock') : t('marketplace:card.lowStock')}
+              </Badge>
             </div>
 
             {/* Quantity Selector */}
-            <div className="flex items-center gap-3 pt-2 border-t border-slate-200">
-              <span className="text-xs font-semibold text-on-surface">Order Quantity:</span>
-              <div className="flex items-center border border-slate-300 rounded-lg bg-white overflow-hidden">
-                <button
-                  type="button"
-                  onClick={() => setQuantity(Math.max(product.minOrderQuantity, quantity - 1))}
-                  className="px-3 py-1.5 text-xs text-secondary hover:bg-slate-100"
-                >
-                  -
-                </button>
-                <input
-                  type="number"
-                  min={product.minOrderQuantity}
-                  value={quantity}
-                  onChange={(e) => setQuantity(Math.max(product.minOrderQuantity, parseInt(e.target.value) || 1))}
-                  className="w-16 text-center font-mono text-xs font-semibold focus:outline-none"
-                />
-                <button
-                  type="button"
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="px-3 py-1.5 text-xs text-secondary hover:bg-slate-100"
-                >
-                  +
-                </button>
+            <div className="pt-3 border-t border-slate-200/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-semibold text-on-surface">
+                  {t('marketplace:details.orderQuantity')}:
+                </span>
+                <div className="flex items-center rounded-lg border border-slate-300 bg-white">
+                  <button
+                    onClick={() => setQuantity(Math.max(product.minOrderQuantity, quantity - 1))}
+                    className="px-3 py-1 text-sm font-mono font-bold text-secondary hover:bg-slate-100"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    min={product.minOrderQuantity}
+                    value={quantity}
+                    onChange={(e) => setQuantity(Math.max(product.minOrderQuantity, parseInt(e.target.value) || product.minOrderQuantity))}
+                    className="w-16 text-center text-xs font-mono font-bold py-1 focus:outline-none"
+                  />
+                  <button
+                    onClick={() => setQuantity(quantity + 1)}
+                    className="px-3 py-1 text-sm font-mono font-bold text-secondary hover:bg-slate-100"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-              <span className="text-xs font-mono text-secondary">
-                Subtotal: <strong>{formatCurrency(product.priceUSD * quantity, currency)}</strong>
-              </span>
+
+              <div className="text-end">
+                <span className="text-[10px] font-mono text-secondary uppercase block">
+                  {t('marketplace:details.subtotal')}
+                </span>
+                <span className="font-mono text-xl font-bold text-primary">
+                  {formatCurrency(product.priceUSD * quantity, currency)}
+                </span>
+              </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <div className="pt-3 flex items-center gap-3">
               <Button
                 variant={added ? 'secondary' : 'primary'}
                 size="md"
+                className="flex-1"
                 onClick={handleAddToCart}
                 icon={added ? <Check className="w-4 h-4 text-emerald-600" /> : <ShoppingCart className="w-4 h-4" />}
               >
-                {added ? 'Added to Cart' : 'Add to Cart'}
+                {added ? t('marketplace:card.added') : t('marketplace:card.addToCart')}
               </Button>
               <Button variant="secondary" size="md" onClick={handleBuyNow}>
-                Proceed to Checkout
+                {t('common:actions.checkout')}
               </Button>
+            </div>
+
+            <div className="flex items-center gap-2 text-[11px] text-slate-600 font-mono pt-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#10b981] shrink-0" />
+              <span>{t('marketplace:details.escrowNotice')}</span>
             </div>
           </div>
 
           {/* Description */}
-          <div className="space-y-2 text-xs font-body">
-            <h3 className="font-headline font-bold text-sm text-on-surface uppercase tracking-wider">
-              Product Overview
-            </h3>
-            <p className="text-secondary leading-relaxed">{product.description}</p>
+          <div className="space-y-2 text-xs">
+            <h4 className="font-headline font-bold text-sm text-on-surface">
+              {t('marketplace:details.agronomicDesc')}
+            </h4>
+            <p className="text-secondary font-body leading-relaxed">
+              {product.description}
+            </p>
           </div>
 
           {/* Technical Specifications Table */}
-          <div className="space-y-2">
-            <h3 className="font-headline font-bold text-sm text-on-surface uppercase tracking-wider">
-              Technical Specifications
-            </h3>
-            <div className="border border-slate-200 rounded-xl overflow-hidden text-xs">
-              <table className="w-full divide-y divide-slate-200">
-                <tbody className="divide-y divide-slate-100">
+          <div className="space-y-3 pt-2">
+            <h4 className="font-headline font-bold text-sm text-on-surface">
+              {t('marketplace:details.specsTitle')}
+            </h4>
+            <div className="rounded-xl border border-slate-200 overflow-hidden text-xs">
+              <table className="w-full">
+                <tbody className="divide-y divide-slate-100 font-mono">
                   {Object.entries(product.specifications).map(([key, val]) => (
                     <tr key={key} className="hover:bg-slate-50">
-                      <td className="py-2.5 px-4 font-mono font-semibold text-secondary w-1/3 bg-slate-50/50">
-                        {key}
-                      </td>
-                      <td className="py-2.5 px-4 font-body text-on-surface">{val}</td>
+                      <td className="py-2.5 px-4 text-secondary bg-slate-50/50 w-1/3">{key}</td>
+                      <td className="py-2.5 px-4 font-semibold text-on-surface">{val}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div>
-          </div>
-
-          {/* Suitable Crops & Conditions */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
-              <span className="font-headline font-bold text-on-surface text-[11px] uppercase tracking-wider block">
-                Suitable Crop Varieties
-              </span>
-              <div className="flex flex-wrap gap-1">
-                {product.suitableCrops.map((c) => (
-                  <span key={c} className="px-2 py-0.5 rounded bg-white border border-slate-200 font-mono text-[10px]">
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
-              <span className="font-headline font-bold text-on-surface text-[11px] uppercase tracking-wider block">
-                Standard Certifications
-              </span>
-              <div className="flex flex-wrap gap-1">
-                {product.certifications.map((cert) => (
-                  <span key={cert} className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 font-mono text-[10px] font-semibold">
-                    {cert}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         </div>

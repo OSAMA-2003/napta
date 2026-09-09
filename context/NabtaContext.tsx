@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import i18n from '@/i18n';
 import {
   Farm,
   CropScenario,
@@ -68,6 +69,9 @@ interface NabtaContextType {
   setCurrency: (c: CurrencyCode) => void;
   role: UserRole;
   setRole: (r: UserRole) => void;
+  language: 'en' | 'ar';
+  setLanguage: (lang: 'en' | 'ar') => void;
+  dir: 'ltr' | 'rtl';
 }
 
 const NabtaContext = createContext<NabtaContextType | undefined>(undefined);
@@ -152,6 +156,52 @@ export function NabtaProvider({ children }: { children: React.ReactNode }) {
 
   const [currency, setCurrencyState] = useState<CurrencyCode>('USD');
   const [role, setRoleState] = useState<UserRole>('FARMER');
+  const [language, setLanguageState] = useState<'en' | 'ar'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('nabta_lang') || localStorage.getItem('i18nextLng');
+      if (saved === 'ar' || saved === 'en') return saved;
+    }
+    return i18n.language === 'ar' ? 'ar' : 'en';
+  });
+
+  const dir = language === 'ar' ? 'rtl' : 'ltr';
+
+  const setLanguage = (lang: 'en' | 'ar') => {
+    i18n.changeLanguage(lang);
+    setLanguageState(lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('nabta_lang', lang);
+      localStorage.setItem('i18nextLng', lang);
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+  };
+
+  useEffect(() => {
+    const handleLanguageChanged = (lng: string) => {
+      const validLang = lng === 'ar' ? 'ar' : 'en';
+      setLanguageState(validLang);
+      const newDir = validLang === 'ar' ? 'rtl' : 'ltr';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('nabta_lang', validLang);
+        localStorage.setItem('i18nextLng', validLang);
+        document.documentElement.lang = validLang;
+        document.documentElement.dir = newDir;
+      }
+    };
+
+    i18n.on('languageChanged', handleLanguageChanged);
+    return () => {
+      i18n.off('languageChanged', handleLanguageChanged);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.lang = language;
+      document.documentElement.dir = dir;
+    }
+  }, [language, dir]);
 
   // Persistence effects
   useEffect(() => {
@@ -501,6 +551,9 @@ export function NabtaProvider({ children }: { children: React.ReactNode }) {
         setCurrency,
         role,
         setRole,
+        language,
+        setLanguage,
+        dir,
       }}
     >
       {children}

@@ -3,13 +3,16 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 import { useNabta } from '@/context/NabtaContext';
 import { Button } from '@/ui/Button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/ui/Card';
-import { ArrowLeft, Store, CheckCircle2 } from 'lucide-react';
+import { Card } from '@/ui/Card';
+import { ArrowLeft, ArrowRight, Store } from 'lucide-react';
 
 export default function SellerProduceListingPage() {
   const router = useRouter();
+  const { t, i18n } = useTranslation(['portals', 'common']);
+  const isRtl = i18n.language === 'ar';
   const { addProduceListing, activeFarm } = useNabta();
 
   const [productName, setProductName] = useState('Export Grade Vine Tomatoes');
@@ -48,32 +51,34 @@ export default function SellerProduceListingPage() {
           href="/marketplace"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-on-surface mb-3 transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Marketplace</span>
+          {isRtl ? <ArrowRight className="w-3.5 h-3.5" /> : <ArrowLeft className="w-3.5 h-3.5" />}
+          <span>{t('portals:seller.back')}</span>
         </Link>
 
         <h1 className="font-headline font-extrabold text-2xl sm:text-3xl text-on-surface tracking-tight">
-          Sell Your Produce — Direct Grower Listing
+          {t('portals:seller.title')}
         </h1>
         <p className="text-xs text-secondary mt-1">
-          List your upcoming or harvested farm yield directly on the global agricultural terminal market for verified wholesale buyers.
+          {t('portals:seller.subtitle')}
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <Card className="p-6 space-y-4">
           <h3 className="font-headline font-bold text-base text-on-surface">
-            1. Crop &amp; Harvest Parameters
+            {t('portals:seller.section1Title')}
           </h3>
 
           <div className="space-y-4 text-xs font-body">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Crop Type</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:seller.cropTypeLabel')}
+                </label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Cluster Tomato"
+                  placeholder={t('portals:seller.cropTypePlaceholder')}
                   value={productName}
                   onChange={(e) => setProductName(e.target.value)}
                   className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-primary"
@@ -81,11 +86,13 @@ export default function SellerProduceListingPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Variety / Cultivar</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:seller.varietyLabel')}
+                </label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Tycoon F1 Hybrid"
+                  placeholder={t('portals:seller.varietyPlaceholder')}
                   value={variety}
                   onChange={(e) => setVariety(e.target.value)}
                   className="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs focus:outline-none focus:border-primary"
@@ -95,7 +102,9 @@ export default function SellerProduceListingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Available Batch (Metric Tons)</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:seller.quantityLabel')}
+                </label>
                 <input
                   type="number"
                   min="1"
@@ -108,7 +117,9 @@ export default function SellerProduceListingPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Price per MT (USD)</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:seller.priceLabel')}
+                </label>
                 <input
                   type="number"
                   min="50"
@@ -121,7 +132,9 @@ export default function SellerProduceListingPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Harvest / Dispatch Date</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:seller.harvestDateLabel')}
+                </label>
                 <input
                   type="date"
                   required
@@ -133,7 +146,9 @@ export default function SellerProduceListingPage() {
             </div>
 
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Farm Origin &amp; Location</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:seller.locationLabel')}
+              </label>
               <input
                 type="text"
                 required
@@ -147,12 +162,14 @@ export default function SellerProduceListingPage() {
 
         <Card className="p-6 space-y-4">
           <h3 className="font-headline font-bold text-base text-on-surface">
-            2. Quality, Certifications &amp; Documentation
+            {t('portals:seller.section2Title')}
           </h3>
 
           <div className="space-y-4 text-xs font-body">
             <div>
-              <label className="block font-semibold text-on-surface mb-1">Harvest Description &amp; Brix / Sizing Specs</label>
+              <label className="block font-semibold text-on-surface mb-1">
+                {t('portals:seller.descLabel')}
+              </label>
               <textarea
                 rows={3}
                 required
@@ -164,7 +181,9 @@ export default function SellerProduceListingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Certifications (comma separated)</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:seller.certsLabel')}
+                </label>
                 <input
                   type="text"
                   value={certifications}
@@ -174,7 +193,9 @@ export default function SellerProduceListingPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-on-surface mb-1">Produce Photograph URL</label>
+                <label className="block font-semibold text-on-surface mb-1">
+                  {t('portals:seller.photoUrlLabel')}
+                </label>
                 <input
                   type="url"
                   required
@@ -189,10 +210,12 @@ export default function SellerProduceListingPage() {
 
         <div className="flex items-center justify-end gap-3 pt-2">
           <Link href="/marketplace">
-            <Button type="button" variant="secondary">Cancel</Button>
+            <Button type="button" variant="secondary">
+              {t('common:actions.cancel')}
+            </Button>
           </Link>
           <Button type="submit" variant="primary" size="lg" icon={<Store className="w-4 h-4" />}>
-            List Produce on Marketplace
+            {t('portals:seller.submitBtn')}
           </Button>
         </div>
       </form>
